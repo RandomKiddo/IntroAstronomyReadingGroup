@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Our Cosmic Neighborhood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. GLOBAL SETUP */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #0f172a; display: grid; gap: 40px; grid-template-columns: 1fr; place-items: center; padding: 40px 0; }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #000000;
+            color: #DAFFDE;
+            font-family: 'Urbanist', sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* 2. BACKGROUND AESTHETICS - Flowing Lines / Bokeh Effect */
+        .slide-container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(222, 255, 154, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(218, 255, 222, 0.05) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        /* Abstract Flowing Lines */
+        .bg-line {
+            position: absolute;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(222, 255, 154, 0.2), transparent);
+            transform: rotate(-35deg);
+            z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* 3. TYPOGRAPHY */
+        h1 { font-family: 'Playfair Display', serif; font-size: 80px; color: #DEFF9A; line-height: 1.1; text-align: center; margin-bottom: 20px; }
+        .slide-title { font-family: 'Playfair Display', serif; font-size: 54px; color: #DEFF9A; margin-bottom: 30px; text-align: left; border-left: 5px solid #DEFF9A; padding-left: 25px; max-width: 900px; }
+        h3 { font-size: 32px; color: #DEFF9A; margin-bottom: 15px; }
+        p, li { font-size: 20px; line-height: 1.6; color: #DAFFDE; }
+        .subtitle { font-size: 26px; text-align: center; color: #DAFFDE; max-width: 800px; margin: 0 auto; }
+
+        /* 4. LAYOUTS */
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+        
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; width: 100%; }
+        
+        .tiled-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%; }
+        .tile { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(222, 255, 154, 0.2); border-radius: 20px; padding: 30px; }
+        .tile .icon { font-size: 40px; color: #DEFF9A; margin-bottom: 20px; }
+
+        .image-wrapper { border-radius: 20px; overflow: hidden; border: 1px solid #DEFF9A; background: #1a1a1a; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Formula Container */
+        #formula-container { background: rgba(222, 255, 154, 0.1); padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center; }
+
+        /* Chart Styling */
+        .area-chart-svg { width: 100%; height: 350px; overflow: visible; }
+        .grid-line { stroke: rgba(218, 255, 222, 0.1); stroke-width: 1; }
+        .chart-line { fill: none; stroke: #DEFF9A; stroke-width: 4; }
+        .chart-area { fill: url(#grad); opacity: 0.3; }
+
+        /* Highlight Numbers */
+        .number-box { text-align: center; }
+        .number { font-size: 140px; font-weight: 700; color: #DEFF9A; line-height: 1; }
+        .number-label { font-size: 28px; color: #DAFFDE; font-weight: 500; }
+
+        /* Bleed Image Right */
+        .bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
+        .bleed-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .bleed-img { width: 100%; height: 720px; object-fit: cover; border-radius: 0; }
+
+        /* Quote Layout */
+        .quote-layout { text-align: center; padding: 0 100px; }
+        blockquote { font-size: 42px; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 30px; position: relative; }
+        blockquote::before { content: "“"; font-size: 120px; position: absolute; left: -60px; top: -40px; opacity: 0.3; color: #DEFF9A; }
+        cite { font-size: 24px; color: #DEFF9A; }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="bg-line" style="top: 20%;"></div>
+    <div class="bg-line" style="top: 80%;"></div>
+    <div class="content-area" style="text-align: center;">
+        <h1>The Grand Tour</h1>
+        <p class="subtitle">Week 1: Our Cosmic Neighborhood & The Foundations of Observation</p>
+        <div style="margin-top: 50px; font-size: 18px; letter-spacing: 2px; color: #DEFF9A;">SUMMER 2026</div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="content-area" style="text-align: center;">
+        <h2 style="font-size: 60px; color: #DEFF9A;">Session Agenda</h2>
+        <div style="width: 100px; height: 4px; background: #DEFF9A; margin: 30px auto;"></div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
+            <li><i class="fa-solid fa-satellite-dish" style="margin-right: 15px;"></i> Astronomy in the News</li>
+            <li><i class="fa-solid fa-compass" style="margin-right: 15px;"></i> Geometry of the Night Sky</li>
+            <li><i class="fa-solid fa-moon" style="margin-right: 15px;"></i> Phases, Eclipses, & Tilt</li>
+            <li><i class="fa-solid fa-calculator" style="margin-right: 15px;"></i> Physics Sprinkle: Measuring the World</li>
+            <li><i class="fa-solid fa-comments" style="margin-right: 15px;"></i> The Geocentrism Debate</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Astronomy in the News</h2>
+    <div class="content-area">
+        <div class="two-column" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;">
+            
+            <div>
+                <h3 style="color: #DEFF9A;"><i class="fa-solid fa-space-shuttle" style="margin-right: 12px;"></i>JWST Revisits the Deep Field (2022)</h3>
+                <p style="margin-bottom: 15px;">By returning to iconic Hubble Deep Field regions and massive galaxy clusters, JWST's infrared eyes have fundamentally advanced our mapping of space-time curvature.</p>
+                
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; padding-left: 5px;">
+                    <li style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border-left: 3px solid #DEFF9A;">
+                        <strong>Hubble vs. JWST:</strong> Where Hubble saw empty patches or blurry smudges, JWST's resolution exposes thousands of ultra-distant galaxies and intricate, elongated cosmic arcs.
+                    </li>
+                    <li style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border-left: 3px solid #DEFF9A;">
+                        <strong>Strong Gravitational Lensing:</strong> The massive foreground galaxy clusters act as natural magnifying lenses, bending background light according to Einsteinian General Relativity.
+                    </li>
+                    <li style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; border-left: 3px solid #DEFF9A;">
+                        <strong>Dark Matter Mapping:</strong> Analyzing the specific distortion patterns and image multiplications allows astrophysicists to build hyper-sharp maps of invisible dark matter scaffolding.
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <div class="image-wrapper" style="height: 420px; background: #000000; padding: 5px; display: flex; align-items: center; justify-content: center;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Webb%27s_First_Deep_Field.jpg" alt="JWST Deep Field">
+                </div>
+                <p style="font-size: 14px; text-align: center; font-style: italic; opacity: 0.7; margin-top: 10px;">Note the warped, concentric orange arcs: these are distant background galaxies being lensed by the central cluster mass.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3_comparison">
+    <div class="bg-line" style="top: 15%; opacity: 0.1;"></div>
+    
+    <h2 class="slide-title" style="margin-bottom: 20px;">Deep Field Evolution</h2>
+    
+    <div class="content-area" style="display: flex; flex-direction: column; justify-content: space-between; height: 540px;">
+        
+        <div style="display: flex; gap: 30px; height: 380px; width: 100%;">
+            <div style="flex: 1; display: flex; flex-direction: column; height: 100%;">
+                <div class="image-wrapper" style="height: 320px; background: #000; border: 1px solid rgba(222, 255, 154, 0.3);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/The_Hubble_Deep_Field_%28opo9601a1%29.jpg" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <h3 style="font-size: 22px; color: #DEFF9A; margin: 0;">Hubble: Visible Spectrum</h3>
+                    <p style="font-size: 16px; opacity: 0.8;">Galaxy clusters appear as point sources.</p>
+                </div>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column; height: 100%;">
+                <div class="image-wrapper" style="height: 320px; background: #000; border: 1px solid #DEFF9A;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Webb%27s_First_Deep_Field.jpg" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <h3 style="font-size: 22px; color: #DEFF9A; margin: 0;">JWST: Infrared Resolution</h3>
+                    <p style="font-size: 16px; opacity: 0.8;">Deep Redshift & Gravitational Lensing Arcs.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="padding: 25px; background: rgba(222, 255, 154, 0.05); border-radius: 12px; border-left: 5px solid #DEFF9A; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: 140px;">
+            <div>
+                <strong style="color: #DEFF9A; font-size: 18px;">General Relativity</strong>
+                <p style="font-size: 15px; line-height: 1.4; margin-top: 5px;">Foreground mass warps space-time, acting as a natural cosmic magnifying glass to reveal ultra-distant background galaxies.</p>
+            </div>
+            <div>
+                <strong style="color: #ffffff; font-size: 18px;">High-Precision Mapping</strong>
+                <p style="font-size: 15px; line-height: 1.4; margin-top: 5px;">Analyzing Einstein rings and distorted arcs allows physicists to map the invisible dark matter "scaffolding" of the cluster.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">The Celestial Sphere</h2>
+    <div class="content-area">
+        <div class="two-column" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="tile">
+                <h3>The Mapping System</h3>
+                <p>Astronomers use a coordinate system projected onto an imaginary sphere around Earth.</p>
+                <ul style="margin-top: 15px;">
+                    <li><strong>Zenith:</strong> Point directly overhead.</li>
+                    <li><strong>Ecliptic:</strong> The Sun's annual path.</li>
+                    <li><strong>Equator:</strong> Projection of Earth's equator.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <h3>Observational Limits</h3>
+                <p>The "Horizon" is a local plane determined by your position on the oblate spheroid.</p>
+                <ul style="margin-top: 15px;">
+                    <li>Altitude vs. Azimuth.</li>
+                    <li>Declination vs. Right Ascension.</li>
+                    <li>The effect of Latitude on star visibility.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide5">
+    <div class="bleed-content">
+        <h2 class="slide-title" style="border: none; padding: 0;">Antique Skies</h2>
+        <h3>A History of Mnemonics</h3>
+        <p>Constellations were never scientific clusters; they are 2D projections of stars at vastly different distances. Historically, they served as navigational waypoints and seasonal calendars for agricultural societies.</p>
+        <p>Today, we use them as "International Postal Codes" for the 88 formal regions of the sky.</p>
+    </div>
+    <img class="bleed-img" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Cellarius_ptolemaic_system.jpg" alt="Antique celestial map">
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Seasonal Solar Variation</h2>
+    <div class="content-area">
+        <svg class="area-chart-svg" viewBox="0 0 1000 400">
+            <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#DEFF9A;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#DEFF9A;stop-opacity:0" />
+                </linearGradient>
+            </defs>
+            <line x1="100" y1="350" x2="900" y2="350" class="grid-line" />
+            <line x1="100" y1="50" x2="100" y2="350" class="grid-line" />
+            <path d="M100,300 Q300,50 500,200 T900,300 L900,350 L100,350 Z" class="chart-area" />
+            <path d="M100,300 Q300,50 500,200 T900,300" class="chart-line" />
+            <text x="100" y="380" fill="#DAFFDE" text-anchor="middle">Winter</text>
+            <text x="300" y="380" fill="#DAFFDE" text-anchor="middle">Spring</text>
+            <text x="500" y="380" fill="#DAFFDE" text-anchor="middle">Summer</text>
+            <text x="700" y="380" fill="#DAFFDE" text-anchor="middle">Autumn</text>
+            <text x="900" y="380" fill="#DAFFDE" text-anchor="middle">Winter</text>
+            <text x="80" y="200" fill="#DAFFDE" text-anchor="end" transform="rotate(-90, 80, 200)">Solar Altitude (Degrees)</text>
+        </svg>
+        <p style="text-align: center; font-style: italic; margin-top: 20px;">Why distance doesn't matter: Earth is closest to the Sun in January (Perihelion), but the Northern Hemisphere is tilted away.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Eratosthenes' Scale</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="number-box">
+                <div class="number">40,000</div>
+                <div class="number-label">Kilometers Circumference</div>
+            </div>
+            <div>
+                <h3>Measuring with Geometry</h3>
+                <p>Circa 240 BCE, using nothing but shadows in Alexandria and a well in Syene, the Earth's size was calculated with &lt;2% error.</p>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mi>C</mi>
+                        <mo>=</mo>
+                        <mfrac>
+                            <msup><mn>360</mn><mo>&#x2218;</mo></msup>
+                            <mi>&#x03B8;</mi>
+                        </mfrac>
+                        <mo>&#x00D7;</mo>
+                        <mi>s</mi>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Ancient Ingenuity</h2>
+    <div class="content-area">
+        <div class="two-column" style="align-items: center;">
+            <div class="image-wrapper" style="width: 450px; height: 450px; background: #ffffff; padding: 20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Eratosthenes_measure_of_Earth_circumference.svg" alt="Eratosthenes shadow diagram" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div style="padding-left: 40px;">
+                <h3>The Experiment</h3>
+                <p>Eratosthenes observed that at noon on the summer solstice, sunlight fell directly down a well in Syene, while it cast a shadow at an angle of 7.2° in Alexandria.</p>
+                <p>Recognizing that 7.2° is 1/50th of a circle, he concluded the distance between the cities was 1/50th of Earth's circumference.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Lunar Phases & Geometry</h2>
+    <div class="content-area">
+        <div class="two-column" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: start;">
+            
+            <div>
+                <div class="image-wrapper" style="height: 380px; margin-bottom: 20px; background: rgba(255, 255, 255, 0.03); padding: 10px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Moon_phases_en.jpg" alt="Lunar phase diagram" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <h3>Synchronous Rotation</h3>
+                <p>The Moon rotates at the same rate it revolves. We always see the same side, but the Sun illuminates different parts.</p>
+            </div>
+            
+            <div style="padding: 35px; background: rgba(222, 255, 154, 0.05); border: 1px solid rgba(222, 255, 154, 0.1); border-radius: 20px; height: 100%;">
+                <h3 style="color: #DEFF9A;"><i class="fa-solid fa-gamepad" style="margin-right: 10px;"></i> Game: Cosmic Sort</h3>
+                <p style="margin-bottom: 20px; font-style: italic; font-size: 18px;">Rank these by order of magnitude (Meters):</p>
+                <ul style="display: flex; flex-direction: column; gap: 15px; list-style: none;">
+                    <li style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border-left: 3px solid #DEFF9A;">Distance to Moon</li>
+                    <li style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border-left: 3px solid #DEFF9A;">Earth Diameter</li>
+                    <li style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border-left: 3px solid #DEFF9A;">Distance to Sun</li>
+                    <li style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border-left: 3px solid #DEFF9A;">Light Year</li>
+                    <li style="background: rgba(255,255,255,0.03); padding: 12px 18px; border-radius: 8px; border-left: 3px solid #DEFF9A;">Milky Way Width</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">The Physics Sprinkle</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-vector-square"></i></div>
+                <h3>Small Angle</h3>
+                <p>For small angles (theta &ll; 1), the linear size D is related to distance d by:</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mi>&#x03B1;</mi>
+                    <mo>&#x2248;</mo>
+                    <mfrac><mi>D</mi><mi>d</mi></mfrac>
+                </math>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-rotate-right"></i></div>
+                <h3>Angular Momentum</h3>
+                <p>Why are orbits flat? Conservation of L ensures that a collapsing cloud collapses along its axis of rotation.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-cube"></i></div>
+                <h3>Frames</h3>
+                <p>The Geocentric vs Heliocentric debate about frame of reference (S vs S').</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Discussion Spark</h2>
+    <div class="content-area">
+        <div class="quote-layout">
+            <blockquote>"The Sun, with all those planets revolving around it and dependent on it, can still ripen a bunch of grapes as if it had nothing else in the universe to do."</blockquote>
+            <cite>— Galileo Galilei</cite>
+            <p style="margin-top: 40px; color: #DEFF9A; font-weight: 700;">PROMPT: If we can mathematically describe a Geocentric universe with enough 'epicycles', why is the Heliocentric model 'truer'?</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">Bonus Discussion Spark</h2>
+    <div class="content-area">
+        <div class="quote-layout">
+            <blockquote>"We are a way for the cosmos to know itself."</blockquote>
+            <cite>— Carl Sagan</cite>
+            <p style="margin-top: 40px; color: #DEFF9A; font-weight: 700;">PROMPT: Ancient astronomers developed physics and navigation largely because our night sky is dark enough to see the stars clearly. If Earth were located inside a dense globular star cluster where the night sky was blindingly bright with neighboring stars, how might humanity's scientific and philosophical development have been different?</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9_display">
+    <h2 class="slide-title">Observational Vocabulary</h2>
+    <div class="content-area">
+        <div class="two-column" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: start;">
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <h3 style="color: #DEFF9A;"><i class="fa-solid fa-trophy" style="margin-right: 10px;"></i> Game: Name That Term!</h3>
+                <p style="margin-bottom: 10px; font-style: italic;">Match the coordinate system definition to the correct physical term:</p>
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION A:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The imaginary point on the celestial sphere directly above an observer's head, representing a local altitude of exactly +90°.</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION B:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The apparent annual path of the Sun across the celestial sphere, which is tilted at 23.5° relative to the celestial equator.</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION C:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The projection of Earth's fundamental rotational boundary out into deep space, dividing the sky into northern and southern halves.</p>
+                </div>
+            </div>
+            
+            <div style="padding: 35px; background: rgba(222, 255, 154, 0.05); border: 1px solid rgba(222, 255, 154, 0.1); border-radius: 20px; height: 100%;">
+                <h3 style="color: #ffffff;"><i class="fa-solid fa-layer-group" style="margin-right: 10px;"></i> Word Bank</h3>
+                <p style="margin-bottom: 25px; font-size: 16px; opacity: 0.8;">Choose the most physically accurate term for each definition from the list below:</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500;">Zenith</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500;">Nadir</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500;">Meridian</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500;">Ecliptic</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500; font-size: 15px; display: flex; align-items: center; justify-content: center;">Celestial Equator</div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid rgba(222, 255, 154, 0.2); font-weight: 500; font-size: 15px; display: flex; align-items: center; justify-content: center;">Autumnal Equinox</div>
+                </div>
+
+                <div style="margin-top: 40px; padding: 20px; background: rgba(222, 255, 154, 0.1); border-radius: 12px; border: 1px solid #DEFF9A;">
+                    <p style="font-size: 18px; font-weight: 700; color: #DEFF9A; margin-bottom: 5px;">RULES:</p>
+                    <p style="font-size: 16px;">Correctly guess all three terms for bragging rights!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Observational Vocabulary</h2>
+    <div class="content-area">
+        <div class="two-column" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: start;">
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <h3 style="color: #DEFF9A;"><i class="fa-solid fa-font" style="margin-right: 10px;"></i> Game: Name That Term!</h3>
+                <p style="margin-bottom: 10px; font-style: italic;">Match the physical definition to the correct astronomical coordinate:</p>
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION A:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The imaginary point on the celestial sphere directly above an observer's head, representing a local altitude of exactly +90°.</p>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION B:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The apparent annual path of the Sun across the celestial sphere, which is tilted at 23.5° relative to the celestial equator.</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; border: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="color: #DEFF9A; font-weight: 700; font-size: 16px; letter-spacing: 1px;">DEFINITION C:</p>
+                    <p style="font-size: 18px; margin-top: 5px;">The projection of Earth's fundamental rotational boundary out into deep space, dividing the sky into northern and southern halves.</p>
+                </div>
+            </div>
+            
+            <div style="padding: 35px; background: rgba(222, 255, 154, 0.05); border: 1px solid rgba(222, 255, 154, 0.1); border-radius: 20px; height: 100%;">
+                <h3 style="color: #ffffff;"><i class="fa-solid fa-key" style="margin-right: 10px;"></i> Host Answer Key</h3>
+                <p style="margin-bottom: 25px; font-size: 16px; opacity: 0.8;">Have your group race to shout out the terms, or call on individuals to test their reading memory!</p>
+                
+                <ul style="display: flex; flex-direction: column; gap: 15px; list-style: none;">
+                    <li style="background: rgba(222, 255, 154, 0.1); padding: 12px 18px; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #DEFF9A; margin-right: 10px;">Answer A:</span> <strong>Zenith</strong>
+                    </li>
+                    <li style="background: rgba(222, 255, 154, 0.1); padding: 12px 18px; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #DEFF9A; margin-right: 10px;">Answer B:</span> <strong>Ecliptic</strong>
+                    </li>
+                    <li style="background: rgba(222, 255, 154, 0.1); padding: 12px 18px; border-radius: 8px;">
+                        <span style="font-weight: 700; color: #DEFF9A; margin-right: 10px;">Answer C:</span> <strong>Celestial Equator</strong>
+                    </li>
+                </ul>
+
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(218, 255, 222, 0.1);">
+                    <p style="font-size: 16px; font-style: italic; opacity: 0.7;"><strong>Tiebreaker Question:</strong> What do we call the two intersection points where the Ecliptic cuts through the Celestial Equator? <br><span style="color: #DEFF9A; font-style: normal; font-weight: 700;">(Answer: The Equinoxes)</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide13">
+    <div class="content-area" style="text-align: center;">
+        <h1 style="font-size: 100px;">Questions?</h1>
+        <p class="subtitle" style="margin-bottom: 50px;">Next Week: The Solar System & Planetary Science</p>
+        <div style="display: flex; justify-content: center; gap: 40px;">
+            <div class="tile" style="flex: 0 0 300px;">
+                <p><strong>Next Up:</strong></p>
+                <p>Read Ch 7/14 & Pick one Moon/Planet for your pitch.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
