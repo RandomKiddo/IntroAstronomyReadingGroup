@@ -92,6 +92,18 @@
         blockquote { font-size: 42px; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 30px; position: relative; }
         blockquote::before { content: "“"; font-size: 120px; position: absolute; left: -60px; top: -40px; opacity: 0.3; color: #DEFF9A; }
         cite { font-size: 24px; color: #DEFF9A; }
+
+        @media print {
+            body {
+                /* Forces browsers to render background colors and images */
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                
+                /* Re-declare your background and text colors here just to be safe */
+                background-color: black !important;
+                color: blue !important;
+            }
+        }
     </style>
 </head>
 <body>
