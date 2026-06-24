@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Solar System: Week 2 Reading Group</title>
+    <title>Week 2: The Solar System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
@@ -462,7 +462,19 @@ p, li { font-size: 20px; }
 
 .image-wrapper img {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  width: 100%;
+}
+
+.image-wrapper-2 {
+  height: 350px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-wrapper-2 img {
+  height: 100%;
+  object-fit: contain;
   width: 100%;
 }
 
@@ -490,6 +502,27 @@ p, li { font-size: 20px; }
   position: absolute;
   left: 0;
   color: #a0522d;
+}
+
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        
+        /* Re-declare your background and text colors here just to be safe */
+        background-color: black !important;
+        color: blue !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
 }
 
     </style>
@@ -549,7 +582,7 @@ p, li { font-size: 20px; }
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/17702989103737321015" alt="Compilation of Mercury, Venus, Earth, and Mars">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Terrestrial_planet_sizes2.jpg" alt="Compilation of Mercury, Venus, Earth, and Mars">
             </div>
         </div>
     </div>
@@ -603,21 +636,21 @@ p, li { font-size: 20px; }
         <div class="tiled-content">
             <div class="tile" style="padding: 15px;">
                 <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/13290579567875786181" alt="Asteroid Vesta">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Vesta_in_natural_color.jpg" alt="Asteroid Vesta">
                 </div>
                 <h3>The Belt</h3>
                 <p style="font-size: 14px;">Between Mars and Jupiter, the Asteroid Belt represents material prevented from forming a planet by Jupiter's gravity.</p>
             </div>
             <div class="tile" style="padding: 15px;">
                 <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/2253789882626712307" alt="Kuiper Belt Object">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Smallest_Kuiper_Belt_Object.jpg" alt="Kuiper Belt Object">
                 </div>
                 <h3>Kuiper Belt</h3>
                 <p style="font-size: 14px;">The outer frontier beyond Neptune, home to Pluto and other icy dwarf planets that preserve early system chemistry.</p>
             </div>
             <div class="tile" style="padding: 15px;">
                 <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6050379575111728838" alt="Comet with tail">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/20151208-catalina.jpg" alt="Comet with tail">
                 </div>
                 <h3>The Oort Cloud</h3>
                 <p style="font-size: 14px;">A theoretical spherical shell of icy debris extending up to 100,000 AU, the source of long-period comets.</p>
@@ -688,7 +721,7 @@ p, li { font-size: 20px; }
     </div>
 </div>
 
-<div class="slide-container full-bg-image" id="slide11" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('http://googleusercontent.com/image_collection/image_retrieval/3251581920146110604');">
+<div class="slide-container full-bg-image" id="slide11" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://upload.wikimedia.org/wikipedia/commons/0/0f/Solar_System_Portrait_-_Earth_as_%27Pale_Blue_Dot%27_%285052129467%29.jpg');">
     <div class="content-overlay" style="background: rgba(253, 252, 240, 0.1); border: none;">
         <h2 style="color: #fff; font-size: 50px;">The Pale Blue Dot</h2>
         <p style="color: #fff; font-size: 22px; font-style: italic; opacity: 0.9;">
@@ -735,10 +768,10 @@ p, li { font-size: 20px; }
             </div>
         </div>
         <div style="margin-top: 40px; display: flex; gap: 30px; align-items: center;">
-            <div class="image-wrapper" style="width: 250px; height: 180px; flex-shrink: 0;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/12015508444802861322" alt="Protoplanetary disk frost line visualization">
+            <div class="image-wrapper" style="width: 300px; height: 180px; flex-shrink: 0;">
+                <img src="https://www.americaspace.com/wp-content/uploads/2014/07/frostline.jpg" alt="Protoplanetary disk frost line visualization">
             </div>
-            <p style="font-style: italic; opacity: 0.8; font-size: 18px;">Formation Constraint: Water-ice represents roughly 50% of the total mass of available solids beyond the frost line. In the inner system, that mass is zero.</p>
+            <p style="font-style: italic; opacity: 0.8; font-size: 18px;">Formation Constraint: Water-ice represents roughly 50% of the total mass of available solids beyond the frost line. In the inner system, that mass is zero. Image Credit: University of Hawaii Institute for Astronomy.</p>
         </div>
     </div>
 </div>
@@ -755,8 +788,8 @@ p, li { font-size: 20px; }
                     <li>If planetary systems are a standard byproduct of star formation, should we expect "Hot Jupiters" to be the statistical norm or the exception?</li>
                 </ul>
             </div>
-            <div class="image-wrapper" style="height: 400px; border-radius: 50%; width: 400px; margin: 0 auto;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/16375539393741931431" alt="Orbital angular momentum diagram">
+            <div class="image-wrapper-2" style="height: 400px; width: 400px; margin: 0 auto; ">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Angular_momentum_conservation.svg" alt="Orbital angular momentum diagram">
             </div>
         </div>
     </div>
