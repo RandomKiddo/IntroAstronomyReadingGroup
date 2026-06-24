@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Solar System: Week 2 Reading Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+/* 1. ARCHIVE THEME SETUP */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e5e1;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #fdfcf0; /* Warm paper/cream color */
+  border: 1px solid #d4d4ca;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* ARCHIVE DECORATION: GRID & STAMPS */
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(74, 109, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 109, 136, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+.archive-stamp {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border: 2px solid rgba(160, 82, 45, 0.3);
+  color: rgba(160, 82, 45, 0.4);
+  padding: 5px 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: rotate(5deg);
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #2d2d2d;
+  font-family: 'Libre Baskerville', serif;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .number-label,
+.slide-container .legend li,
+.slide-container .chart-summary,
+.slide-container th,
+.slide-container td {
+  color: #444444;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
+
+.slide-container h1 {
+  font-size: 72px;
+  border-bottom: 4px solid #4a6d88;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.slide-container .slide-title {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-align: left;
+  width: 100%;
+  color: #2d2d2d;
+  border-left: 8px solid #4a6d88;
+  padding-left: 25px;
+}
+
+.slide-container h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #4a6d88;
+}
+
+.slide-container p,
+.slide-container li {
+  font-size: 20px;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. LAYOUTS */
+
+.title-layout {
+  text-align: left;
+  width: 100%;
+}
+
+.title-layout h1 {
+  margin-bottom: 10px;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  width: 100%;
+  align-items: center;
+}
+
+.image-wrapper {
+  background: #000;
+  border: 1px solid #d4d4ca;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-wrapper img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tiled-content {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.tile {
+  background-color: rgba(74, 109, 136, 0.05);
+  border: 1px solid rgba(74, 109, 136, 0.2);
+  border-radius: 8px;
+  flex: 1;
+  padding: 35px;
+  text-align: left;
+}
+
+.tile .icon {
+  color: #a0522d;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.highlight-numbers-layout .number {
+  color: #a0522d;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 180px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.highlight-numbers-layout .number-label {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a6d88;
+}
+
+/* Charts */
+.doughnut-chart-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  justify-content: center;
+  width: 100%;
+}
+
+.doughnut-chart {
+  border-radius: 50%;
+  height: 400px;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 8px solid #fff;
+}
+
+.legend {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.legend .color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+
+/* Timeline */
+.timeline-layout {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #4a6d88;
+  z-index: 0;
+}
+
+.timeline-item {
+  position: relative;
+  width: 18%;
+  text-align: center;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: #a0522d;
+  border: 3px solid #fdfcf0;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item .content-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.timeline-item:nth-child(even) .content-wrapper { bottom: 60%; margin-bottom: 20px; }
+.timeline-item:nth-child(odd) .content-wrapper { top: 60%; margin-top: 20px; }
+
+.timeline-item h3 { font-size: 20px; color: #4a6d88; }
+.timeline-item p { font-size: 14px; }
+
+/* Area Chart */
+.area-chart-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.area-chart-svg .line-stroke {
+    stroke: #a0522d;
+    stroke-width: 4;
+    fill: none;
+}
+
+.area-chart-svg .area-fill {
+    fill: rgba(160, 82, 45, 0.1);
+}
+
+.area-chart-svg .axis-labels {
+    font-size: 16px;
+    fill: #444;
+}
+
+/* Full BG */
+.full-bg-image {
+    background-size: cover;
+    background-position: center;
+}
+
+.content-overlay {
+    background: rgba(253, 252, 240, 0.85);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #4a6d88;
+    max-width: 600px;
+}
+    </style>
+    <style>
+/* 1. THE SETUP (Voyager Archive Theme) */
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: #e5e5e1;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #fdfcf0; /* Warm archive paper */
+  border: 1px solid #d4d4ca;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* DECORATION */
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(74, 109, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 109, 136, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+.archive-stamp {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  border: 2px solid rgba(160, 82, 45, 0.3);
+  color: rgba(160, 82, 45, 0.4);
+  padding: 5px 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform: rotate(5deg);
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.slide-container > * { position: relative; z-index: 1; }
+
+/* 2. TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #2d2d2d;
+  font-family: 'Libre Baskerville', serif;
+  margin: 0;
+}
+
+.slide-container p, .slide-container li {
+  color: #444444;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+}
+
+.slide-container .slide-title {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  border-left: 8px solid #4a6d88;
+  padding-left: 25px;
+}
+
+h3 { font-size: 28px; color: #4a6d88; }
+p, li { font-size: 20px; }
+
+/* 3. LAYOUT ELEMENTS */
+
+.content-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.tile {
+  background-color: rgba(74, 109, 136, 0.05);
+  border: 1px solid rgba(74, 109, 136, 0.2);
+  border-radius: 8px;
+  padding: 30px;
+  height: 100%;
+}
+
+.image-wrapper {
+  background: #000;
+  border: 1px solid #d4d4ca;
+  height: 350px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-wrapper img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Formula Container */
+#formula-container {
+  background: rgba(160, 82, 45, 0.05);
+  border: 1px solid rgba(160, 82, 45, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Bullet List Styling */
+.bullet-list ul { list-style: none; padding: 0; }
+.bullet-list li {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 15px;
+}
+.bullet-list li::before {
+  content: '\f101';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #a0522d;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="archive-stamp">Voyager Log: 002</div>
+    <div class="title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 4px; color: #a0522d; font-weight: 700; margin-bottom: 10px;">Weekly Reading Group</p>
+        <h1>The Solar System</h1>
+        <p class="subtitle" style="font-size: 24px; max-width: 800px;">
+            Investigating the architecture, chemical gradients, and evolutionary history of our local planetary neighborhood.
+        </p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="content-area">
+        <p style="text-transform: uppercase; color: #4a6d88; font-weight: 700; letter-spacing: 2px;">Chapter One</p>
+        <h1 style="border: none; margin-bottom: 0;">The Central Engine</h1>
+        <div style="width: 100px; height: 5px; background: #a0522d; margin: 30px 0;"></div>
+        <p style="font-style: italic;">The star that defines the limits of the system.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Unrivaled Mass Dominance</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">99.86%</div>
+                <div class="number-label">Total System Mass</div>
+            </div>
+            <div>
+                <h3>The Sun is the System</h3>
+                <p>The Sun is not merely a central point; it contains nearly all the matter in the solar neighborhood. All planets, moons, asteroids, and comets combined account for only 0.14% of the remaining mass.</p>
+                <p style="margin-top: 20px; border-left: 4px solid #a0522d; padding-left: 20px; font-style: italic;">
+                    "If the Sun were the size of a basketball, Earth would be a pinhead, and Jupiter would be a grape."
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">The Terrestrial Worlds</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Inside the Frost Line</h3>
+                <p>The four inner planets—Mercury, Venus, Earth, and Mars—formed in the high-temperature environment close to the Sun. This dictated their composition:</p>
+                <ul style="margin-top: 25px; padding-left: 20px;">
+                    <li style="margin-bottom: 15px;"><strong>Refractory Materials:</strong> Composed mainly of rock and metal.</li>
+                    <li style="margin-bottom: 15px;"><strong>High Density:</strong> Differentiated into iron-rich cores and silicate mantles.</li>
+                    <li style="margin-bottom: 15px;"><strong>Minimal Volatiles:</strong> Volatile compounds like water and gas were largely driven out by solar heat during formation.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/17702989103737321015" alt="Compilation of Mercury, Venus, Earth, and Mars">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">The Outer Giants</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-wind"></i></div>
+                <h3>Gas Giants</h3>
+                <p><strong>Jupiter and Saturn</strong><br>Represent 99% of all planetary mass. Composed primarily of Hydrogen and Helium, they represent "failed stars" that lacked the mass for fusion.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
+                <h3>Ice Giants</h3>
+                <p><strong>Uranus and Neptune</strong><br>Rich in heavier "ices" such as water, ammonia, and methane. They possess chaotic magnetic fields and distinct blue-green hues from methane absorption.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Distribution of Matter</h2>
+    <div class="content-area">
+        <div class="doughnut-chart-container">
+            <div class="doughnut-chart" style="background: conic-gradient(#4a6d88 0% 99.86%, #a0522d 99.86% 99.96%, #d4d4ca 99.96% 100%);"></div>
+            <ul class="legend">
+                <li><div class="color-box" style="background-color: #4a6d88;"></div> The Sun (99.86%)</li>
+                <li><div class="color-box" style="background-color: #a0522d;"></div> Jupiter (0.10%)</li>
+                <li><div class="color-box" style="background-color: #d4d4ca;"></div> Everything Else (0.04%)</li>
+            </ul>
+        </div>
+        <p class="chart-summary">While planets define our perspective of the Solar System, they are quantitatively negligible compared to the solar mass.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <div class="content-area">
+        <p style="text-transform: uppercase; color: #4a6d88; font-weight: 700; letter-spacing: 2px;">Chapter Two</p>
+        <h1 style="border: none; margin-bottom: 0;">Debris and Sentinels</h1>
+        <div style="width: 100px; height: 5px; background: #a0522d; margin: 30px 0;"></div>
+        <p style="font-style: italic;">The remnants of the primordial disk.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Small Body Populations</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile" style="padding: 15px;">
+                <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/13290579567875786181" alt="Asteroid Vesta">
+                </div>
+                <h3>The Belt</h3>
+                <p style="font-size: 14px;">Between Mars and Jupiter, the Asteroid Belt represents material prevented from forming a planet by Jupiter's gravity.</p>
+            </div>
+            <div class="tile" style="padding: 15px;">
+                <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/2253789882626712307" alt="Kuiper Belt Object">
+                </div>
+                <h3>Kuiper Belt</h3>
+                <p style="font-size: 14px;">The outer frontier beyond Neptune, home to Pluto and other icy dwarf planets that preserve early system chemistry.</p>
+            </div>
+            <div class="tile" style="padding: 15px;">
+                <div class="image-wrapper" style="height: 200px; margin-bottom: 15px;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/6050379575111728838" alt="Comet with tail">
+                </div>
+                <h3>The Oort Cloud</h3>
+                <p style="font-size: 14px;">A theoretical spherical shell of icy debris extending up to 100,000 AU, the source of long-period comets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Disk Thermal Gradient</h2>
+    <div class="content-area">
+        <div class="area-chart-container">
+            <svg class="area-chart-svg" viewBox="0 0 1000 350">
+                <path class="area-fill" d="M 50 50 L 150 120 L 250 180 L 400 250 L 600 280 L 800 300 L 950 310 L 950 350 L 50 350 Z" />
+                <path class="line-stroke" d="M 50 50 L 150 120 L 250 180 L 400 250 L 600 280 L 800 300 L 950 310" />
+                
+                <line x1="50" y1="350" x2="950" y2="350" stroke="#2d2d2d" stroke-width="2" />
+                <line x1="50" y1="50" x2="50" y2="350" stroke="#2d2d2d" stroke-width="2" />
+
+                <text x="50" y="375" class="axis-labels">0.4 AU</text>
+                <text x="400" y="375" class="axis-labels">5.2 AU</text>
+                <text x="950" y="375" class="axis-labels">30 AU</text>
+                
+                <text x="10" y="55" class="axis-labels">600K</text>
+                <text x="10" y="315" class="axis-labels">50K</text>
+            </svg>
+        </div>
+        <p class="chart-summary">Equilibrium temperature drops exponentially with distance, creating the "Frost Line" boundary for volatile condensation.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Planetary Evolution</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Nebula Collapse</h3>
+                    <p>4.6 Gya: Solar nebula collapses under its own gravity.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Sun Ignites</h3>
+                    <p>4.58 Gya: Protostar core reaches 15M Kelvin; Fusion begins.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Planet Accretion</h3>
+                    <p>4.5 Gya: Planetesimals collide to form embryos and planets.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Heavy Bombardment</h3>
+                    <p>3.9 Gya: Migration of giants scatters debris across the system.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Established Epoch</h3>
+                    <p>Today: Stable orbits characterize the current architecture.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container full-bg-image" id="slide11" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('http://googleusercontent.com/image_collection/image_retrieval/3251581920146110604');">
+    <div class="content-overlay" style="background: rgba(253, 252, 240, 0.1); border: none;">
+        <h2 style="color: #fff; font-size: 50px;">The Pale Blue Dot</h2>
+        <p style="color: #fff; font-size: 22px; font-style: italic; opacity: 0.9;">
+            "Look again at that dot. That's here. That's home. That's us."
+        </p>
+        <p style="color: #fff; margin-top: 20px;">
+            Captured by Voyager 1 from 6 billion kilometers away, this image serves as the ultimate reminder of the fragility and scale of our local habitat within the void.
+        </p>
+    </div>
+</div>
+
+<div class="slide-container" id="end">
+    <div class="archive-stamp" style="top: auto; bottom: 30px; right: 40px;">Closed Archive</div>
+    <div class="content-area">
+        <h1 style="border: none;">Discussion</h1>
+        <p style="font-size: 24px; margin-bottom: 40px;">Open Floor for Weekly Reading Analysis</p>
+        <div style="text-align: center; border-top: 1px solid #4a6d88; padding-top: 20px;">
+            <p style="font-size: 16px; opacity: 0.6;">Notes prepared for Week 2 Astronomical Reading Group</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <div class="archive-stamp">Subject: Inquiry 004</div>
+    <div class="content-area" style="text-align: center;">
+        <p style="text-transform: uppercase; color: #4a6d88; font-weight: 700; letter-spacing: 2px;">Discussion Phase</p>
+        <h1 style="border: none; margin-bottom: 20px; font-size: 80px;">Analytical Deep Dive</h1>
+        <div style="width: 120px; height: 5px; background: #a0522d; margin: 0 auto 30px;"></div>
+        <p style="font-size: 24px; max-width: 700px; margin: 0 auto;">Pushing beyond the textbook: Exploring the theoretical edge and the physical paradoxes of our planetary architecture.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">Formation Logic</h2>
+    <div class="content-area">
+        <div class="two-column" style="align-items: stretch;">
+            <div class="tile">
+                <h3>The Frost Line Boundary</h3>
+                <p>If the early Solar Nebula had been 200K hotter at 5 AU, how would the architecture of the giant planets change? Could Jupiter have formed as a terrestrial rocky world instead?</p>
+            </div>
+            <div class="tile">
+                <h3>Resonance & Stability</h3>
+                <p>The "Nice Model" suggests the outer giants migrated early in their history. Does a stable solar system require the "clearing" of the disk, or is chaos a fundamental requirement for terrestrial formation?</p>
+            </div>
+        </div>
+        <div style="margin-top: 40px; display: flex; gap: 30px; align-items: center;">
+            <div class="image-wrapper" style="width: 250px; height: 180px; flex-shrink: 0;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/12015508444802861322" alt="Protoplanetary disk frost line visualization">
+            </div>
+            <p style="font-style: italic; opacity: 0.8; font-size: 18px;">Formation Constraint: Water-ice represents roughly 50% of the total mass of available solids beyond the frost line. In the inner system, that mass is zero.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide14">
+    <h2 class="slide-title">The Angular Momentum Paradox</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="bullet-list">
+                <h3>Key Philosophical Inquiry</h3>
+                <ul>
+                    <li>The Sun contains 99.86% of the system's mass, but why do the planets carry nearly <strong>99% of the angular momentum</strong>?</li>
+                    <li>How did the early protostar shed its rotational energy to allow accretion to happen?</li>
+                    <li>If planetary systems are a standard byproduct of star formation, should we expect "Hot Jupiters" to be the statistical norm or the exception?</li>
+                </ul>
+            </div>
+            <div class="image-wrapper" style="height: 400px; border-radius: 50%; width: 400px; margin: 0 auto;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/16375539393741931431" alt="Orbital angular momentum diagram">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">Calculation Challenge</h2>
+    <div class="content-area">
+        <div style="text-align: left; width: 100%;">
+            <h3>Challenge: The Scale of Jupiter's Influence</h3>
+            <p style="margin-bottom: 20px;">Using the orbital radius of Jupiter (\(r_J \approx 5.2 \text{ AU}\)) and its mass (\(m_J \approx 1/1000 \text{ } M_{\odot}\)), estimate the ratio of Jupiter's orbital angular momentum (\(L_{\text{orbit}}\)) to the Sun's rotational angular momentum (\(L_{\text{rot}}\)).</p>
+            
+            <p style="font-size: 16px; opacity: 0.7; margin-bottom: 10px;">Assume the Sun is a uniform sphere with \(R_{\odot} \approx 0.0046 \text{ AU}\) and a rotation period of 25 days.</p>
+            
+            <div style="background: rgba(160, 82, 45, 0.05); border: 1px solid rgba(160, 82, 45, 0.2); border-radius: 12px; padding: 30px; margin-top: 20px; text-align: center;">
+                $$L = I\omega \quad \text{where} \quad L_{\text{orbital}} \approx mvr$$
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: rgba(74, 109, 136, 0.05); border-left: 5px solid #4a6d88;">
+                <p style="font-weight: 700; margin-bottom: 5px; color: #4a6d88;">Critical Thinking:</p>
+                <p style="font-size: 18px;">Based on your result, why is the "Nebular Hypothesis" insufficient without considering magnetic braking or solar winds?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="sol1">
+    <div class="archive-stamp">Step 01: Orbital L</div>
+    <h2 class="slide-title">Jupiter's Orbital Momentum</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>1. Defining the Equation</h3>
+                <p>For a point mass in a circular orbit, the angular momentum is given by:</p>
+                <div class="formula-highlight">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>L</mi><mi>orb</mi></msub>
+                        <mo>=</mo>
+                        <msub><mi>m</mi><mi>J</mi></msub>
+                        <mo>&#x22C5;</mo>
+                        <msub><mi>v</mi><mi>J</mi></msub>
+                        <mo>&#x22C5;</mo>
+                        <msub><mi>r</mi><mi>J</mi></msub>
+                    </math>
+                </div>
+                <p>Since velocity \(v = \frac{2\pi r}{P}\), we simplify to:</p>
+                <div class="formula-highlight">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>L</mi><mi>orb</mi></msub>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>2</mn><mi>&#x03C0;</mi><mo>&#x22C5;</mo><msub><mi>m</mi><mi>J</mi></msub><mo>&#x22C5;</mo><msubsup><mi>r</mi><mi>J</mi><mn>2</mn></msubsup></mrow>
+                            <msub><mi>P</mi><mi>J</mi></msub>
+                        </mfrac>
+                    </math>
+                </div>
+            </div>
+            <div class="step-box">
+                <h3>Numerical Inputs</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>m:</strong> \(10^{-3} M_{\odot}\)</li>
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>r:</strong> \(5.2 \text{ AU}\)</li>
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>P:</strong> \(4332 \text{ days}\)</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid #d4d4ca; margin: 20px 0;">
+                <p><strong>Intermediate Result:</strong></p>
+                <p style="font-family: 'Courier New', monospace; font-weight: 700;">L_orb ≈ 3.9e-5 M_sol·AU²/day</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="sol2">
+    <div class="archive-stamp">Step 02: Solar L</div>
+    <h2 class="slide-title">Solar Rotational Momentum</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>2. The Rotational Model</h3>
+                <p>Assuming the Sun is a uniform sphere, its Moment of Inertia \(I = \frac{2}{5}MR^2\):</p>
+                <div class="formula-highlight">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>L</mi><mi>rot</mi></msub>
+                        <mo>=</mo>
+                        <mi>I</mi><mi>&#x03C9;</mi>
+                        <mo>=</mo>
+                        <mfenced><mrow><mfrac><mn>2</mn><mn>5</mn></mfrac><msub><mi>M</mi><mo>&#x2299;</mo></msub><msubsup><mi>R</mi><mo>&#x2299;</mo><mn>2</mn></msubsup></mrow></mfenced>
+                        <mfenced><mfrac><mrow><mn>2</mn><mi>&#x03C0;</mi></mrow><msub><mi>P</mi><mi>rot</mi></msub></mfrac></mfenced>
+                    </math>
+                </div>
+                <p>Substituting given values for the Sun:</p>
+                <div class="formula-highlight">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <msub><mi>L</mi><mi>rot</mi></msub>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow><mn>4</mn><mi>&#x03C0;</mi><mo>&#x22C5;</mo><msub><mi>M</mi><mo>&#x2299;</mo></msub><mo>&#x22C5;</mo><msubsup><mi>R</mi><mo>&#x2299;</mo><mn>2</mn></msubsup></mrow>
+                            <mrow><mn>5</mn><msub><mi>P</mi><mi>rot</mi></msub></mrow>
+                        </mfrac>
+                    </math>
+                </div>
+            </div>
+            <div class="step-box">
+                <h3>Numerical Inputs</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>M:</strong> \(1 M_{\odot}\)</li>
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>R:</strong> \(0.0046 \text{ AU}\)</li>
+                    <li><i class="fa-solid fa-circle-info" style="color: #a0522d;"></i> <strong>P:</strong> \(25 \text{ days}\)</li>
+                </ul>
+                <hr style="border: 0; border-top: 1px solid #d4d4ca; margin: 20px 0;">
+                <p><strong>Intermediate Result:</strong></p>
+                <p style="font-family: 'Courier New', monospace; font-weight: 700;">L_rot ≈ 2.1e-6 M_sol·AU²/day</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="sol3">
+    <div class="archive-stamp">Final Analysis</div>
+    <h2 class="slide-title">The Ratio & The Paradox</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Final Calculation</h3>
+                <p>Dividing the orbital momentum of Jupiter by the rotational momentum of the Sun:</p>
+                <div class="formula-highlight">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mfrac><msub><mi>L</mi><mi>J</mi></msub><msub><mi>L</mi><mo>&#x2299;</mo></msub></mfrac>
+                        <mo>&#x2248;</mo>
+                        <mfrac><mrow><mn>3.9</mn><mo>&#x22C5;</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>5</mn></mrow></msup></mrow><mrow><mn>2.1</mn><mo>&#x22C5;</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>6</mn></mrow></msup></mrow></mfrac>
+                        <mo>&#x2248;</mo>
+                        <mn>18.5</mn>
+                    </math>
+                </div>
+                <p><strong>Result:</strong> Jupiter alone has nearly <strong>20 times</strong> more angular momentum than the Sun.</p>
+            </div>
+            <div class="step-box" style="background: rgba(160, 82, 45, 0.05);">
+                <h3>Solving the Paradox</h3>
+                <p style="font-size: 18px; margin-bottom: 15px;">The Sun has 99.8% of the mass but < 2% of the angular momentum. Why?</p>
+                <p style="font-size: 16px; border-top: 1px solid rgba(160, 82, 45, 0.2); padding-top: 15px;">
+                    <strong>Magnetic Braking:</strong> As the young Sun rotated, its magnetic field lines dragged through the ionized solar nebula, transferring rotational energy outward to the disk (and the future planets). This "braking" slowed the Sun down, preventing it from spinning apart and allowing planets to inherit the system's spin.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide16">
+    <div class="archive-stamp" style="top: auto; bottom: 30px; right: 40px;">Closed Archive</div>
+    <div class="content-area" style="text-align: center;">
+        <h1 style="border: none; margin-bottom: 10px;">Final Reflections</h1>
+        <p style="font-size: 24px; margin-bottom: 40px;">The Solar System: Architecture of the Void</p>
+        
+        <div class="two-column" style="gap: 20px; max-width: 800px; margin: 0 auto;">
+            <div style="padding: 20px; border: 1px solid #d4d4ca;">
+                <p style="font-size: 14px; font-weight: 700; color: #a0522d;">NEXT MEETING</p>
+                <p style="font-size: 16px;">Stars: Engines of the Universe</p>
+            </div>
+            <div style="padding: 20px; border: 1px solid #d4d4ca;">
+                <p style="font-size: 14px; font-weight: 700; color: #a0522d;">READING TASK</p>
+                <p style="font-size: 16px;">Chapters 15-22 (Select Sections)</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 50px; opacity: 0.6;">
+            <p style="font-size: 14px;">"We are a way for the cosmos to know itself." — Carl Sagan</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
