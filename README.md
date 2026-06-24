@@ -2,8 +2,6 @@
 
 [PHYSDepot.org](https://physdepot.org/) | Summer 2026
 
-![GitHub License](https://img.shields.io/github/license/RandomKiddo/IntroAstronomyReadingGroup)
-
 ___
 
 ### About
