@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Engines of the Universe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP: SCIENTIFIC MANUSCRIPT THEME */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E5E5E1;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 0;
+    place-items: center;
+}
+
+.slide-container {
+    align-items: center;
+    background-color: #FDFCF0;
+    border: 1px solid #D4D4CA;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    height: 720px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+}
+
+/* 1.1 BACKGROUND DECORATION: STELLAR GRID */
+.slide-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(160, 82, 45, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    z-index: 0;
+}
+
+.slide-container::after {
+    content: '';
+    position: absolute;
+    top: 40px; right: 40px;
+    width: 60px; height: 60px;
+    border-top: 2px solid #A0522D;
+    border-right: 2px solid #A0522D;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.slide-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+.slide-container h1, 
+.slide-container h2, 
+.slide-container h3 {
+    color: #051622;
+    font-family: 'Crimson Pro', serif;
+    margin: 0;
+}
+
+.slide-container p, 
+.slide-container li, 
+.slide-container .subtitle,
+.slide-container .chart-summary,
+.slide-container th, 
+.slide-container td {
+    color: #444444;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.slide-container h1 {
+    font-size: 82px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.slide-container .slide-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+    width: 100%;
+    border-left: 6px solid #A0522D;
+    padding-left: 20px;
+    color: #051622;
+}
+
+.slide-container h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #A0522D;
+}
+
+.slide-container .subtitle {
+    font-size: 24px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 3. LAYOUTS */
+.title-layout {
+    text-align: center;
+    width: 100%;
+}
+
+.section-title-layout {
+    text-align: center;
+}
+
+.section-title-layout hr {
+    width: 100px;
+    border: none;
+    height: 3px;
+    background-color: #A0522D;
+    margin: 30px auto;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+.two-column.tiled > div {
+    background-color: rgba(160, 82, 45, 0.03);
+    border-radius: 8px;
+    border: 1px solid rgba(160, 82, 45, 0.1);
+    padding: 30px;
+}
+
+.image-wrapper {
+    border: 1px solid #D4D4CA;
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.rounded-image-layout .image-wrapper {
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.tiled-content {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.tile {
+    background-color: rgba(5, 22, 34, 0.02);
+    border: 1px solid rgba(5, 22, 34, 0.1);
+    border-radius: 12px;
+    flex: 1;
+    padding: 30px;
+    text-align: left;
+}
+
+.tile .icon {
+    color: #A0522D;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.bullet-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    margin-bottom: 20px;
+    padding-left: 40px;
+    position: relative;
+}
+
+.bullet-list i {
+    color: #A0522D;
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    top: 5px;
+}
+
+.highlight-numbers-layout .number {
+    color: #051622;
+    font-family: 'Crimson Pro', serif;
+    font-size: 140px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.table-layout table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-layout th, .table-layout td {
+    border-bottom: 1px solid #D4D4CA;
+    padding: 15px;
+    text-align: left;
+}
+
+.table-layout th {
+    background-color: rgba(160, 82, 45, 0.05);
+    font-weight: 700;
+}
+
+/* CHART STYLING */
+.area-chart-container {
+    width: 100%;
+    height: 350px;
+}
+
+.area-chart-svg .line-stroke {
+    fill: none;
+    stroke: #A0522D;
+    stroke-width: 3;
+}
+
+.area-chart-svg .area-fill {
+    fill: rgba(160, 82, 45, 0.1);
+}
+
+.area-chart-svg .axis-labels {
+    fill: #666;
+    font-size: 14px;
+}
+
+/* TIMELINE */
+.timeline-layout {
+    display: flex;
+    height: 300px;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-line {
+    background-color: #D4D4CA;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 0;
+}
+
+.timeline-item {
+    position: relative;
+    text-align: center;
+    width: 20%;
+}
+
+.timeline-item::after {
+    background-color: #FDFCF0;
+    border: 3px solid #A0522D;
+    border-radius: 50%;
+    content: '';
+    height: 16px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    z-index: 1;
+}
+
+.timeline-item .content-wrapper {
+    position: absolute;
+    width: 100%;
+}
+
+.timeline-item:nth-child(odd) .content-wrapper { bottom: 60%; margin-bottom: 20px; }
+.timeline-item:nth-child(even) .content-wrapper { top: 60%; margin-top: 20px; }
+
+/* BLEED IMAGE */
+.bleed-image-layout {
+    align-items: start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+}
+
+.bleed-image-layout .content-container {
+    padding: 60px;
+}
+
+.bleed-image-side {
+    height: 720px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* FORMULA */
+#formula-container {
+    background: rgba(5, 22, 34, 0.03);
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 30px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Stars: Engines of the Universe</h1>
+        <p class="subtitle">A Comprehensive Exploration of Stellar Physics, History, and Evolution</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Part I</p>
+        <h2>The Nature of Starlight</h2>
+        <hr>
+        <p>Unlocking the Secrets of Stellar Composition and Classification</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Annie Jump Cannon & Spectral Types</h2>
+    <div class="content-area">
+        <div class="two-column rounded-image-layout">
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/13780148190256107407" alt="Portrait of Annie Jump Cannon astronomer vintage photograph">
+            </div>
+            <div>
+                <h3>The Harvard Computers</h3>
+                <p>Working at the Harvard College Observatory, Cannon manually classified over 350,000 stars. She developed the OBAFGKM sequence, reorganizing earlier schemes based on the strength of Hydrogen absorption lines.</p>
+                <p style="margin-top: 20px; font-weight: 700;">"Oh Be A Fine Girl, Kiss Me!"</p>
+                <p>This mnemonic remains the standard sequence for stellar temperature, from the hottest (O) to the coolest (M).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Cecilia Payne & The Stuff of Stars</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <div class="image-wrapper" style="height: 150px; margin-bottom: 20px; border-radius: 8px;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3203994312845773652" alt="Portrait of Cecilia Payne-Gaposchkin astronomer young" style="object-fit: cover;">
+                </div>
+                <h3>A Revolutionary Thesis</h3>
+                <p>In 1925, Cecilia Payne-Gaposchkin proved that stars are composed almost entirely of Hydrogen and Helium—challenging the contemporary belief that they shared Earth's composition.</p>
+            </div>
+            <div>
+                <h3>Modern Abundances</h3>
+                <p>We now know that typical stars (by mass) are:</p>
+                <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                    <li><i class="fa-solid fa-atom" style="color:#A0522D;"></i> <strong>Hydrogen:</strong> ~71%</li>
+                    <li><i class="fa-solid fa-atom" style="color:#A0522D;"></i> <strong>Helium:</strong> ~27%</li>
+                    <li><i class="fa-solid fa-atom" style="color:#A0522D;"></i> <strong>Metals:</strong> ~2% (Everything else)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <div class="section-title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Part II</p>
+        <h2>The Internal Engine</h2>
+        <hr>
+        <p>The Physics of Hydrostatic Equilibrium and Nuclear Fusion</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Hydrostatic Equilibrium</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="bullet-list">
+                <h3>The Balancing Act</h3>
+                <ul>
+                    <li><i class="fa-solid fa-weight-hanging"></i> <strong>Gravity:</strong> Pulls the stellar material inward toward the core.</li>
+                    <li><i class="fa-solid fa-fire-flame-curved"></i> <strong>Pressure:</strong> Thermal and radiation pressure push outward.</li>
+                    <li><i class="fa-solid fa-equals"></i> <strong>Stability:</strong> A star is in equilibrium when these forces perfectly cancel out.</li>
+                </ul>
+            </div>
+            <div id="formula-container">
+                <p style="margin-bottom: 20px; font-weight: 600;">The Fundamental Equation:</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 32px;">
+                    <mfrac>
+                        <mrow><mi>d</mi><mi>P</mi></mrow>
+                        <mrow><mi>d</mi><mi>r</mi></mrow>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mo>-</mo>
+                    <mfrac>
+                        <mrow><mi>G</mi><mi>M</mi><mo>(</mo><mi>r</mi><mo>)</mo><mi>&#x03C1;</mi><mo>(</mo><mi>r</mi><mo>)</mo></mrow>
+                        <msup><mi>r</mi><mn>2</mn></msup>
+                    </mfrac>
+                </math>
+                <p style="margin-top: 20px; font-size: 14px; opacity: 0.7;">Where P is pressure, r is radius, G is the gravitational constant, M is enclosed mass, and &rho; is density.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Energy Generation: P-P Chain</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-circle-dot"></i></div>
+                <h3>Step 1</h3>
+                <p>Two protons fuse to form Deuterium, releasing a positron and a neutrino. This is the "bottleneck" of the reaction.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-circle-plus"></i></div>
+                <h3>Step 2</h3>
+                <p>The Deuterium nucleus captures another proton to form Helium-3, emitting a gamma-ray photon.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-burst"></i></div>
+                <h3>Step 3</h3>
+                <p>Two Helium-3 nuclei fuse to create a stable Helium-4 nucleus, releasing two protons back into the mix.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-style: italic;">This process powers stars like our Sun, requiring temperatures above 10 million Kelvin.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Energy Generation: CNO Cycle</h2>
+    <div class="content-area">
+        <div class="two-column tiled">
+            <div>
+                <h3>The Catalytic Cycle</h3>
+                <p>In stars more massive than the Sun, Carbon, Nitrogen, and Oxygen act as catalysts to fuse Hydrogen into Helium more efficiently.</p>
+            </div>
+            <div>
+                <h3>Temperature Sensitivity</h3>
+                <p>While the P-P chain dominates in low-mass stars, the CNO cycle is highly temperature-dependent and takes over in massive stellar cores.</p>
+            </div>
+        </div>
+        <div class="image-wrapper" style="height: 200px; margin-top: 30px;">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/16765779133889924231" alt="NASA high resolution image of the Sun surface solar flares">
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <div class="section-title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Part III</p>
+        <h2>The Stellar Census</h2>
+        <hr>
+        <p>Charting the Relationships Between Luminosity, Temperature, and Mass</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">The Hertzsprung-Russell Diagram</h2>
+    <div class="content-area">
+        <div class="area-chart-container">
+            <svg class="area-chart-svg" viewBox="0 0 1000 400">
+                <path class="area-fill" d="M 0 50 L 200 120 L 400 200 L 600 280 L 800 350 L 1000 380 L 1000 400 L 0 400 Z"></path>
+                <path class="line-stroke" d="M 0 50 L 200 120 L 400 200 L 600 280 L 800 350 L 1000 380"></path>
+                <text x="500" y="390" class="axis-labels" text-anchor="middle">Temperature (Hot &lt;--- Cool)</text>
+                <text x="-200" y="20" class="axis-labels" transform="rotate(-90)" text-anchor="middle">Luminosity (Low ---&gt; High)</text>
+                <text x="50" y="80" style="fill:#A0522D; font-weight:bold;">O-Stars</text>
+                <text x="850" y="330" style="fill:#A0522D; font-weight:bold;">M-Stars</text>
+            </svg>
+        </div>
+        <p class="chart-summary">The Main Sequence represents stars in their stable Hydrogen-fusing phase. Most stars (90%) reside on this diagonal track.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">The Mass-Luminosity Relation</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">L &prop; M<sup>3.5</sup></div>
+                <div class="number-label">Luminosity Power Law</div>
+            </div>
+            <div>
+                <h3>Mass is Destiny</h3>
+                <p>A star's mass determines its entire life path. Because luminosity increases exponentially with mass, massive stars burn through their fuel at incredible rates.</p>
+                <p style="margin-top: 20px; padding: 15px; border: 1px solid #D4D4CA; border-radius: 8px;">
+                    <strong>The Paradox:</strong> A star with 10x the mass of the Sun is 3,000x more luminous, meaning its lifespan is 300x shorter.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <div class="section-title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Part IV</p>
+        <h2>Stellar Life Cycles</h2>
+        <hr>
+        <p>From Protostars to Cosmic Remnants</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">Evolution of a 1 Solar Mass Star</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Nebula</h3>
+                    <p>Collapse of a gas cloud begins.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Protostar</h3>
+                    <p>Core heats up; T-Tauri phase.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Main Sequence</h3>
+                    <p>10 billion years of stable fusion.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Red Giant</h3>
+                    <p>Helium fusion begins in the core.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>White Dwarf</h3>
+                    <p>Final carbon-oxygen core remnant.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide14">
+    <div class="content-container">
+        <h2 class="slide-title">Supernovae & Nucleosynthesis</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>The Death of Giants</h3>
+                <p>When massive stars exhaust their fuel, the core collapses in milliseconds, triggering a shockwave that ejects the outer layers.</p>
+                <p>This explosive event is where elements heavier than Iron are forged—from Silver to Uranium—and scattered across the galaxy.</p>
+                <p style="font-weight: 700; color: #A0522D; margin-top: 20px;">"We are made of starstuff."</p>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/5139455324599279023" alt="high resolution image of the Crab Nebula supernova remnant NASA">
+    </div>
+</div>
+
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">Cosmic Remnants</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="image-tile">
+                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/5988463845646843177" alt="high resolution scientific image of the Orion Nebula Messier 42"></div>
+                <h3>White Dwarfs</h3>
+                <p>Earth-sized remnants of low-mass stars, supported by electron degeneracy pressure.</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/5139455324599279023" alt="high resolution image of the Crab Nebula"></div>
+                <h3>Neutron Stars</h3>
+                <p>City-sized cores denser than atomic nuclei, supported by neutron degeneracy.</p>
+            </div>
+            <div class="image-tile">
+                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/16765779133889924231" alt="NASA Sun surface"></div>
+                <h3>Black Holes</h3>
+                <p>Infinite density points where gravity is so strong that even light cannot escape.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide16">
+    <div class="section-title-layout">
+        <p style="text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Part V</p>
+        <h2>Deep Dive: The H-R Diagram</h2>
+        <hr>
+        <p>The Rosetta Stone of Modern Stellar Astrophysics</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide17">
+    <h2 class="slide-title">The Origins of the Diagram</h2>
+    <div class="content-area">
+        <div class="two-column" style="grid-template-columns: 0.8fr 1.2fr;">
+            <div class="image-wrapper" style="border-radius: 50%; height: 380px; width: 380px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/14202138740787722989" alt="Portraits of Ejnar Hertzsprung and Henry Norris Russell">
+            </div>
+            <div>
+                <h3>A Dual Discovery</h3>
+                <p>Developed independently by Danish astronomer <strong>Ejnar Hertzsprung</strong> (1911) and American astronomer <strong>Henry Norris Russell</strong> (1913), the diagram revolutionized how we view stellar life cycles.</p>
+                <p style="margin-top: 15px;">By plotting absolute magnitude against spectral type, they noticed stars were not randomly scattered but clustered into distinct populations, hinting at underlying physical laws of evolution.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide18">
+    <h2 class="slide-title">Anatomy of the H-R Diagram</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Understanding the Axes</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-arrows-left-right" style="color: #A0522D; margin-right: 10px;"></i> <strong>X-Axis (Inverted):</strong> Surface Temperature increases to the <em>left</em>. Mapped to Spectral Types (OBAFGKM).</li>
+                    <li style="margin-bottom: 20px;"><i class="fa-solid fa-arrows-up-down" style="color: #A0522D; margin-right: 10px;"></i> <strong>Y-Axis (Logarithmic):</strong> Luminosity or Absolute Magnitude. Covers 10 orders of magnitude.</li>
+                </ul>
+                <p style="font-style: italic; border-left: 3px solid #A0522D; padding-left: 15px;">"The H-R Diagram is essentially a temperature-luminosity graph that functions like a map of stellar age and mass."</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1332742308069027570" alt="Detailed annotated Hertzsprung-Russell diagram">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide19">
+    <h2 class="slide-title">The MKK Luminosity Classes</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Stellar Description</th>
+                        <th>Physical Characteristics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>I (a/b)</strong></td>
+                        <td>Supergiants</td>
+                        <td>Highest luminosity, massive radii, low density atmospheres.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>II</strong></td>
+                        <td>Bright Giants</td>
+                        <td>Intermediate between supergiants and normal giants.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>III</strong></td>
+                        <td>Normal Giants</td>
+                        <td>Post-main sequence stars with expanded envelopes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IV</strong></td>
+                        <td>Subgiants</td>
+                        <td>Transitioning from the main sequence to the giant branch.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>V</strong></td>
+                        <td>Main Sequence</td>
+                        <td>Stable Hydrogen-fusing dwarfs (e.g., The Sun).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="margin-top: 20px; font-size: 15px; opacity: 0.8;">The Yerkes (MKK) system adds a second dimension to spectral classification by accounting for the width of spectral lines, which correlates to stellar surface gravity.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide20">
+    <h2 class="slide-title">Stellar Evolutionary Tracks</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15787248219542630072" alt="Diagram showing stellar evolutionary tracks on the HR diagram">
+            </div>
+            <div>
+                <h3>Movement Across the Map</h3>
+                <p>As stars age, their internal structure changes, forcing them to move in specific patterns across the diagram:</p>
+                <ul style="margin-top: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-chart-line" style="color: #A0522D; margin-right: 10px;"></i> <strong>Hayashi Track:</strong> Vertical descent of a pre-main sequence protostar.</li>
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-arrow-right" style="color: #A0522D; margin-right: 10px;"></i> <strong>Henyey Track:</strong> Horizontal approach for high-mass stars.</li>
+                </ul>
+                <p>The "Main Sequence" is not a destination, but a phase where a star spends 90% of its life.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide21">
+    <div class="content-container">
+        <h2 class="slide-title">The Turn-Off Point</h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <h3>Chronometers of the Universe</h3>
+                <p>Because stars in a cluster form at the same time, their H-R diagram reveals the cluster's age.</p>
+                <p>The "Turn-Off Point" is the highest mass star still on the Main Sequence. Since massive stars die first, the point at which the sequence "peels off" into giants indicates exactly how long the cluster has existed.</p>
+                <p style="margin-top: 20px; font-weight: 700;">Global Dating:</p>
+                <p>Globular clusters like M13 provide the lower bound for the age of our Galaxy.</p>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/8524414659948250168" alt="Hubble image of Globular Cluster M13 stars">
+    </div>
+</div>
+
+<div class="slide-container" id="slide22">
+    <h2 class="slide-title">Position & The Stefan-Boltzmann Law</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 20px;">A star's location on the H-R diagram is fundamentally constrained by the relationship between its Size, Temperature, and Energy Output:</p>
+        <div id="formula-container">
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 36px; color: #051622;">
+                <mi>L</mi>
+                <mo>=</mo>
+                <mn>4</mn><mi>&#x03C0;</mi><msup><mi>R</mi><mn>2</mn></msup>
+                <mi>&#x03C3;</mi>
+                <msup><mi>T</mi><mn>4</mn></msup>
+            </math>
+        </div>
+        <p style="text-align: center; margin-top: 20px;">This implies that for a given temperature, a star can only be more luminous if it has a significantly larger radius (R)—explaining why giants and dwarfs occupy distinct vertical regions.</p>
+        <p style="text-align: center; font-style: italic; margin-top: 40px; color: #A0522D;">End of Lecture: Week 3 - Stellar Astrophysics</p>
+    </div>
+</div>
+
+</body>
+</html>
+
