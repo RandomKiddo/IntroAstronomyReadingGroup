@@ -173,6 +173,20 @@ body {
     object-fit: cover;
 }
 
+.image-wrapper-2 {
+    border: 1px solid #D4D4CA;
+    height: 400px;
+    overflow: hidden;
+    width: 100%;
+    background-color: black;
+}
+
+.image-wrapper-2 img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
 .rounded-image-layout .image-wrapper {
     border-radius: 50%;
     height: 400px;
@@ -338,14 +352,125 @@ body {
     padding: 30px;
     text-align: center;
 }
-    </style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E5E5E1;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 0;
+    place-items: center;
+}
+
+.slide-container {
+    align-items: center;
+    background-color: #FDFCF0;
+    border: 1px solid #D4D4CA;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    height: 720px;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px;
+    position: relative;
+    width: 1280px;
+}
+
+/* 3. CHART SPECIFIC STYLING */
+.hr-diagram-container {
+    background: #051622;
+    border-radius: 12px;
+    padding: 30px 40px 60px 80px;
+    position: relative;
+    width: 100%;
+    height: 420px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+.hr-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.axis-line {
+    stroke: rgba(212, 212, 202, 0.3);
+    stroke-width: 1;
+}
+
+.main-sequence-path {
+    fill: none;
+    stroke: url(#lineGradient);
+    stroke-width: 12;
+    stroke-linecap: round;
+    filter: blur(2px);
+}
+
+.axis-text {
+    fill: #D4D4CA;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.stellar-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    font-weight: 700;
+    fill: #A0522D;
+}
+
+.chart-summary-block {
+    background-color: rgba(160, 82, 45, 0.05);
+    border-left: 5px solid #A0522D;
+    margin-top: 40px;
+    padding: 25px 30px;
+    border-radius: 0 8px 8px 0;
+}
+
+.chart-summary-block p {
+    font-size: 20px;
+    margin: 0;
+    color: #051622;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="slide-container" id="slide1">
     <div class="title-layout">
         <h1>Stars: Engines of the Universe</h1>
         <p class="subtitle">A Comprehensive Exploration of Stellar Physics, History, and Evolution</p>
+    </div>
+</div>
+
+<div class="slide-container" id="now">
+    <h2 class="slide-title">In The News!</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Betelgeuse's Secret Companion Star (2025)</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 20px;"><b>The Discovery:</b> Astronomers were panicking because Betelgeuse kept drastically dimming and brightening, causing speculation that it was on the verge of going supernova. However, direct-imaging data confirmed the existence of a hidden companion star named Siwarha (officially named Betelgeuse B).</li>
+                    <li style="margin-bottom: 20px;"><b>The Physics:</b> Siwarha orbits Betelgeuse every ~6 years, physically plowing through the supergiant's ridiculously massive, puffed-up outer atmosphere. As it leaves a dense wake of gas and dust in its path, it creates an eclipse-like dimming effect from our perspective.</li>
+                    <li style="margin-bottom: 20px;"><b>The Verdict:</b> Betelgeuse is still going to blow up, but it is actually in a highly stable helium-burning phase. The "mood swings" we were seeing weren't a countdown to an imminent supernova explosion; they were just gravity-driven interference from its secret companion.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Betelgeuse_%E2%80%93_and_its_newfound_companion_star.png" alt="Betelgeuse and its companion star, NASA">
+            </div>
+        </div>
     </div>
 </div>
 
@@ -363,7 +488,7 @@ body {
     <div class="content-area">
         <div class="two-column rounded-image-layout">
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/13780148190256107407" alt="Portrait of Annie Jump Cannon astronomer vintage photograph">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Annie_Jump_Cannon_1922_Portrait.jpg" alt="Portrait of Annie Jump Cannon astronomer vintage photograph">
             </div>
             <div>
                 <h3>The Harvard Computers</h3>
@@ -381,7 +506,7 @@ body {
         <div class="two-column tiled">
             <div>
                 <div class="image-wrapper" style="height: 150px; margin-bottom: 20px; border-radius: 8px;">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3203994312845773652" alt="Portrait of Cecilia Payne-Gaposchkin astronomer young" style="object-fit: cover;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Cecilia_Helena_Payne-Gaposchkin_%281900-1979%29_-_Science_Service.jpg" alt="Portrait of Cecilia Payne-Gaposchkin astronomer young" style="object-fit: cover;">
                 </div>
                 <h3>A Revolutionary Thesis</h3>
                 <p>In 1925, Cecilia Payne-Gaposchkin proved that stars are composed almost entirely of Hydrogen and Helium—challenging the contemporary belief that they shared Earth's composition.</p>
@@ -478,7 +603,7 @@ body {
             </div>
         </div>
         <div class="image-wrapper" style="height: 200px; margin-top: 30px;">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/16765779133889924231" alt="NASA high resolution image of the Sun surface solar flares">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/06_Major_Solar_Flare_%282820012601%29.jpg" alt="Hinode SOT solar flare image">
         </div>
     </div>
 </div>
@@ -492,20 +617,51 @@ body {
     </div>
 </div>
 
-<div class="slide-container" id="slide10">
+<div class="slide-container" id="hr_diagram_corrected">
     <h2 class="slide-title">The Hertzsprung-Russell Diagram</h2>
     <div class="content-area">
-        <div class="area-chart-container">
-            <svg class="area-chart-svg" viewBox="0 0 1000 400">
-                <path class="area-fill" d="M 0 50 L 200 120 L 400 200 L 600 280 L 800 350 L 1000 380 L 1000 400 L 0 400 Z"></path>
-                <path class="line-stroke" d="M 0 50 L 200 120 L 400 200 L 600 280 L 800 350 L 1000 380"></path>
-                <text x="500" y="390" class="axis-labels" text-anchor="middle">Temperature (Hot &lt;--- Cool)</text>
-                <text x="-200" y="20" class="axis-labels" transform="rotate(-90)" text-anchor="middle">Luminosity (Low ---&gt; High)</text>
-                <text x="50" y="80" style="fill:#A0522D; font-weight:bold;">O-Stars</text>
-                <text x="850" y="330" style="fill:#A0522D; font-weight:bold;">M-Stars</text>
+        <div class="hr-diagram-container">
+            <svg class="hr-svg" viewBox="0 0 1000 350">
+                <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4a90e2; stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#f8e71c; stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#d0021b; stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+
+                <line x1="0" y1="350" x2="1000" y2="350" class="axis-line" stroke-width="2" />
+                <line x1="0" y1="0" x2="0" y2="350" class="axis-line" stroke-width="2" />
+                
+                <path class="main-sequence-path" d="M 50 20 Q 200 150 500 200 T 950 330" />
+
+                <text x="500" y="390" class="axis-text" text-anchor="middle">SURFACE TEMPERATURE (K) &larr; HOTTER</text>
+                <g class="axis-text" style="font-size: 12px; opacity: 0.6;">
+                    <text x="50" y="370" text-anchor="middle">30,000</text>
+                    <text x="250" y="370" text-anchor="middle">10,000</text>
+                    <text x="500" y="370" text-anchor="middle">6,000</text>
+                    <text x="750" y="370" text-anchor="middle">4,000</text>
+                    <text x="950" y="370" text-anchor="middle">3,000</text>
+                </g>
+
+                <text x="-60" y="175" class="axis-text" text-anchor="middle" transform="rotate(-90, -60, 175)">LUMINOSITY (L/L&#8857;)</text>
+                <g class="axis-text" style="font-size: 12px; opacity: 0.6;">
+                    <text x="-15" y="25" text-anchor="end">10&#8309;</text>
+                    <text x="-15" y="175" text-anchor="end">1</text>
+                    <text x="-15" y="335" text-anchor="end">10&#8315;&#178;</text>
+                </g>
+
+                <text x="70" y="50" class="stellar-label">O-STARS (Blue Giants)</text>
+                <text x="780" y="315" class="stellar-label">M-STARS (Red Dwarfs)</text>
+                
+                <circle cx="500" cy="200" r="6" fill="#f8e71c" stroke="#fff" stroke-width="2" />
+                <text x="515" y="205" class="axis-text" style="fill:#f8e71c;">THE SUN</text>
             </svg>
         </div>
-        <p class="chart-summary">The Main Sequence represents stars in their stable Hydrogen-fusing phase. Most stars (90%) reside on this diagonal track.</p>
+
+        <div class="chart-summary-block">
+            <p><strong>The Main Sequence:</strong> This diagonal track represents the primary life stage of a star where hydrostatic equilibrium is maintained through stable Hydrogen fusion. Approximately 90% of observed stars reside here at any given time.</p>
+        </div>
     </div>
 </div>
 
@@ -576,7 +732,7 @@ body {
     </div>
 </div>
 
-<div class="slide-container bleed-image-layout" id="slide14">
+<div class="slide-container" id="slide14">
     <div class="content-container">
         <h2 class="slide-title">Supernovae & Nucleosynthesis</h2>
         <div class="content-area">
@@ -588,8 +744,8 @@ body {
             </div>
         </div>
     </div>
-    <div class="image-container">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/5139455324599279023" alt="high resolution image of the Crab Nebula supernova remnant NASA">
+    <div class="image-wrapper">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/0/00/Crab_Nebula.jpg" alt="high resolution image of the Crab Nebula supernova remnant NASA">
     </div>
 </div>
 
@@ -598,17 +754,17 @@ body {
     <div class="content-area">
         <div class="tiled-content">
             <div class="image-tile">
-                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/5988463845646843177" alt="high resolution scientific image of the Orion Nebula Messier 42"></div>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/White_dwarf_star_in_Celestia_05.png" alt="white dwarf, artist rendition"></div>
                 <h3>White Dwarfs</h3>
                 <p>Earth-sized remnants of low-mass stars, supported by electron degeneracy pressure.</p>
             </div>
             <div class="image-tile">
-                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/5139455324599279023" alt="high resolution image of the Crab Nebula"></div>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Neutron_Star_%2826194729776%29.png" alt="Neutron star, artist rendition"></div>
                 <h3>Neutron Stars</h3>
                 <p>City-sized cores denser than atomic nuclei, supported by neutron degeneracy.</p>
             </div>
             <div class="image-tile">
-                <div class="image-wrapper" style="height: 250px;"><img src="http://googleusercontent.com/image_collection/image_retrieval/16765779133889924231" alt="NASA Sun surface"></div>
+                <div class="image-wrapper" style="height: 250px;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg" alt="Messier 87 Black Hole, real image"></div>
                 <h3>Black Holes</h3>
                 <p>Infinite density points where gravity is so strong that even light cannot escape.</p>
             </div>
@@ -629,8 +785,8 @@ body {
     <h2 class="slide-title">The Origins of the Diagram</h2>
     <div class="content-area">
         <div class="two-column" style="grid-template-columns: 0.8fr 1.2fr;">
-            <div class="image-wrapper" style="border-radius: 50%; height: 380px; width: 380px;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/14202138740787722989" alt="Portraits of Ejnar Hertzsprung and Henry Norris Russell">
+            <div class="image-wrapper-2" style="height: 450px; width: 380px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Karl_Schwarzschild_and_Ejnar_Hertzsprung_%281909%29.jpg" alt="Portraits of Ejnar Hertzsprung and Henry Norris Russell">
             </div>
             <div>
                 <h3>A Dual Discovery</h3>
@@ -653,8 +809,8 @@ body {
                 </ul>
                 <p style="font-style: italic; border-left: 3px solid #A0522D; padding-left: 15px;">"The H-R Diagram is essentially a temperature-luminosity graph that functions like a map of stellar age and mass."</p>
             </div>
-            <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/1332742308069027570" alt="Detailed annotated Hertzsprung-Russell diagram">
+            <div class="image-wrapper-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/HRDiagram.png" alt="Detailed annotated Hertzsprung-Russell diagram">
             </div>
         </div>
     </div>
@@ -709,8 +865,8 @@ body {
     <h2 class="slide-title">Stellar Evolutionary Tracks</h2>
     <div class="content-area">
         <div class="two-column">
-            <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15787248219542630072" alt="Diagram showing stellar evolutionary tracks on the HR diagram">
+            <div class="image-wrapper-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Hertzsprung-Russell_Diagram_2026.jpg" alt="Diagram showing stellar evolutionary tracks on the HR diagram">
             </div>
             <div>
                 <h3>Movement Across the Map</h3>
@@ -725,7 +881,7 @@ body {
     </div>
 </div>
 
-<div class="slide-container bleed-image-layout" id="slide21">
+<div class="slide-container" id="slide21">
     <div class="content-container">
         <h2 class="slide-title">The Turn-Off Point</h2>
         <div class="content-area">
@@ -738,8 +894,8 @@ body {
             </div>
         </div>
     </div>
-    <div class="image-container">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/8524414659948250168" alt="Hubble image of Globular Cluster M13 stars">
+    <div class="image-wrapper">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/6/60/Heart_of_M13_Hercules_Globular_Cluster.jpg" alt="Hubble image of Globular Cluster M13 stars">
     </div>
 </div>
 
@@ -760,6 +916,36 @@ body {
         <p style="text-align: center; font-style: italic; margin-top: 40px; color: #A0522D;">End of Lecture: Week 3 - Stellar Astrophysics</p>
     </div>
 </div>
+
+<div class="slide-container" id="next_week_slide">
+    <h2 class="slide-title">Next Week: The Great Beyond</h2>
+    
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Galaxies & The Expanding Universe</h3>
+                <p>Having explored the engines of the universe, we now shift our focus to the grand structures they inhabit and the cosmic expansion that defines our reality.</p>
+                
+                <ul class="bullet-list">
+                    <li>Galactic Morphology & Classification</li>
+                    <li>Hubble’s Law and the Velocity-Distance Relation</li>
+                    <li>Dark Matter and the Dynamics of Clusters</li>
+                </ul>
+
+                <div class="reading-box">
+                    <p style="font-weight: 700; color: #051622; margin-bottom: 5px;">Required Readings:</p>
+                    <p>Chapter 25: The Milky Way Galaxy</p>
+                    <p>Chapter 26: Galaxies and the Universe</p>
+                </div>
+            </div>
+            
+            <div class="image-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/M31-Andromede-16-09-2023-Hamois.jpg" alt="High resolution image of the Andromeda Galaxy M31 spiral NASA">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
