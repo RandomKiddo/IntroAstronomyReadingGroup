@@ -1,4 +1,4 @@
 * text=auto
 Content/Week[[:space:]]1/Week1_OurCosmicNeighborhood.pdf filter=lfs diff=lfs merge=lfs -text
-Context/Week[[:space:]]2/Week2_TheSolarSystem.pdf filter=lfs diff=lfs merge=lfs -text
+Content/Week[[:space:]]2/Week2_TheSolarSystem.pdf filter=lfs diff=lfs merge=lfs -text
 Content/Week[[:space:]]3/Week3_EnginesOfTheUniverse.pdf filter=lfs diff=lfs merge=lfs -text
