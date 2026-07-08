@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Galaxies and the Expanding Universe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP: MODERN OBSERVATORY THEME */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E9ECEF;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #F8F9FA;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Manrope', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 1.1 DECORATIVE BACKGROUND */
+
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(90, 103, 216, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(192, 86, 33, 0.03) 0%, transparent 40%);
+}
+
+.slide-container::after {
+  content: 'SECTOR 04 / EXTRAGALACTIC';
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #ADB5BD;
+  font-weight: 700;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #1D1E2C;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container th,
+.slide-container td {
+  color: #4A5568;
+  font-family: 'Manrope', sans-serif;
+}
+
+.slide-container h1 {
+  font-size: 80px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.slide-container .slide-title {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  border-left: 10px solid #5A67D8;
+  padding-left: 25px;
+}
+
+.slide-container h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #5A67D8;
+}
+
+.slide-container p,
+.slide-container li {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.two-column {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  width: 100%;
+}
+
+.image-wrapper {
+  border-radius: 12px;
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #E9ECEF;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.tile {
+  background-color: #FFFFFF;
+  border: 1px solid #E9ECEF;
+  border-radius: 16px;
+  padding: 35px;
+  height: 100%;
+}
+
+.tile .icon {
+  color: #C05621;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.highlight-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 140px;
+  color: #1D1E2C;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.number-label {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #C05621;
+  font-weight: 700;
+}
+
+/* 4. DATA & MATH */
+
+#formula-container {
+  background: #F8F9FA;
+  border: 1px solid #DEE2E6;
+  border-radius: 8px;
+  margin: 20px 0;
+  padding: 25px;
+  text-align: center;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-list li {
+  margin-bottom: 20px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.bullet-list li i {
+  color: #5A67D8;
+  left: 0;
+  position: absolute;
+  top: 6px;
+}
+
+/* 5. SPECIAL LAYOUTS */
+
+.bleed-image-layout {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  padding: 0 !important;
+  align-items: start !important;
+}
+
+.bleed-image-layout .content-container {
+  padding: 60px;
+  height: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bleed-image-side {
+  height: 720px !important;
+  width: 100%;
+  object-fit: cover;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="content-area" style="text-align: left; width: 100%;">
+        <p style="color: #C05621; font-weight: 700; letter-spacing: 5px; margin-bottom: 15px;">WEEK FOUR LECTURE</p>
+        <h1>Galaxies & The<br>Expanding Universe</h1>
+        <div style="width: 100px; height: 8px; background: #5A67D8; margin: 40px 0;"></div>
+        <p class="subtitle" style="font-size: 24px; max-width: 800px;">
+            Exploring the large-scale structure of the cosmos and the observational evidence for an accelerating expansion of spacetime.
+        </p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">In the News: Expansion Debate</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Southampton Study (June 2026)</h3>
+                <p>New computational models from the University of Southampton have re-evaluated the "Expansion Crisis."</p>
+                <ul class="bullet-list" style="margin-top: 25px;">
+                    <li><i class="fa-solid fa-microchip"></i> <strong>Robust Metrics:</strong> By isolating host galaxy age bias, researchers found that expansion acceleration is more consistent than previously thought.</li>
+                    <li><i class="fa-solid fa-chart-line"></i> <strong>Dark Energy:</strong> The study supports the standard &Lambda;CDM model, countering 2025 claims of expansion fatigue.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/4744880733054808163" alt="Deep space Type Ia supernova astronomical photograph">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Recap: Galactic Morphology</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="background: white; border: none; box-shadow: none;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/11705016616321957881" alt="Hubble tuning fork diagram galaxy classification" style="object-fit: contain;">
+            </div>
+            <div>
+                <h3>Classification Schema</h3>
+                <p>Edwin Hubble organized galaxies based on their visual appearance into a "tuning fork" diagram:</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>Ellipticals (E):</strong> Spherical to oval, containing mostly old stars and little gas.</li>
+                    <li><strong>Spirals (S/SB):</strong> Disk-shaped with spiral arms and active star formation.</li>
+                    <li><strong>Irregulars:</strong> Lacking a defined shape, often due to mergers.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Recap: Rotation Curves</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Missing Mass</h3>
+                <p>Observations of spiral galaxies show that stars in the outer disk move faster than predicted by visible matter alone.</p>
+                <div id="formula-container" style="text-align: left; padding: 20px;">
+                    <p style="font-weight: 600; color: #C05621; margin-bottom: 10px;">The Paradox:</p>
+                    <p>Flat rotation curves imply that mass does not decrease as we move away from the center.</p>
+                </div>
+                <p>This provides critical evidence for a <strong>Dark Matter Halo</strong> extending far beyond the visible disk.</p>
+            </div>
+            <div class="image-wrapper" style="background: white; padding: 10px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/16581487708708510395" alt="Galaxy rotation curve dark matter plot" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Recap: Distance Ladder</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-star"></i></div>
+                <h3>Standard Candles</h3>
+                <p>Objects of known intrinsic luminosity used to measure distance. Includes Cepheid Variables and Type Ia Supernovae.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-calculator"></i></div>
+                <h3>Distance Modulus</h3>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 24px;">
+                        <mi>m</mi><mo>-</mo><mi>M</mi><mo>=</mo><mn>5</mn><msub><mi>log</mi><mn>10</mn></msub><mo>(</mo><mi>d</mi><mo>)</mo><mo>-</mo><mn>5</mn>
+                    </math>
+                </div>
+                <p style="font-size: 14px; opacity: 0.7;">Relating apparent (m) and absolute (M) magnitude to distance (d).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">The Expansion Law</h2>
+    <div class="content-area">
+        <div class="highlight-number">v = H₀d</div>
+        <div class="number-label">The Hubble-Lemaître Law</div>
+        <div style="max-width: 850px; margin-top: 40px; text-align: center;">
+            <p>The discovery that a galaxy's recessional velocity is proportional to its distance from us. This proves that the Universe is expanding uniformly at every point.</p>
+            <p style="margin-top: 20px; font-style: italic; color: #5A67D8;">Space itself is stretching, carrying galaxies away from one another like raisins in a rising loaf of bread.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide7">
+    <div class="content-container">
+        <h2 class="slide-title" style="border: none; padding: 0;">The Cosmic Web</h2>
+        <div class="content-area" style="align-items: start;">
+            <h3>Large Scale Structure</h3>
+            <p>Matter is not distributed evenly. It forms a network of <strong>filaments</strong> and <strong>sheets</strong>, with vast empty <strong>voids</strong> in between.</p>
+            <p style="margin-top: 20px;">Galaxies and clusters reside at the intersections of these filaments, driven by the gravitational collapse of dark matter.</p>
+            <div id="formula-container" style="margin-top: 30px; text-align: left;">
+                <p style="font-weight: 700; color: #C05621;">COLIBRE Simulations (2026)</p>
+                <p style="font-size: 16px;">Mapping the distribution of cold gas and dark matter across millions of parsecs.</p>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/15603241918681818472" alt="COLIBRE cosmic web simulation large scale structure">
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Discussion: Galactic Frontiers</h2>
+    <div class="content-area">
+        <ul class="bullet-list" style="width: 100%; max-width: 900px;">
+            <li><i class="fa-solid fa-circle-question"></i> <strong>The Hubble Tension:</strong> Why do measurements of H₀ from the early universe (CMB) disagree with local measurements (Supernovae)?</li>
+            <li><i class="fa-solid fa-circle-question"></i> <strong>Dark Energy vs. Gravity:</strong> At what distance does the expansion of the universe overcome the local gravitational attraction between galaxies?</li>
+            <li><i class="fa-solid fa-circle-question"></i> <strong>Galactic Fate:</strong> If expansion is accelerating, will the Milky Way eventually lose sight of all other galaxies?</li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Physics Sprinkle: Data Probe</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile" style="border-top: 5px solid #5A67D8;">
+                <h3 style="color: #1D1E2C;">01. Recession Speed</h3>
+                <p>Assume the Hubble Constant is:</p>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #5A67D8; margin: 10px 0;">H₀ = 70 km/s/Mpc</p>
+                <p>If a galaxy cluster is 150 Mpc away, calculate its recessional velocity in km/s.</p>
+            </div>
+            <div class="tile" style="border-top: 5px solid #C05621;">
+                <h3 style="color: #1D1E2C;">02. Redshift Logic</h3>
+                <p>A galaxy displays a significant redshift in its spectrum. Explain why this shift is considered <strong>Cosmological</strong> rather than a standard <strong>Doppler</strong> effect.</p>
+                <p style="font-size: 16px; margin-top: 15px;">Consider the role of expanding space vs. individual motion through space.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Solution: Recession Speed</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Working the Math</h3>
+                <p>We use the linear relation established by Hubble:</p>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="font-size: 32px;">
+                        <mi>v</mi><mo>=</mo><msub><mi>H</mi><mn>0</mn></msub><mo>&#x22C5;</mo><mi>d</mi>
+                    </math>
+                </div>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>Substitute:</strong> \(v = 70 \times 150\)</li>
+                    <li><strong>Result:</strong> \(v = 10,500 \text{ km/s}\)</li>
+                </ul>
+            </div>
+            <div class="tile" style="background-color: #F8F9FA;">
+                <p style="font-weight: 600; color: #5A67D8;">Scale Context:</p>
+                <p>This velocity is roughly <strong>3.5% of the speed of light</strong>. At this distance, the expansion of the universe is a dominant effect over any local "peculiar" motion of the galaxy within its cluster.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Solution: Redshift Nature</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile">
+                <h3>The "Fabric" Analogy</h3>
+                <p>Unlike a Doppler shift (caused by an object moving *through* space), Cosmological Redshift is caused by the <strong>stretching of space itself</strong>.</p>
+                <p style="margin-top: 15px;">As a photon travels across the expanding universe, its wavelength is stretched along with the fabric of spacetime, shifting it toward the red end of the spectrum.</p>
+            </div>
+            <div class="tile">
+                <ul class="bullet-list">
+                    <li><i class="fa-solid fa-arrows-alt-h"></i> <strong>Doppler:</strong> Change in wavelength due to relative velocity between source and observer.</li>
+                    <li><i class="fa-solid fa-expand-alt"></i> <strong>Cosmological:</strong> Change in wavelength due to the increase in the scale factor of the universe during light travel.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12" style="background-color: #1D1E2C;">
+    <div class="content-area" style="text-align: center; color: white;">
+        <h2 style="color: #F8F9FA; font-size: 60px; margin-bottom: 20px;">Next Week: The Origin</h2>
+        <p style="color: #5A67D8; font-family: 'Space Grotesk'; font-weight: 700; letter-spacing: 5px; font-size: 24px;">BIG BANG & COSMOLOGY</p>
+        <div style="width: 150px; height: 4px; background: #C05621; margin: 40px auto;"></div>
+        <p style="font-size: 20px; opacity: 0.8;">Reading Assigned: <strong>Chapter 29</strong></p>
+        <p style="font-size: 18px; margin-top: 10px; opacity: 0.6;">The Early Universe and Primordial Nucleosynthesis</p>
+    </div>
+    <div style="position: absolute; width: 100%; height: 100%; opacity: 0.1;">
+        <img src="http://googleusercontent.com/image_collection/image_retrieval/15429545228620947051" alt="Big Bang abstract background" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+</div>
+
+</body>
+</html>
+
