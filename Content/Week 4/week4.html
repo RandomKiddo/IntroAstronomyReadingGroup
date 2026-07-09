@@ -8,7 +8,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
+
+    <!-- For LaTeX styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+            onload="renderMathInElement(document.body);"></script>
+
+<style>
 /* 1. THE SETUP: MODERN OBSERVATORY THEME */
 
 * {
@@ -244,7 +251,64 @@ body {
   object-fit: cover;
 }
 
-    </style>
+.doughnut-chart-container {
+  align-items: center;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  width: 100%;
+}
+
+.doughnut-chart {
+  border-radius: 50%;
+  height: 240px;
+  width: 240px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.05);
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.legend li {
+  align-items: center;
+  color: #334155;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.legend .color-box {
+  border-radius: 4px;
+  height: 22px;
+  margin-right: 15px;
+  width: 22px;
+}
+
+.chart-summary {
+  font-style: italic;
+  margin-top: 30px;
+  max-width: 1200px;
+  text-align: center;
+  color: #718096;
+}
+
+.implications-box {
+  background: rgba(90, 103, 216, 0.05);
+  border: 1px dashed #5A67D8;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -264,7 +328,7 @@ body {
     <div class="content-area">
         <div class="two-column">
             <div>
-                <h3>Southampton Study (June 2026)</h3>
+                <h3>Crisis Averted (June 2026)</h3>
                 <p>New computational models from the University of Southampton have re-evaluated the "Expansion Crisis."</p>
                 <ul class="bullet-list" style="margin-top: 25px;">
                     <li><i class="fa-solid fa-microchip"></i> <strong>Robust Metrics:</strong> By isolating host galaxy age bias, researchers found that expansion acceleration is more consistent than previously thought.</li>
@@ -272,7 +336,7 @@ body {
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/4744880733054808163" alt="Deep space Type Ia supernova astronomical photograph">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/The_remains_of_a_star_gone_supernova.jpg" alt="Deep space supernova remnant photograph">
             </div>
         </div>
     </div>
@@ -283,7 +347,7 @@ body {
     <div class="content-area">
         <div class="two-column">
             <div class="image-wrapper" style="background: white; border: none; box-shadow: none;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/11705016616321957881" alt="Hubble tuning fork diagram galaxy classification" style="object-fit: contain;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Hubble_Tuning_Fork_diagram.svg" alt="Hubble tuning fork diagram galaxy classification" style="object-fit: contain;">
             </div>
             <div>
                 <h3>Classification Schema</h3>
@@ -312,7 +376,7 @@ body {
                 <p>This provides critical evidence for a <strong>Dark Matter Halo</strong> extending far beyond the visible disk.</p>
             </div>
             <div class="image-wrapper" style="background: white; padding: 10px;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/16581487708708510395" alt="Galaxy rotation curve dark matter plot" style="object-fit: contain;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/GalacticRotation2.svg" alt="Galaxy rotation curve dark matter plot (crude)" style="object-fit: contain;">
             </div>
         </div>
     </div>
@@ -341,10 +405,30 @@ body {
     </div>
 </div>
 
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">The Cosmic Web</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Large Scale Structure</h3>
+                <p>Matter is not distributed evenly. It forms a network of <strong>filaments</strong> and <strong>sheets</strong>, with vast empty <strong>voids</strong> in between.</p>
+                <p style="margin-top: 20px;">Galaxies and clusters reside at the intersections of these filaments, driven by the gravitational collapse of dark matter.</p>
+                <div id="formula-container" style="margin-top: 30px; text-align: left;">
+                    <p style="font-weight: 700; color: #C05621;">COLIBRE Simulations (2026)</p>
+                    <p style="font-size: 16px;">Mapping the distribution of cold gas and dark matter across millions of parsecs. <i>Image Credit: Schaye et al. (2026) MNRAS.</i></p>
+                </div>
+            </div>
+            <div class="image-wrapper" style="background: white; padding: 10px;">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.universetoday.com%2Farticle_images%2Fimage_English_20260424_190628.jpg&f=1&nofb=1&ipt=71466b26b249e4a3d52bf287c9fffd4b2f5f924dbc02dd26d147468321981470" alt="Galaxy rotation curve dark matter plot (crude)" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="slide-container" id="slide6">
     <h2 class="slide-title">The Expansion Law</h2>
     <div class="content-area">
-        <div class="highlight-number">v = H₀d</div>
+        <div class="highlight-number" style="padding-bottom: 50px;"">v = H₀d</div>
         <div class="number-label">The Hubble-Lemaître Law</div>
         <div style="max-width: 850px; margin-top: 40px; text-align: center;">
             <p>The discovery that a galaxy's recessional velocity is proportional to its distance from us. This proves that the Universe is expanding uniformly at every point.</p>
@@ -353,21 +437,135 @@ body {
     </div>
 </div>
 
-<div class="slide-container bleed-image-layout" id="slide7">
-    <div class="content-container">
-        <h2 class="slide-title" style="border: none; padding: 0;">The Cosmic Web</h2>
-        <div class="content-area" style="align-items: start;">
-            <h3>Large Scale Structure</h3>
-            <p>Matter is not distributed evenly. It forms a network of <strong>filaments</strong> and <strong>sheets</strong>, with vast empty <strong>voids</strong> in between.</p>
-            <p style="margin-top: 20px;">Galaxies and clusters reside at the intersections of these filaments, driven by the gravitational collapse of dark matter.</p>
-            <div id="formula-container" style="margin-top: 30px; text-align: left;">
-                <p style="font-weight: 700; color: #C05621;">COLIBRE Simulations (2026)</p>
-                <p style="font-size: 16px;">Mapping the distribution of cold gas and dark matter across millions of parsecs.</p>
+<div class="slide-container" id="hubble_original_plot">
+    <h2 class="slide-title">The 1929 Breakthrough</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Hubble's Original Plot</h3>
+                <p>In 1929, Edwin Hubble published a landmark paper showing the relationship between distance and recessional velocity for 24 galaxies.</p>
+                <ul style="margin-top: 20px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-chart-line" style="color: #C05621; margin-right: 10px;"></i> <strong>Linear Relation:</strong> The graph showed that more distant galaxies recede faster.</li>
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-clock" style="color: #C05621; margin-right: 10px;"></i> <strong>Historical Error:</strong> His value for \( H_0 \) was ~500 km/s/Mpc—nearly 7 times higher than modern values due to miscalibrated distance markers.</li>
+                </ul>
+                <p><i>Image Credit: Hubble (1929).</i></p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F280663798%2Ffigure%2Ffig1%2FAS%3A669543617818647%401536643046910%2FOriginal-Hubble-diagram-from-Hubble-1929a.png&f=1&nofb=1&ipt=dfacc067c322476974b7d26f6f2caa2d20d277bdcc1d3c0499ca8a10546754e3" alt="Edwin Hubble original 1929 velocity-distance relationship plot chart">
             </div>
         </div>
     </div>
-    <div class="image-container">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/15603241918681818472" alt="COLIBRE cosmic web simulation large scale structure">
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">The Cosmic Tug-of-War</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Opposing Forces</h3>
+                <p>The history of the universe is a competition between two dominant, invisible influences:</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><i class="fa-solid fa-compress-alt"></i> <strong>Dark Matter (Gravity):</strong> Acts as the "glue" that attracts matter, clumping galaxies together and slowing expansion.</li>
+                    <li><i class="fa-solid fa-expand-alt"></i> <strong>Dark Energy (Repulsion):</strong> Acts as the "accelerator," pushing the fabric of space apart at increasing speeds.</li>
+                </ul>
+            </div>
+            <div class="tile" style="border-left: 5px solid #C05621;">
+                <p style="font-style: italic;">"Think of the Big Bang as an initial outward push. Gravity tries to pull the breaks, while Dark Energy stomps on the gas pedal."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Dark Matter: The Brake</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="background: white;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Hubble2005-01-barred-spiral-galaxy-NGC1300.jpg" alt="Spiral galaxy rotation curve dark matter plot">
+            </div>
+            <div>
+                <h3>Slowing the Expansion</h3>
+                <p>In the early universe, matter density was high enough for gravity to dominate. This <strong>Matter-Dominated Era</strong> allowed for the formation of stars, galaxies, and large-scale structures.</p>
+                <div id="formula-container" style="text-align: left;">
+                    <p style="font-weight: 700; color: #C05621;">The Glue of Structure</p>
+                    <p style="font-size: 16px;">Without the added gravitational pull of Dark Matter, the high-speed stars in galactic halos would have flown off into intergalactic space long ago.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Dark Energy: The Accelerator</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-atom"></i></div>
+                <h3>Vacuum Energy</h3>
+                <p>Dark Energy appears to be an inherent property of space itself. As the universe expands and more space is created, the total "pushing" force of Dark Energy increases.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3>Negative Pressure</h3>
+                <p>Unlike matter, Dark Energy has a strong negative pressure that counteracts gravity on cosmological scales, causing space to stretch faster and faster.</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-style: italic; color: #5A67D8;">It doesn't "clump" around galaxies like dark matter; it is a smooth, uniform field filling the entire void.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">The Transition Era</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="height: 350px; background: #000;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/History_of_the_Universe_%28multilingual%29.svg" alt="Universe expansion history timeline dark energy gravity">
+            </div>
+            <div>
+                <h3>A Changing Balance</h3>
+                <p>For the first 9 billion years, the universe's expansion was <strong>decelerating</strong> due to the collective gravity of all matter.</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><strong>~5 Billion Years Ago:</strong> The universe grew so large and diffuse that matter density dropped below a critical point.</li>
+                    <li><strong>Late-Time Acceleration:</strong> Dark Energy became the dominant force, and the universe began to speed up.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="dark_sector">
+    <h2 class="slide-title">The Dark Sector: Cosmic Inventory</h2>
+    <div class="content-area">
+        <div class="doughnut-chart-container">
+            <div class="doughnut-chart" style="background: conic-gradient(#5A67D8 0% 68%, #C05621 68% 95%, #ADB5BD 95% 100%);"></div>
+            <ul class="legend">
+                <li><div class="color-box" style="background-color: #5A67D8;"></div> Dark Energy (~68%)</li>
+                <li><div class="color-box" style="background-color: #C05621;"></div> Dark Matter (~27%)</li>
+                <li><div class="color-box" style="background-color: #ADB5BD;"></div> Normal Matter (~5%)</li>
+            </ul>
+        </div>
+        
+        <div class="implications-box">
+            <p><strong>The Invisible Universe:</strong> Regular matter—everything we can see, touch, and measure—makes up only about 5% of the universe. This implies that the vast majority of physics is currently driven by forces and substances (Dark Matter and Dark Energy) that we do not fully understand yet.</p>
+        </div>
+        <p class="chart-summary">What does it mean for our laws of physics if 95% of the cosmos remains fundamentally alien to our instruments?</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">The Ultimate Fate</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <h3 style="color: #1D1E2C;">The Big Freeze</h3>
+                <p>If expansion continues at the current rate, galaxies will recede beyond our "Cosmic Horizon," leaving the Milky Way alone in a cold, dark void.</p>
+            </div>
+            <div class="tile">
+                <h3 style="color: #1D1E2C;">The Big Rip</h3>
+                <p>If the strength of Dark Energy increases over time, the expansion will eventually become so violent that it rips apart galaxies, stars, and even atoms.</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-weight: 700; color: #C05621;">Currently, the Big Freeze is our best-supported prediction.</p>
     </div>
 </div>
 
