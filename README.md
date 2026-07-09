@@ -16,6 +16,12 @@ This repository hosts files related to the reading group. This is mainly the wee
 
 ___
 
+### Asynchronous Recordings
+
+:exclamation: Coming Soon :exclamation:
+
+___
+
 [Back to Top](#introductory-astronomy-reading-group)
 
-<sub>This page was last edited on 06.24.2026.</sub>
+<sub>This page was last edited on 07.08.2026.</sub>
