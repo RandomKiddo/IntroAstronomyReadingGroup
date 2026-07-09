@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: The Big Bang & Cosmology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- For LaTeX styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
+            onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        /* 1. BLUEPRINT SETUP */
+        * { box-sizing: border-box; }
+        body { background-color: #050b1a; margin: 0; display: grid; place-items: center; min-height: 100vh; }
+
+        .slide-container {
+            width: 1280px; height: 720px;
+            background-color: #0a1e3b; /* Midnight Navy */
+            color: #f0f0f0; /* Chalk White */
+            font-family: 'Inter', sans-serif;
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; padding: 60px;
+        }
+
+        /* 1.1 DECORATIVE OVERLAYS (Blueprint Lines) */
+        .slide-container::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px; z-index: 0;
+        }
+
+        .slide-container::after {
+            content: ''; position: absolute; bottom: 30px; right: 30px;
+            width: 150px; height: 150px;
+            border-bottom: 2px solid #d4af37; border-right: 2px solid #d4af37;
+            opacity: 0.2; z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* 2. TYPOGRAPHY */
+        h1, h2, h3 { font-family: 'Libre Baskerville', serif; color: #d4af37; margin: 0; }
+        p, li { font-family: 'Inter', sans-serif; line-height: 1.6; color: #f0f0f0; }
+        .mono { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #8e9fb1; }
+
+        .slide-title {
+            font-size: 42px; font-weight: 700; margin-bottom: 40px;
+            text-align: left; width: 100%; border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 20px;
+        }
+
+        h1 { font-size: 72px; letter-spacing: -1px; }
+        h3 { font-size: 28px; font-weight: 400; margin-bottom: 15px; }
+
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+
+        /* 3. LAYOUTS */
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; align-items: center; }
+        
+        .image-wrapper { border: 1px solid #d4af37; border-radius: 4px; overflow: hidden; height: 400px; width: 100%; background: #050b1a; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+
+        .tiled-content { display: flex; gap: 20px; width: 100%; }
+        .tile { 
+            flex: 1; padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); 
+            background: rgba(10, 30, 59, 0.6); border-radius: 8px;
+        }
+        .tile h3 { font-size: 24px; color: #d4af37; }
+
+        .bullet-list { list-style: none; padding: 0; }
+        .bullet-list li { margin-bottom: 20px; padding-left: 35px; position: relative; }
+        .bullet-list i { position: absolute; left: 0; top: 5px; color: #d4af37; font-size: 18px; }
+
+        .highlight-numbers-layout .number { font-size: 120px; font-weight: 700; color: #d4af37; font-family: 'Libre Baskerville', serif; line-height: 1; }
+        .number-label { font-family: 'JetBrains Mono', monospace; letter-spacing: 4px; text-transform: uppercase; color: #8e9fb1; margin-top: 10px; }
+
+        /* Chart Styling */
+        .doughnut-chart-container { display: flex; align-items: center; gap: 80px; justify-content: center; }
+        .doughnut-chart { border-radius: 50%; height: 350px; width: 350px; border: 2px solid #d4af37; }
+        .legend { list-style: none; padding: 0; }
+        .legend li { display: flex; align-items: center; margin-bottom: 15px; font-weight: 600; }
+        .color-box { width: 20px; height: 20px; border-radius: 4px; margin-right: 15px; }
+
+        /* MathML Container */
+        .formula-box { background: rgba(5, 11, 26, 0.7); padding: 20px; border-left: 4px solid #d4af37; margin: 20px 0; }
+
+        /* Section Titles */
+        .section-title-layout { text-align: center;}
+        .section-title-layout h2 { font-size: 64px; margin-bottom: 20px; }
+        .section-title-layout hr { border: none; height: 3px; background: #d4af37; width: 100px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container" id="slide1">
+        <div class="content-area" style="text-align: center;">
+            <p class="mono" style="margin-bottom: 10px; letter-spacing: 6px;">VOYAGER SERIES: WEEK 05</p>
+            <h1>The Big Bang & Cosmology</h1>
+            <p style="font-size: 24px; max-width: 800px; margin: 30px auto; opacity: 0.7;">
+                An investigation into the origins of spacetime, the afterglow of creation, and the mysterious composition of the Dark Sector.
+            </p>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide2">
+        <h2 class="slide-title">In The News: Euclid's Quasar Chronicle</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p class="mono" style="color: #d4af37;">JULY 2026 UPDATE</p>
+                    <h3>Primordial Beacons Discovered</h3>
+                    <p>The Euclid Space Telescope has successfully identified 31 ancient quasars, dating back to when the universe was only 5% of its current age (~670 million years after the Big Bang).</p>
+                    <ul class="bullet-list" style="margin-top: 20px;">
+                        <li><i class="fa-solid fa-microscope"></i> <strong>Mass Mystery:</strong> Black holes with hundreds of millions of solar masses existed far earlier than standard models predicted.</li>
+                        <li><i class="fa-solid fa-map"></i> <strong>Cosmic Map:</strong> This find doubles the known count of high-redshift quasars, refining our view of the Epoch of Reionization.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Artist%E2%80%99s_impression_of_quasar_J0313-1806.jpg" alt="Artist impression of a quasar.">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+        <div class="section-title-layout">
+            <h2>The Origin</h2>
+            <hr>
+            <p style="margin-top: 30px; font-size: 22px; color: #8e9fb1;">Ex Nihilo: Extrapolating to the Singularity</p>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">The Age of the Universe</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p>Modern observations, including the latest data from Planck and JWST, confirm a beginning roughly <strong>13.8 billion years ago</strong>.</p>
+                    <div class="formula-box">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                            <mi>T</mi><mo>&#x2248;</mo><mfrac><mn>1</mn><msub><mi>H</mi><mn>0</mn></msub></mfrac>
+                        </math>
+                        <p class="mono" style="margin-top: 10px; font-size: 12px;">Simple Hubble Time Relation</p>
+                    </div>
+                    <p>The universe started in an extremely hot, dense state. As space expanded, the energy density dropped, allowing particles to condense from photons.</p>
+                </div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/History_of_the_Universe_%28multilingual%29.svg" alt="Diagram showing the Big Bang expansion history from singularity to present day">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide6">
+        <h2 class="slide-title">Spacetime Curvature</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="image-wrapper" style="height: 180px; margin-bottom: 20px;">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpages.uoregon.edu%2Fjschombe%2Fimages%2Funiverse_geometry.gif&f=1&nofb=1&ipt=e39ac0bb83eb977f7b30be98c20e45f1f1fdf8763546e501ff7adbeaa25f99b2" alt="Curvature diagram showing flat, sphere, and saddle shapes">
+                    </div>
+                    <h3>Critical Density</h3>
+                    <p>The universe's fate and shape are determined by the density/curvature parameter \(\Omega_0\).</p>
+                    <ul class="bullet-list" style="margin-top: 15px; font-size: 14px;">
+                        <li><strong>Flat:</strong> Light travels in straight lines; expansion continues forever (at a slowing then accelerating rate).</li>
+                        <li><strong>Closed:</strong> Sphere-like; light paths converge; possible "Big Crunch".</li>
+                        <li><strong>Open:</strong> Saddle-like; light paths diverge; infinite expansion.</li>
+                    </ul>
+                </div>
+                <div class="tile">
+                    <p class="mono" style="margin-bottom: 10px; color: #d4af37;">OBSERVATIONAL VERDICT</p>
+                    <h3>The Flatness Result</h3>
+                    <p>Current CMB measurements from Planck indicate that we live in a <strong>Flat Universe</strong> (\(\Omega \approx 1.0\)) within a margin of 0.4% error.</p>
+                    <p style="margin-top: 15px;">This requires the total energy density to be exactly at the "Critical Density".</p>
+                    <p><i>Image Credit (Left): University of Oregon.</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="cosmological_principle">
+        <h2 class="slide-title">The Cosmological Principle</h2>
+        
+        <div class="content-area">
+            <p style="margin-bottom: 25px; font-size: 20px;">The foundational axiom of modern astrophysics: On a sufficiently large scale (\(>100 \text{ Mpc}\)), the Universe is both:.</p>
+            
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon-header">
+                        <i class="fa-solid fa-border-all"></i>
+                        <h3>Homogeneity</h3>
+                    </div>
+                    <p class="mono" style="margin-bottom: 15px;">NO SPECIAL PLACES</p>
+                    <p>The Universe has a constant average density. If you sample a large enough volume of space anywhere in the cosmos, it will contain the same amount of matter and energy as any other sample.</p>
+                </div>
+
+                <div class="tile">
+                    <div class="icon-header">
+                        <i class="fa-solid fa-compass"></i>
+                        <h3>Isotropy</h3>
+                    </div>
+                    <p class="mono" style="margin-bottom: 15px;">NO SPECIAL DIRECTIONS</p>
+                    <p>The Universe looks the same in all directions to any observer. There are no preferred axes of expansion or structural alignment on the largest scales.</p>
+                </div>
+            </div>
+
+            <div class="implication-box" style="padding-top: 30px;">
+                <h3>The Copernican Extension</h3>
+                <p style="margin-top: 10px; font-size: 22px;">"We do not occupy a privileged or central position in the Cosmos."</p>
+                <p style="margin-top: 15px; font-size: 16px; opacity: 0.8;">This principle enables the <span class="formula-inline">FLRW Metric</span>, allowing us to solve Einstein's field equations for the entire Universe at once.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slide-container" id="slide7">
+        <h2 class="slide-title">The Cosmic Microwave Background</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div style="text-align: center;">
+                    <div class="image-wrapper" style="border-radius: 50%; width: 450px; height: 450px; margin: 0 auto;">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/3790076889011714947" alt="Planck satellite map of the Cosmic Microwave Background radiation temperature fluctuations">
+                    </div>
+                </div>
+                <div>
+                    <h3>The First Light</h3>
+                    <p>Detected at <strong>2.73 K</strong>, the CMB is the fossil radiation from the moment the universe became transparent (Recombination) roughly 380,000 years after the Big Bang.</p>
+                    <ul class="bullet-list" style="margin-top: 25px;">
+                        <li><i class="fa-solid fa-temperature-low"></i> <strong>Isotropy:</strong> The radiation is nearly identical in every direction.</li>
+                        <li><i class="fa-solid fa-wave-square"></i> <strong>Anisotropy:</strong> Tiny fluctuations ($\mu K$) are the gravitational seeds of every galaxy we see today.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide9">
+        <h2 class="slide-title">Universal Composition</h2>
+        <div class="content-area">
+            <div class="doughnut-chart-container">
+                <div class="doughnut-chart" style="background: conic-gradient(#050b1a 0% 69%, #d4af37 69% 95%, #8e9fb1 95% 100%);"></div>
+                <ul class="legend">
+                    <li><div class="color-box" style="background: #050b1a; border: 1px solid #d4af37;"></div> Dark Energy (69%)</li>
+                    <li><div class="color-box" style="background: #d4af37;"></div> Dark Matter (26%)</li>
+                    <li><div class="color-box" style="background: #8e9fb1;"></div> Ordinary Matter (5%)</li>
+                </ul>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto;">
+                "Ordinary matter—the stuff of stars, planets, and people—is a mere dusting on a cosmic landscape dominated by invisible forces."
+            </p>
+        </div>
+    </div>
+
+<div class="slide-container" id="inflation">
+        <h2 class="slide-title">Cosmic Inflation: The Grand Stretch</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p class="mono" style="color: #d4af37;">TIME: 10⁻³⁶ SECONDS</p>
+                    <h3>Exponential Expansion</h3>
+                    <p>In a fraction of a second, the universe expanded by a factor of at least $10^{26}$, growing from smaller than an atom to roughly the size of a grapefruit.</p>
+                    <ul class="bullet-list" style="margin-top: 20px;">
+                        <li><i class="fa-solid fa-arrows-to-circle"></i> <strong>Horizon Problem:</strong> Explains why widely separated regions have the same temperature.</li>
+                        <li><i class="fa-solid fa-vector-square"></i> <strong>Flatness Problem:</strong> Inflation stretched the curvature of space until it became effectively flat.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/5744839295449361750" alt="Scientific diagram showing the timeline of cosmic inflation from singularity">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="entanglement">
+        <h2 class="slide-title">Quantum Entanglement & Cosmic Seeds</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="image-wrapper" style="height: 200px; margin-bottom: 20px;">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/15753787926975910067" alt="Abstract visualization of quantum entanglement in a cosmic context">
+                    </div>
+                    <h3>Early Entanglement</h3>
+                    <p>Before inflation, the entire observable universe was small enough to be quantum-mechanically linked. Particles were <strong>entangled</strong>, meaning their states were instantaneously correlated regardless of distance.</p>
+                </div>
+                <div class="tile">
+                    <h3>Quantum to Classical</h3>
+                    <p>As inflation occurred, these subatomic quantum fluctuations were "frozen" and stretched into macroscopic scales. This process turned quantum probability blips into the <strong>density variations</strong> seen in the CMB.</p>
+                    <div class="formula-box" style="margin-top: 20px;">
+                        <p class="mono" style="font-size: 12px; margin: 0;">ΔT/T ≈ 10⁻⁵</p>
+                        <p style="font-size: 14px; margin-top: 5px;">The magnitude of fluctuations that seeded all galaxies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="baryogenesis">
+        <h2 class="slide-title">Baryogenesis: The Survival of Matter</h2>
+        <div class="content-area">
+            <div class="two-column highlight-numbers-layout">
+                <div>
+                    <div class="number">1:10⁹</div>
+                    <div class="number-label">Matter-Antimatter Ratio</div>
+                </div>
+                <div style="text-align: left;">
+                    <h3>A Cosmic Asymmetry</h3>
+                    <p>The Big Bang should have produced equal amounts of matter and antimatter, which would have annihilated into pure light. However, a slight preference for matter—<strong>Baryogenesis</strong>—occurred.</p>
+                    <p style="margin-top: 15px;">For every billion particles of antimatter, there were a billion and one particles of matter. We are the leftovers of that single extra particle.</p>
+                </div>
+            </div>
+            <div class="image-wrapper" style="margin-top: 30px; height: 180px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/14114626099561878532" alt="Conceptual art of matter and antimatter particles colliding with light burst">
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="holographic">
+        <h2 class="slide-title">The Holographic Principle</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="image-wrapper">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3187749855215033546" alt="Conceptual art representing the universe as a holographic projection from a boundary">
+                </div>
+                <div>
+                    <h3>Information at the Boundary</h3>
+                    <p>Emerging from black hole thermodynamics and the early Big Bang, this principle suggests that the total "information" of the 3D universe can be represented on a 2D boundary.</p>
+                    <ul class="bullet-list" style="margin-top: 20px;">
+                        <li><i class="fa-solid fa-code-branch"></i> <strong>Entanglement Entropy:</strong> Modern cosmology explores if space itself is "woven" together by quantum entanglement.</li>
+                        <li><i class="fa-solid fa-infinity"></i> <strong>Bit Density:</strong> The maximum information content depends on the surface area, not the volume.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">Thoughtful Discussion</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <p class="mono" style="margin-bottom: 10px;">Q1: PHILOSOPHY</p>
+                    <h3>The Origin Point</h3>
+                    <p>If we extrapolate back to a singularity ($T=0$), physics as we know it breaks down. Does science require a "new physics" for the very first second, or is it a question for philosophy?</p>
+                </div>
+                <div class="tile">
+                    <p class="mono" style="margin-bottom: 10px;">Q2: FATE</p>
+                    <h3>Dominance of the Void</h3>
+                    <p>As expansion accelerates, galaxies will eventually move beyond our horizon. Will a distant future civilization be able to prove the Big Bang even happened if the CMB is too stretched to see?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">Physics Sprinkle: Calculating the Age</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p>Given the Hubble Constant $H_0 \approx 70 \text{ km/s/Mpc}$, estimate the age of a universe without dark energy dominance.</p>
+                    <div class="formula-box">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                            <mi>T</mi><mo>=</mo><mfrac><mn>1</mn><msub><mi>H</mi><mn>0</mn></msub></mfrac>
+                        </math>
+                    </div>
+                </div>
+                <div class="tile">
+                    <h3>Step-by-Step Logic</h3>
+                    <ul class="bullet-list" style="font-size: 15px;">
+                        <li><i class="fa-solid fa-bolt"></i> <strong>Convert Units:</strong> Change Mpc to km to cancel the length unit.</li>
+                        <li><i class="fa-solid fa-bolt"></i> <strong>Reciprocate:</strong> The result is in seconds. Convert to billions of years.</li>
+                        <li><i class="fa-solid fa-bolt"></i> <strong>Result:</strong> Approx 14 billion years. (Remarkably close to the calibrated 13.8B!)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container" id="slide12">
+        <div class="content-area" style="text-align: center;">
+            <p class="mono" style="margin-bottom: 15px; letter-spacing: 4px; color: #8e9fb1;">UP NEXT: WEEK 06</p>
+            <h2 style="font-size: 56px;">What the heck is going on?</h2>
+            <div style="width: 100px; height: 3px; background: #d4af37; margin: 30px auto;"></div>
+            <p style="font-size: 22px; max-width: 700px; margin: 0 auto;">
+                A dive into modern breakthroughs, gravitational waves, and the observational techniques that are rewriting the textbook.
+            </p>
+            <div class="image-wrapper" style="margin-top: 40px; height: 250px; border: none;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/9214618036694833460" alt="JWST deep field image with gravitational lensing and many galaxies">
+            </div>
+            <p class="mono" style="margin-top: 20px;">READINGS: CH 6 & 27 (+ ASSIGNED PAPERS)</p>
+        </div>
+    </div>
+
+</body>
+</html>
