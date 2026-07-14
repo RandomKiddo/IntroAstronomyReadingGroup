@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6: What the Heck is Going On?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP: DEEP SPACE SIGNAL THEME */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0A0B10;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #12131C; /* Dark Graphite */
+  border: 1px solid rgba(0, 245, 212, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 1.1 SIGNAL TELEMETRY GRAPHICS */
+
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 100% 100%, rgba(123, 44, 191, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 0% 0%, rgba(0, 245, 212, 0.05) 0%, transparent 40%);
+}
+
+.slide-container::after {
+  content: '// TELEMETRY_ACTIVE // L2_ORBITAL_SECTOR';
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #7B2CBF;
+  font-weight: 600;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #FFFFFF;
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container th,
+.slide-container td {
+  color: #B3B9C9;
+  font-family: 'Inter', sans-serif;
+}
+
+.slide-container h1 {
+  font-size: 72px;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.slide-container .slide-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  color: #00F5D4; /* Cosmic Teal */
+  font-family: 'Playfair Display', serif;
+}
+
+.slide-container h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #E2E8F0;
+}
+
+.slide-container p,
+.slide-container li {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.mono-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 13px;
+  color: #00F5D4;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.two-column {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  width: 100%;
+}
+
+.image-wrapper {
+  border-radius: 12px;
+  height: 380px;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.image-wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100%;
+}
+
+.tile {
+  background-color: rgba(25, 27, 41, 0.7);
+  border: 1px solid rgba(123, 44, 191, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  height: 100%;
+}
+
+.tile:hover {
+  border-color: rgba(0, 245, 212, 0.4);
+}
+
+.tile .icon {
+  color: #00F5D4;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-list li {
+  margin-bottom: 15px;
+  padding-left: 35px;
+  position: relative;
+}
+
+.bullet-list li i {
+  color: #00F5D4;
+  left: 0;
+  position: absolute;
+  top: 5px;
+}
+
+/* Highlight box */
+.highlight-box {
+  background: rgba(123, 44, 191, 0.1);
+  border-left: 4px solid #7B2CBF;
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 15px;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="content-area" style="text-align: left; width: 100%;">
+        <div class="mono-tag">Voyager Series // Week 06</div>
+        <h1>What the heck is going on?</h1>
+        <div style="width: 80px; height: 5px; background: linear-gradient(90deg, #00F5D4, #7B2CBF); margin: 35px 0;"></div>
+        <p class="subtitle" style="font-size: 22px; max-width: 850px; line-height: 1.6;">
+            A deep-dive exploration of modern observational breakthroughs, extreme cosmic engines, and why our standard astrophysical models are currently in total chaos.
+        </p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">Astronomy in the News</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="mono-tag" style="color: #7B2CBF;">Telemetry // July 2026</div>
+                <h3>JWST Shatters the "First Stars" Model</h3>
+                <p>Recent deep-field spectra analyzed in mid-2026 show fully-formed, chemically enriched spiral galaxies existing just 350 million years after the Big Bang.</p>
+                <div class="highlight-box">
+                    <p style="font-size: 16px; margin: 0;"><strong>The Crisis:</strong> According to standard cosmological models, there simply wasn't enough time for matter to coalesce and synthesize heavy elements this early. The universe is "growing up" too fast.</p>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1202517036487190013" alt="James Webb Space Telescope high redshift galaxy deep field image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Chapter 6: Escaping the Blanket</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Why Do We Put Telescopes in Space?</h3>
+                <p>Earth's atmosphere is a protective shield, but to astronomers, it is a turbulent, opaque blanket.</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><i class="fa-solid fa-cloud-sun-rain"></i> <strong>Atmospheric Absorption:</strong> Gamma-rays, X-rays, and most Ultraviolet/Infrared light are completely blocked by our atmosphere.</li>
+                    <li><i class="fa-solid fa-wind"></i> <strong>Scintillation & Seeing:</strong> Turbulent air pockets bend light paths rapidly, causing stars to twinkle and blurring ground-based images.</li>
+                </ul>
+            </div>
+            <div class="tile-grid">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-eye-slash"></i></div>
+                    <h4>Hubble (UV/Visible)</h4>
+                    <p style="font-size: 14px;">Launched above the atmospheric blur to achieve diffraction-limited resolution.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <h4>JWST (Infrared)</h4>
+                    <p style="font-size: 14px;">Optimized for heat signatures, which are totally absorbed by atmospheric water vapor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Orbits of Precision: Lagrange Points</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper" style="background: #000; padding: 10px;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1384077464010531551" alt="Lagrange points orbital mechanics diagram L1 L2 L3 L4 L5" style="object-fit: contain;">
+            </div>
+            <div>
+                <h3>The L2 Parking Spot</h3>
+                <p>JWST does not orbit the Earth. Instead, it "parks" at the second Lagrangian point (<strong>L2</strong>), 1.5 million kilometers away.</p>
+                <ul class="bullet-list" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-shield-halved"></i> <strong>Thermal Stability:</strong> L2 allows the telescope to keep Earth, the Moon, and the Sun constantly behind its giant sunshield.</li>
+                    <li><i class="fa-solid fa-balance-scale"></i> <strong>Gravitational Equilibrium:</strong> Centrifugal and gravitational forces match here, requiring very little fuel to maintain orbit.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Ground-Based Counterstrike</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Adaptive Optics & Lasers</h3>
+                <p>We can't launch everything into space—it is too expensive. Adaptive Optics (AO) allows ground telescopes to fight back.</p>
+                <ul class="bullet-list" style="margin-top: 20px;">
+                    <li><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Artificial Guide Stars:</strong> Lasers excite sodium atoms in the upper atmosphere, creating an artificial "star."</li>
+                    <li><i class="fa-solid fa-dharmachakra"></i> <strong>Deformable Mirrors:</strong> Computers analyze how the atmosphere distorts this laser star, reshaping the telescope’s mirror thousands of times per second to cancel out the blur.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/4590390190539150499" alt="Very Large Telescope firing laser guide stars adaptive optics">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Chapter 27: Active Galactic Nuclei</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/14954490151125950153" alt="Active galactic nucleus AGN quasar showing accretion disk and relativistic jets illustration">
+            </div>
+            <div>
+                <h3>What Powers a Quasar?</h3>
+                <p>Quasars (quasi-stellar radio sources) are the most luminous objects in the cosmos, shining brighter than trillions of stars combined.</p>
+                <ul class="bullet-list" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-circle-notch"></i> <strong>The Accretion Engine:</strong> Supermassive Black Holes (SMBHs) at galaxy cores pulling in gas, dust, and stars.</li>
+                    <li><i class="fa-solid fa-bolt"></i> <strong>Gravitational Dynamo:</strong> Before falling in, matter friction heats the accretion disk to millions of degrees, blasting out light and relativistic jets.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Cosmic Magnifying Glasses</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Gravitational Lensing</h3>
+                <p>When searching for the absolute first galaxies, even JWST needs help. Space itself provides the magnifying glass.</p>
+                <ul class="bullet-list" style="margin-top: 15px;">
+                    <li><i class="fa-solid fa-magnifying-glass"></i> <strong>Einstein's Prediction:</strong> Massive galaxy clusters bend the space around them, warping and amplifying light from background galaxies behind them.</li>
+                    <li><i class="fa-solid fa-images"></i> <strong>Einstein Rings:</strong> This lensing produces warped, duplicate, and highly magnified images of distant objects that would otherwise be invisible.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper" style="background: #000;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/15949514660424683050" alt="Gravitational lensing Einstein ring galaxy cluster Hubble image" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Why Astrophysics is in Mayhem</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h3>The "Impossible Early Galaxy" Problem</h3>
+                <p style="font-size: 15px;">JWST is finding massive, heavy-element-rich galaxies too early. Do we need to rewrite our understanding of how fast stars can form, or is the Big Bang timeline slightly off?</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-clock"></i></div>
+                <h3>The Hubble Tension Deepens</h3>
+                <p style="font-size: 15px;">Local measurements of the universe's expansion (via supernovae) still strongly disagree with early-universe measurements (via CMB). Our physics models are missing something major.</p>
+            </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 25px; width: 100%; text-align: center;">
+            <p style="font-size: 16px; margin: 0; color: #00F5D4;"><strong>The Exciting Reality:</strong> We are currently in a golden era of astronomy. The textbook is being rewritten in real-time.</p>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Thought-Provoking Discussion</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <div class="mono-tag">Prompt 01</div>
+                <h3>If Models Break, What Next?</h3>
+                <p style="font-size: 16px;">When high-precision observations directly contradict decades of established physical theory (like the unexpected maturity of early galaxies), how should scientists systematically decide whether to tweak the existing model or throw it out entirely?</p>
+            </div>
+            <div class="tile">
+                <div class="mono-tag">Prompt 02</div>
+                <h3>The Cosmic Dark Age</h3>
+                <p style="font-size: 16px;">If we eventually find that early black holes formed before stars did (contrary to standard accretion models), what does that imply about the nature of dark matter in the early universe?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">The Human side of Astrophysics</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>How Science Actually Happens</h3>
+                <p>Behind the stunning images of the Cosmos is a highly competitive, human system that astronomers must navigate:</p>
+                <ul class="bullet-list" style="margin-top: 15px; font-size: 15px;">
+                    <li><i class="fa-solid fa-file-signature"></i> <strong>Proposal Wars:</strong> To get time on JWST, astronomers write detailed proposals. Only ~10-15% of proposals are accepted.</li>
+                    <li><i class="fa-solid fa-money-bill-wave"></i> <strong>Funding & Politics:</strong> Giant missions like the Vera C. Rubin Observatory require billions of dollars in government grants. Science requires marketing.</li>
+                    <li><i class="fa-solid fa-compass"></i> <strong>Navigating the Unknown:</strong> How do you pitch an experiment when you don't even know what you'll find?</li>
+                </ul>
+            </div>
+            <div class="tile" style="border-top: 4px solid #00F5D4;">
+                <p class="mono-tag" style="margin: 0;">Faculty Insight</p>
+                <p style="font-size: 15px; font-style: italic; margin-top: 10px;">"Science isn't just about formulas; it's about convincing others that your questions are worth answering. The next generation of scientists must be exceptional communicators, not just programmers."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11" style="background-color: #0A0B10; border-color: #7B2CBF;">
+    <div class="content-area" style="text-align: center; color: white;">
+        <div class="mono-tag" style="color: #00F5D4;">TERMINAL SEQUENCE</div>
+        <h2 style="font-size: 58px; font-family: 'Playfair Display', serif; font-style: italic; color: #FFFFFF; margin-bottom: 20px;">The Journey Ahead</h2>
+        <div style="width: 150px; height: 3px; background: linear-gradient(90deg, #7B2CBF, #00F5D4); margin: 30px auto;"></div>
+        <p style="font-size: 20px; opacity: 0.8; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+            We have journeyed from local planetary systems to the cosmic horizon, observing how modern instruments are pushing the boundaries of physical reality.
+        </p>
+        <p class="mono-tag" style="margin-top: 40px; color: #7B2CBF;">Thank you! Additional special meetings may come soon!</p>
+    </div>
+</div>
+
+</body>
+</html>
+
