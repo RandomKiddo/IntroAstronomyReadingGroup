@@ -69,6 +69,9 @@
         .image-wrapper { border: 1px solid #d4af37; border-radius: 4px; overflow: hidden; height: 400px; width: 100%; background: #050b1a; }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
+        .image-wrapper-contain { border: 1px solid #d4af37; border-radius: 4px; overflow: hidden; height: 400px; width: 100%; background: #050b1a; }
+        .image-wrapper-contain img { width: 100%; height: 100%; object-fit: contain; opacity: 0.9; }
+
         .tiled-content { display: flex; gap: 20px; width: 100%; }
         .tile { 
             flex: 1; padding: 30px; border: 1px solid rgba(212, 175, 55, 0.2); 
@@ -97,6 +100,23 @@
         .section-title-layout { text-align: center;}
         .section-title-layout h2 { font-size: 64px; margin-bottom: 20px; }
         .section-title-layout hr { border: none; height: 3px; background: #d4af37; width: 100px; margin: 0 auto; }
+
+        @media print {
+            body {
+                /* Forces browsers to render background colors and images */
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            * {
+                box-shadow: none !important;
+                text-shadow: none !important;
+                filter: none !important;
+            }
+            .slide-container::before {
+                display: none !important;
+                background: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -227,8 +247,8 @@
         <div class="content-area">
             <div class="two-column">
                 <div style="text-align: center;">
-                    <div class="image-wrapper" style="border-radius: 50%; width: 450px; height: 450px; margin: 0 auto;">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/3790076889011714947" alt="Planck satellite map of the Cosmic Microwave Background radiation temperature fluctuations">
+                    <div class="image-wrapper-contain" style="width: 450px; height: 450px; margin: 0 auto;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Cosmic_Microwave_Background_%28CMB%29.jpeg" alt="Planck satellite map of the Cosmic Microwave Background radiation temperature fluctuations">
                     </div>
                 </div>
                 <div>
@@ -236,7 +256,7 @@
                     <p>Detected at <strong>2.73 K</strong>, the CMB is the fossil radiation from the moment the universe became transparent (Recombination) roughly 380,000 years after the Big Bang.</p>
                     <ul class="bullet-list" style="margin-top: 25px;">
                         <li><i class="fa-solid fa-temperature-low"></i> <strong>Isotropy:</strong> The radiation is nearly identical in every direction.</li>
-                        <li><i class="fa-solid fa-wave-square"></i> <strong>Anisotropy:</strong> Tiny fluctuations ($\mu K$) are the gravitational seeds of every galaxy we see today.</li>
+                        <li><i class="fa-solid fa-wave-square"></i> <strong>Anisotropy:</strong> Tiny fluctuations (\(\mu K\)) are the gravitational seeds of every galaxy we see today.</li>
                     </ul>
                 </div>
             </div>
@@ -265,16 +285,16 @@
         <div class="content-area">
             <div class="two-column">
                 <div>
-                    <p class="mono" style="color: #d4af37;">TIME: 10⁻³⁶ SECONDS</p>
+                    <p class="mono" style="color: #d4af37;">TIME: \(10^{-36}\) SECONDS</p>
                     <h3>Exponential Expansion</h3>
-                    <p>In a fraction of a second, the universe expanded by a factor of at least $10^{26}$, growing from smaller than an atom to roughly the size of a grapefruit.</p>
+                    <p>In a fraction of a second, the universe expanded by a factor of at least \(10^{26}\), growing from smaller than an atom to roughly the size of a grapefruit.</p>
                     <ul class="bullet-list" style="margin-top: 20px;">
                         <li><i class="fa-solid fa-arrows-to-circle"></i> <strong>Horizon Problem:</strong> Explains why widely separated regions have the same temperature.</li>
                         <li><i class="fa-solid fa-vector-square"></i> <strong>Flatness Problem:</strong> Inflation stretched the curvature of space until it became effectively flat.</li>
                     </ul>
                 </div>
                 <div class="image-wrapper">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/5744839295449361750" alt="Scientific diagram showing the timeline of cosmic inflation from singularity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/CMB_Timeline300_no_WMAP.jpg" alt="Scientific diagram showing the timeline of cosmic inflation from singularity">
                 </div>
             </div>
         </div>
@@ -286,10 +306,11 @@
             <div class="tiled-content">
                 <div class="tile">
                     <div class="image-wrapper" style="height: 200px; margin-bottom: 20px;">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/15753787926975910067" alt="Abstract visualization of quantum entanglement in a cosmic context">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.X_lsxS3Ce19Zo4peea16mAHaEK%3Fpid%3DApi&f=1&ipt=5a66720079f6aea7d6f1eee3426ceabc26e7eb9cf0202f257ad3275517e79cd5&ipo=images" alt="Abstract visualization of quantum entanglement in a cosmic context">
                     </div>
                     <h3>Early Entanglement</h3>
                     <p>Before inflation, the entire observable universe was small enough to be quantum-mechanically linked. Particles were <strong>entangled</strong>, meaning their states were instantaneously correlated regardless of distance.</p>
+                    <p><i>Image Credit: Nature Photonics, Zia et al.</i></p>
                 </div>
                 <div class="tile">
                     <h3>Quantum to Classical</h3>
@@ -315,10 +336,11 @@
                     <h3>A Cosmic Asymmetry</h3>
                     <p>The Big Bang should have produced equal amounts of matter and antimatter, which would have annihilated into pure light. However, a slight preference for matter—<strong>Baryogenesis</strong>—occurred.</p>
                     <p style="margin-top: 15px;">For every billion particles of antimatter, there were a billion and one particles of matter. We are the leftovers of that single extra particle.</p>
+                    <p><i>Image Credit: SciTechDaily.</i></p>
                 </div>
             </div>
             <div class="image-wrapper" style="margin-top: 30px; height: 180px;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/14114626099561878532" alt="Conceptual art of matter and antimatter particles colliding with light burst">
+                <img src="https://scitechdaily.com/images/Particle-Collision-Physics-Art.jpg" alt="Conceptual art of matter and antimatter particles colliding with light burst">
             </div>
         </div>
     </div>
@@ -328,7 +350,7 @@
         <div class="content-area">
             <div class="two-column">
                 <div class="image-wrapper">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3187749855215033546" alt="Conceptual art representing the universe as a holographic projection from a boundary">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1200%2F0*yA0otg0cgTmILVDh&f=1&nofb=1&ipt=8a31fe9c1c695dddf057a62c992b86436815a36050d08cad9518e63f0672af24" alt="Conceptual art representing the universe as a holographic projection from a boundary">
                 </div>
                 <div>
                     <h3>Information at the Boundary</h3>
@@ -337,6 +359,7 @@
                         <li><i class="fa-solid fa-code-branch"></i> <strong>Entanglement Entropy:</strong> Modern cosmology explores if space itself is "woven" together by quantum entanglement.</li>
                         <li><i class="fa-solid fa-infinity"></i> <strong>Bit Density:</strong> The maximum information content depends on the surface area, not the volume.</li>
                     </ul>
+                    <p><i>Image Credit: Medium.com.</i></p>
                 </div>
             </div>
         </div>
@@ -394,7 +417,7 @@
                 A dive into modern breakthroughs, gravitational waves, and the observational techniques that are rewriting the textbook.
             </p>
             <div class="image-wrapper" style="margin-top: 40px; height: 250px; border: none;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/9214618036694833460" alt="JWST deep field image with gravitational lensing and many galaxies">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/James_Webb_Primary_Mirror.jpg" alt="JWST deep field image with gravitational lensing and many galaxies">
             </div>
             <p class="mono" style="margin-top: 20px;">READINGS: CH 6 & 27 (+ ASSIGNED PAPERS)</p>
         </div>
