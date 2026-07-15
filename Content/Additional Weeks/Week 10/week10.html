@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10: The Cosmic Symphony</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP: NEON PULSE THEME */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #0F0F12;
+  border-radius: 0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 1.1 WAVEFORM BACKGROUND GRAPHICS */
+
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(191, 64, 191, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+.slide-container::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, #0F0F12 80%);
+  z-index: 0;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. CONSISTENT TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2 {
+  color: #FFFFFF;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.slide-container h3,
+.slide-container .mono {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #00D2FF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.slide-container p,
+.slide-container li {
+  color: #B0B0B8;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.slide-container h1 {
+  font-size: 80px;
+  line-height: 0.9;
+  background: linear-gradient(to right, #00D2FF, #BF40BF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.slide-container .slide-title {
+  font-size: 44px;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 15px;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.image-wrapper {
+  border: 1px solid rgba(255,255,255,0.1);
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-wrapper img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.tile {
+  background: rgba(255,255,255,0.03);
+  border-left: 4px solid #BF40BF;
+  padding: 30px;
+  height: 100%;
+}
+
+.tile h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #FFFFFF;
+}
+
+.tile p {
+  font-size: 16px;
+}
+
+.highlight-numbers-layout .number {
+  color: #00D2FF;
+  font-size: 150px;
+  font-family: 'Syne', sans-serif;
+  line-height: 1;
+}
+
+.highlight-numbers-layout .number-label {
+  color: #BF40BF;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 24px;
+}
+
+/* Chart Styles */
+.chart-area {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
+
+.waveform-svg {
+  width: 100%;
+  height: 100%;
+  stroke: #00D2FF;
+  stroke-width: 3;
+  fill: none;
+}
+
+/* Table Style */
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th {
+  text-align: left;
+  color: #00D2FF;
+  font-family: 'IBM Plex Mono', monospace;
+  border-bottom: 2px solid #BF40BF;
+  padding: 15px;
+}
+
+.table-container td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+#formula-container {
+  background: rgba(191, 64, 191, 0.05);
+  border: 1px solid rgba(191, 64, 191, 0.2);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+math {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="content-area" style="text-align: center;">
+        <h3 style="margin-bottom: 20px;">Voyager Series // Week 10</h3>
+        <h1>The Cosmic<br>Symphony</h1>
+        <p style="margin-top: 30px; font-size: 24px;">Listening to Spacetime Ripples and Neutrino Ghosts.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h3 style="color: #BF40BF;">Real-Time Telemetry</h3>
+    <h2 style="font-size: 64px;">In The News</h2>
+    <div style="width: 100px; height: 4px; background: #00D2FF; margin-top: 30px;"></div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">July 15, 2026: Coincident Burst</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Neutrino-Photon Trigger</h3>
+                <p>Today, the <strong>IceCube Neutrino Observatory</strong> detected a 150 TeV neutrino originating from the same coordinates as a massive Gamma-Ray Burst (GRB) recorded by the Fermi Space Telescope.</p>
+                <div style="background: rgba(0, 210, 255, 0.1); padding: 20px; border-radius: 4px; margin-top: 20px;">
+                    <p style="font-size: 16px; color: #FFF; margin: 0;"><strong>Impact:</strong> This marks only the 4th ever confirmed association between a specific neutrino and a luminous blazar, helping us map the "invisible" engine of an AGN.</p>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/1392652431718873013" alt="IceCube neutrino observatory detectors deep in Antarctic ice blue light">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">The Three Messengers</h2>
+    <div class="content-area">
+        <div class="tile-grid">
+            <div class="tile">
+                <i class="fa-solid fa-bolt" style="font-size: 30px; color: #00D2FF; margin-bottom: 15px;"></i>
+                <h3>Particles</h3>
+                <p>Cosmic Rays and Neutrinos. Physical matter traveling at relativistic speeds, offering a direct sample of distant environments.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-wave-square" style="font-size: 30px; color: #BF40BF; margin-bottom: 15px;"></i>
+                <h3>Spacetime Waves</h3>
+                <p>Gravitational Waves. Ripples in the fabric of spacetime itself caused by the motion of massive objects like merging black holes.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-sun" style="font-size: 30px; color: #00D2FF; margin-bottom: 15px;"></i>
+                <h3>Photons</h3>
+                <p>The traditional messenger. Light across all wavelengths (Radio to Gamma) produced by electron interactions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Anatomy of a Chirp</h2>
+    <div class="content-area">
+        <p style="text-align: left; width: 100%;">Gravitational Wave signal (Strain vs Time) of a Binary Black Hole merger.</p>
+        <div class="chart-area">
+            <svg class="waveform-svg" viewBox="0 0 1000 200">
+                <path d="M0,100 Q50,80 100,100 T200,100 T300,100 T400,100 T480,100 T550,110 T610,90 T660,120 T700,80 T730,130 T755,70 T775,140 T790,60 T800,150 L805,100 L1000,100" />
+            </svg>
+        </div>
+        <div class="two-column" style="margin-top: 30px;">
+            <div class="tile" style="border-left-color: #00D2FF;">
+                <p style="font-size: 14px;"><strong>Inspiral Phase:</strong> Frequency increases as the two black holes spiral inward.</p>
+            </div>
+            <div class="tile">
+                <p style="font-size: 14px;"><strong>Ringdown:</strong> The single, new black hole settles into a stable state.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Neutrino Ghosts</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile" style="border-left-color: #00D2FF;">
+                <h3>The IceCube Array</h3>
+                <p>Located at the South Pole, IceCube uses a cubic kilometer of clear Antarctic ice to detect "Cherenkov radiation"—the blue light produced when a neutrino hits an atom.</p>
+            </div>
+            <div class="tile">
+                <h3>The Ghost Particle</h3>
+                <p>Neutrinos have almost no mass and no charge. They can pass through an entire light-year of lead without hitting anything, making them the ultimate "unfiltered" cosmic messenger.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">The "Oh-My-God" Particle</h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">10²⁰</div>
+                <div class="number-label">Electron Volts (eV)</div>
+            </div>
+            <div class="technical-box">
+                <h3>Extreme Cosmic Rays</h3>
+                <p>The highest energy cosmic ray ever detected had the kinetic energy of a fast-pitch baseball ($~3 \times 10^{20}$ eV) compressed into a single subatomic proton.</p>
+                <div style="background: rgba(191, 64, 191, 0.1); padding: 20px; margin-top: 20px;">
+                    <p style="font-size: 15px;">It was traveling at 99.99999999999999999999951% the speed of light.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Comparison of Messengers</h2>
+    <div class="content-area">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Messenger</th>
+                        <th>Speed</th>
+                        <th>Penetrating Power</th>
+                        <th>Typical Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Photons (Light)</td>
+                        <td>$c$</td>
+                        <td>Medium (Blocked by dust)</td>
+                        <td>Stars, Gas clouds</td>
+                    </tr>
+                    <tr>
+                        <td>Gravitational Waves</td>
+                        <td>$c$</td>
+                        <td>Infinite (Nothing stops them)</td>
+                        <td>Merging Black Holes</td>
+                    </tr>
+                    <tr>
+                        <td>Neutrinos</td>
+                        <td>$\approx c$</td>
+                        <td>Extreme (Pass through planets)</td>
+                        <td>Supernovae, Blazars</td>
+                    </tr>
+                    <tr>
+                        <td>Cosmic Rays</td>
+                        <td>$< c$</td>
+                        <td>Low (Deflected by B-fields)</td>
+                        <td>SNe, Shocks</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Thought-Provoking Questions</h2>
+    <div class="content-area">
+        <ul style="list-style: none; padding: 0; width: 100%;">
+            <li style="margin-bottom: 40px; padding-left: 60px; position: relative;">
+                <i class="fa-solid fa-circle-question" style="position: absolute; left: 0; top: 5px; font-size: 36px; color: #BF40BF;"></i>
+                <strong>The Cosmic Horizon:</strong> Gravitational waves allow us to "see" past the Cosmic Microwave Background to the very first moments of the Big Bang. If we detect a GW background from $t = 10^{-32}$ seconds, how does that fundamentally change our definition of an "observable" universe?
+            </li>
+            <li style="padding-left: 60px; position: relative;">
+                <i class="fa-solid fa-circle-question" style="position: absolute; left: 0; top: 5px; font-size: 36px; color: #00D2FF;"></i>
+                <strong>Information Density:</strong> We currently receive trillions of photons for every one gravitational wave detection. If GWs carry the "macro" information of a merger and neutrinos carry the "micro" nuclear info, which messenger is more "valuable" for a complete theory of everything?
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Quantitative Problem 1</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Signal Synchronicity</h3>
+                <p>A Kilonova is detected in a galaxy 130 million light-years away ($~10^{24}$ meters). If the Gravitational Wave and the first Gamma-Ray photon arrived within 2 seconds of each other...</p>
+                <div id="formula-container" style="margin-top: 20px;">
+                    <p style="font-size: 16px;">Calculate the maximum possible difference in their speeds ($\Delta v$) as a fraction of $c$.</p>
+                </div>
+            </div>
+            <div class="tile" style="border-left-color: #00D2FF;">
+                <h3>Solution:</h3>
+                <p style="font-size: 16px;">Time travel $\approx 4 \times 10^{15}$ seconds.</p>
+                <p style="font-size: 16px;">Delay $\approx 2$ seconds.</p>
+                <p style="font-size: 18px; color: #FFF; margin-top: 10px;">Fractional diff $\approx 10^{-15}$</p>
+                <p style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Conclusion: Photons and Gravitons travel at the exact same speed to 15 decimal places.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Qualitative Problem 2</h2>
+    <div class="content-area">
+        <div class="tile" style="width: 100%;">
+            <h3>Detection Geometries</h3>
+            <p>Why do we build Neutrino detectors (IceCube) in deep ice or water, while we build Gravitational Wave detectors (LIGO) as giant "L-shaped" vacuum tubes on the surface?</p>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">
+                <p style="font-size: 16px; color: #00D2FF;"><strong>Key Distinction:</strong> Neutrinos require <strong>Mass</strong> to interact (probability of hitting a nucleus). GWs require <strong>Length</strong> to measure the stretching of spacetime (interferometry).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12" style="background-color: #050505; border: 2px solid #BF40BF;">
+    <h3 style="color: #00D2FF; letter-spacing: 10px;">Reading Group Final</h3>
+    <h2 style="font-size: 80px; text-align: center;">The Future is<br>Multi-Messenger</h2>
+    <div style="width: 200px; height: 5px; background: linear-gradient(90deg, #00D2FF, #BF40BF); margin-top: 40px;"></div>
+    <p style="margin-top: 30px; color: #FFF;">Thank you for a brilliant summer.</p>
+</div>
+
+</body>
+</html>
+
