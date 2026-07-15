@@ -9,6 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
     <style>
 /* 1. MISSION CONTROL THEME SETUP */
 
@@ -148,6 +159,20 @@ body {
   width: 100%;
 }
 
+.image-wrapper-2 {
+  background-color: #000;
+  border: 1px solid #444;
+  height: 380px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-wrapper-2 img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
 .tile {
   background-color: #1a1a1a;
   border: 1px solid #333;
@@ -202,6 +227,23 @@ math {
   color: #00ff41;
 }
 
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -217,23 +259,25 @@ math {
 </div>
 
 <div class="slide-container" id="slide2">
-    <h2 class="slide-title">In The News: Euclid Discovery</h2>
+    <div class="header-accent"></div>
+    <h2 class="slide-title">In The News: Geosynchronous Swarm</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
-                <p style="font-family: 'JetBrains Mono'; font-size: 14px; color: #ff4500;">REPORT: JULY 06, 2026</p>
-                <h3>Census of 31 Ancient Quasars</h3>
-                <p>ESA's Euclid telescope has doubled the known population of ancient quasars from the universe's first 5% of cosmic time.</p>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 14px; margin-bottom: 5px;">BULLETIN: JULY 14, 2026</p>
+                <h3>Undetected Debris Found at 36,000 KM</h3>
+                <p>Astronomers from the University of Warwick have discovered a "hidden swarm" of faint fragments in geosynchronous orbit.</p>
                 <div class="bullet-list" style="margin-top: 20px;">
                     <ul>
-                        <li><i class="fa-solid fa-circle-nodes"></i> <strong>Scale:</strong> Shines with light of $10^{12}$ Suns.</li>
-                        <li><i class="fa-solid fa-exclamation-triangle"></i> <strong>The Mystery:</strong> Black holes weighing $10^9$ solar masses existed just 670 million years after the Big Bang.</li>
+                        <li><i class="fa-solid fa-microscope"></i> <strong>Scale:</strong> Tiny pieces measuring just 5 cm (2 inches).</li>
+                        <li><i class="fa-solid fa-satellite"></i> <strong>Risk:</strong> $1.3 \times 10^8$ debris objects currently orbiting Earth.</li>
+                        <li><i class="fa-solid fa-bolt"></i> <strong>Velocity:</strong> Relative speeds reach several km/s—equivalent to the energy of a hand grenade.</li>
                     </ul>
                 </div>
-                <p style="font-size: 16px; font-style: italic; margin-top: 20px; opacity: 0.7;">How do you grow that much mass that fast? We need OoM for a sanity check.</p>
+                <p style="font-size: 9pt;"><i>Image Credit: NASA.</i></p>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/17680890062820184002" alt="Euclid Space Telescope Quasar Census Results July 2026">
+                <img src="https://scx1.b-cdn.net/csz/news/800a/2026/astronomers-dig-deep-t-1.jpg" alt="NASA visualization of space debris orbiting Earth">
             </div>
         </div>
     </div>
@@ -245,17 +289,17 @@ math {
         <div class="two-column">
             <div class="tile">
                 <h3>Definition</h3>
-                <p>The **Order of Magnitude** of a quantity is the nearest power of 10 to that value.</p>
+                <p>The <b>Order of Magnitude</b> of a quantity is the nearest power of 10 to that value.</p>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #00ff41;">
                         <mi>x</mi><mo>&#x2248;</mo><msup><mn>10</mn><mi>n</mi></msup>
                     </math>
                 </div>
-                <p style="font-size: 16px;">We ignore the "mantissa" (the leading digits) and focus purely on the scale ($n$).</p>
+                <p style="font-size: 16px;">We typically ignore the "mantissa" (the leading digits) and focus purely on the scale ($n$).</p>
             </div>
             <div class="tile">
                 <h3>Rounding Logic</h3>
-                <p>How do we round? We look at the midpoint on a logarithmic scale: $\sqrt{10} \approx 3.16$.</p>
+                <p>How do we round? We look at the midpoint on a logarithmic scale: $\sqrt{10} \approx 3.16 \approx 3$.</p>
                 <ul style="margin-top: 20px; font-size: 16px;">
                     <li>If <math><mi>m</mi><mo>&lt;</mo><mn>3.16</mn></math>: Round down ($10^n$)</li>
                     <li>If <math><mi>m</mi><mo>&gt;</mo><mn>3.16</mn></math>: Round up ($10^{n+1}$)</li>
@@ -293,7 +337,7 @@ math {
                 <p style="color: #ff4500; font-weight: 700; margin-top: 25px;">The Goal: Getting within 1/2 an order of magnitude of the truth.</p>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/17702318179958829455" alt="Enrico Fermi writing equations at a chalkboard">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Enrico_Fermi_at_the_blackboard.jpg" alt="Enrico Fermi writing equations at a chalkboard">
             </div>
         </div>
     </div>
@@ -315,7 +359,7 @@ math {
                     <li>Average star mass $\approx 1 M_{\odot}$</li>
                 </ol>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="color: #00ff41;">
                         <mi>N</mi><mo>=</mo><mfrac><mrow><msup><mn>10</mn><mn>12</mn></msup><mo>&#x22C5;</mo><mn>0.1</mn></mrow><mn>1</mn></mfrac><mo>=</mo><msup><mn>10</mn><mn>11</mn></msup>
                     </math>
                 </div>
@@ -329,19 +373,20 @@ math {
     <div class="content-area">
         <div class="two-column">
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/7613327535471076394" alt="Voyager 1 against a backdrop of stars">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fscience.nasa.gov%2Fwp-content%2Fuploads%2F2024%2F04%2Fpia17462.jpg%3Fw%3D4096%26format%3Djpeg&f=1&nofb=1&ipt=a9e7e4a1a0e585b1cfbfb1ec1bb2990b111e1ab8fff32cb4954c4dc4f3fa4f8f" alt="Voyager 1 against a backdrop of stars, artist rendition">
             </div>
             <div>
                 <h3>Travel Time to Proxima Centauri</h3>
                 <p>Voyager 1 Velocity: $v \approx 10^4$ m/s</p>
                 <p>Distance to Proxima Centauri: $d \approx 10^{16}$ m</p>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #00ff41">
                         <mi>t</mi><mo>=</mo><mfrac><mi>d</mi><mi>v</mi></mfrac><mo>=</mo><mfrac><msup><mn>10</mn><mn>16</mn></msup><msup><mn>10</mn><mn>4</mn></msup></mfrac><mo>=</mo><msup><mn>10</mn><mn>12</mn></msup><mtext> seconds</mtext>
                     </math>
                 </div>
                 <p style="color: #00ff41;">Result: $\approx 30,000$ years</p>
-                <p style="font-size: 16px; margin-top: 10px;">(Using $1 \text{ year} \approx 3 \times 10^7 \text{ sec}$)</p>
+                <p style="font-size: 16px; margin-top: 10px;">(Using $1 \text{ year} \approx \pi \times 10^7 \text{ sec}$)</p>
+                <p><i>Image Credit: NASA/JPL-Caltech.</i></p>
             </div>
         </div>
     </div>
@@ -359,7 +404,28 @@ math {
             <div class="tile">
                 <h3>The Solution Path:</h3>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="color: #00ff41">
+                        <mtext>HIDDEN!</mtext>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8sol">
+    <h2 class="slide-title">Physics Sprinkle: Atomic Scales</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="tile">
+                <h3>Problem: Atoms in a Star</h3>
+                <p>The Sun has a mass of $M \approx 2 \times 10^{30}$ kg. It is mostly Hydrogen ($m_p \approx 2 \times 10^{-27}$ kg).</p>
+                <p style="margin-top: 20px; font-weight: 700; color: #ff4500;">Estimate the number of atoms in the Sun.</p>
+            </div>
+            <div class="tile">
+                <h3>The Solution Path:</h3>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="color: #00ff41">
                         <mi>N</mi><mo>=</mo><mfrac><msup><mn>10</mn><mn>30</mn></msup><msup><mn>10</mn><mrow><mo>-</mo><mn>27</mn></mrow></msup></mfrac><mo>=</mo><msup><mn>10</mn><mn>57</mn></msup>
                     </math>
                 </div>
@@ -376,7 +442,7 @@ math {
             <h3>Does the Euclid Quasar make sense?</h3>
             <p>If a black hole grows by $10 M_{\odot}/\text{year}$, how long to reach $10^9 M_{\odot}$?</p>
             <div id="formula-container">
-                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" style="color: #00ff41">
                     <mi>t</mi><mo>=</mo><mfrac><msup><mn>10</mn><mn>9</mn></msup><msup><mn>10</mn><mn>1</mn></msup></mfrac><mo>=</mo><msup><mn>10</mn><mn>8</mn></msup><mtext> years</mtext>
                 </ol>
             </div>
@@ -409,7 +475,7 @@ math {
         <p style="font-size: 24px; color: #00ff41; letter-spacing: 2px;">MAPPING THE GALACTIC ARCHIPELAGO</p>
         <div style="width: 150px; height: 4px; background: #ff4500; margin: 40px auto;"></div>
         <p style="opacity: 0.8;">Primary Reading: Chapter 21</p>
-        <p style="font-family: 'JetBrains Mono'; font-size: 14px; margin-top: 20px;">PROJECT UPDATE: SELECT TARGET STAR SYSTEM FOR HABITABILITY ANALYSIS.</p>
+        <p style="font-family: 'JetBrains Mono'; font-size: 14px; margin-top: 20px;">OPTIONAL PROJECT: SELECT TARGET STAR SYSTEM FOR HABITABILITY ANALYSIS.</p>
     </div>
 </div>
 
