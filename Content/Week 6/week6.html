@@ -167,6 +167,21 @@ body {
   object-fit: cover;
 }
 
+.image-wrapper-2 {
+  border-radius: 12px;
+  height: 380px;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.image-wrapper-2 img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
 .tile-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -219,7 +234,29 @@ body {
   margin-top: 15px;
 }
 
-    </style>
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
+}
+
+img {
+    color: white;
+}
+
+</style>
+
 </head>
 <body>
 
@@ -247,14 +284,14 @@ body {
                 </div>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/1202517036487190013" alt="James Webb Space Telescope high redshift galaxy deep field image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/JADES-GS-z13-0.png" alt="JWST JADES GS z13 0 Image ">
             </div>
         </div>
     </div>
 </div>
 
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">Chapter 6: Escaping the Blanket</h2>
+    <h2 class="slide-title">Escaping the Blanket</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
@@ -286,7 +323,7 @@ body {
     <div class="content-area">
         <div class="two-column">
             <div class="image-wrapper" style="background: #000; padding: 10px;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/1384077464010531551" alt="Lagrange points orbital mechanics diagram L1 L2 L3 L4 L5" style="object-fit: contain;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Lagrange_Points_ESA25064460.png" alt="Lagrange points orbital mechanics diagram L1 L2 L3 L4 L5" style="object-fit: contain;">
             </div>
             <div>
                 <h3>The L2 Parking Spot</h3>
@@ -313,18 +350,18 @@ body {
                 </ul>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/4590390190539150499" alt="Very Large Telescope firing laser guide stars adaptive optics">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Laser_Towards_Milky_Ways_Centre.jpg" alt="Very Large Telescope firing laser guide stars adaptive optics">
             </div>
         </div>
     </div>
 </div>
 
 <div class="slide-container" id="slide6">
-    <h2 class="slide-title">Chapter 27: Active Galactic Nuclei</h2>
+    <h2 class="slide-title">Active Galactic Nuclei</h2>
     <div class="content-area">
         <div class="two-column">
-            <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/14954490151125950153" alt="Active galactic nucleus AGN quasar showing accretion disk and relativistic jets illustration">
+            <div class="image-wrapper-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Active_Galactic_Nucleus_Model.png" alt="Active galactic nucleus AGN quasar showing accretion disk and relativistic jets illustration">
             </div>
             <div>
                 <h3>What Powers a Quasar?</h3>
@@ -351,11 +388,92 @@ body {
                 </ul>
             </div>
             <div class="image-wrapper" style="background: #000;">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/15949514660424683050" alt="Gravitational lensing Einstein ring galaxy cluster Hubble image" style="object-fit: contain;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Gravitational_lensing_by_a_black_hole.jpg" alt="Gravitational lensing thoruhg black hole instructional diagram" style="object-fit: contain;">
             </div>
         </div>
     </div>
 </div>
+
+<div class="slide-container" id="multiwavelength">
+    <h2 class="slide-title">Technique: Multiwavelength Synthesis</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="mono-tag">Broadband Observation</div>
+                <h3>Seeing the Invisible</h3>
+                <p>The universe "speaks" in more than just visible light. Modern astronomy requires combining data from the entire EM spectrum to understand complex systems.</p>
+                <ul style="margin-top: 20px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-radio" style="color:#00F5D4;"></i> <strong>Radio:</strong> Probes cold gas and magnetic fields.</li>
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-bolt" style="color:#00F5D4;"></i> <strong>X-Ray:</strong> Detects hot, million-degree gas near black holes.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/The_Andromeda_Galaxy_%28M31%29_in_different_types_of_light.jpg" alt="Composite image of the Andromeda galaxy (M31) showing different wavelength images">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="detectors">
+    <h2 class="slide-title">Instrumentation: The Silicon Revolution</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fscitechdaily.com%2Fimages%2FLSST-Camera-Complete-Focal-Plane.jpg&f=1&nofb=1&ipt=4626a1edc3a1723ba9a5ad22bc903bf2ced1f75b0d4bdc3759ae1a04e527ad40" alt="Close up high resolution image of the LSST CCD sensor array">
+            </div>
+            <div>
+                <div class="mono-tag">Photon Counting</div>
+                <h3>From Film to CCDs</h3>
+                <p>Modern astronomy is purely digital. We use **Charge-Coupled Devices (CCDs)** and CMOS sensors that are far more sensitive than the human eye or old film.</p>
+                <div style="background: rgba(123, 44, 191, 0.1); border-left: 4px solid #7B2CBF; padding: 20px; margin-top: 20px;">
+                    <p style="font-size: 16px; margin: 0;"><strong>Quantum Efficiency:</strong> A modern CCD can capture over 90% of the photons that hit it. Photographic film captured less than 1%.</p>
+                </div>
+                <p><i>Image Credit: Jacqueline Orrell/SLAC National Accelerator Laboratory.</i></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="spectroscopy">
+    <h2 class="slide-title">Technique: High-Resolution Spectroscopy</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <div class="mono-tag">The Fingerprint of Physics</div>
+                <h3>The Grating & The Prism</h3>
+                <p>Most of what we know about the universe comes from breaking light into its component colors.</p>
+                <ul style="margin-top: 15px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><i class="fa-solid fa-vial" style="color:#00F5D4;"></i> <strong>Chemical Composition:</strong> Absorption lines tell us exactly what atoms are in a star.</li>
+                    <li><i class="fa-solid fa-gauge-high" style="color:#00F5D4;"></i> <strong>Radial Velocity:</strong> The Doppler shift of these lines reveals how fast an object is moving.</li>
+                </ul>
+                <p><i>Image Credit: NASA.</i></p>
+            </div>
+            <div class="image-wrapper" style="background: #000; padding: 10px;">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstsci-opo.org%2FSTScI-01FFJCF85TXGNKZ8GSPEGAH4JB.png&f=1&nofb=1&ipt=f4cfece0e1dc790bc5a58bbd3a41696b5409eed2eefd7fbcbcff292779210028" alt="Different types of astronomical absorption and spectroscopy diagram" style="object-fit: contain;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="interferometry">
+    <h2 class="slide-title">Technique: Synthetic Apertures</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Very_Large_Array%2C_2012.jpg" alt="The Very Large Array VLA radio telescope dishes in New Mexico (2012)">
+            </div>
+            <div>
+                <div class="mono-tag">Virtual Telescopes</div>
+                <h3>Radio Interferometry</h3>
+                <p>To see tiny details (like a Black Hole's shadow), you need a massive mirror. **Interferometry** allows us to combine signals from many small dishes to act like one giant one.</p>
+                <div style="background: rgba(0, 245, 212, 0.05); border: 1px solid rgba(0, 245, 212, 0.2); padding: 20px; border-radius: 12px; margin-top: 20px;">
+                    <p style="font-size: 15px; margin: 0;"><strong>Event Horizon Telescope:</strong> By linking dishes across the entire globe, we created a "virtual telescope" the size of the Earth to image M87*.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="slide-container" id="slide8">
     <h2 class="slide-title">Why Astrophysics is in Mayhem</h2>
