@@ -23,7 +23,7 @@ The first six weeks are the main curriculum. The remaining are all additional sp
 4. **Week 4:** Galaxies and the Expanding Universe
 5. **Week 5:** The Big Bang & Cosmology
 6. **Week 6:** *What the heck is going on?*
-7. **Week 7:** Order of Magnitude Estimation
+7. **Week 7:** Order of Magnitude Estimation: The Power of Ten
 8. **Week 8:** Distant Worlds: Exoplanets & Astrobiology
 9. **Week 9:** Black Holes: The Edge of Reality.
 10. **Week 10:** Astroparticle & Multi-Messenger Astronomy
