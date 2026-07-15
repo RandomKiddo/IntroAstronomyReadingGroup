@@ -7,3 +7,4 @@ Content/Week[[:space:]]5/Week5_TheBigBangCosmology.pdf filter=lfs diff=lfs merge
 Content/Week[[:space:]]6/Week6_WhatTheHeckIsGoingOn.pdf filter=lfs diff=lfs merge=lfs -text
 Content/Additional[[:space:]]Weeks/Week[[:space:]]7/Week7_ThePowerOfTenOoM.pdf filter=lfs diff=lfs merge=lfs -text
 Content/Additional[[:space:]]Weeks/Week[[:space:]]8/Week8_ExoplanetsAstrobiology.pdf filter=lfs diff=lfs merge=lfs -text
+Content/Additional[[:space:]]Weeks/Week[[:space:]]9/Week9_BlackHolesGeneralRelativity.pdf filter=lfs diff=lfs merge=lfs -text
