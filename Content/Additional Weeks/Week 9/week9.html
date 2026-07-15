@@ -8,6 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
     <style>
 /* 1. THE SETUP: SINGULARITY GOLD THEME */
 
@@ -245,6 +256,27 @@ body {
   justify-content: center;
 }
 
+img {
+    color: white;
+}
+
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -269,9 +301,10 @@ body {
                     <p style="font-size: 18px; color: #D4AF37; font-weight: 600;">The Discovery:</p>
                     <p style="font-size: 16px;">By tracking a star's orbit for 20 years, researchers proved it's circling an invisible object 4.46 times the mass of the Sun.</p>
                 </div>
+                <p style="font-size: 9pt;"><i>Image Credit: ESA, NASA, et al.</i></p>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/18262003981905299582" alt="Omega Centauri star cluster with black hole location highlighted">
+                <img src="https://cdn.mos.cms.futurecdn.net/ynSz8nzB2wMGNsv5WqFNrY-1200-80.jpg.webp" alt="Omega Centauri star cluster with black hole location highlighted">
             </div>
         </div>
     </div>
@@ -316,7 +349,7 @@ body {
                 <h3>Event Horizon</h3>
                 <p>The spherical boundary where the escape velocity equals the speed of light ($c$). Nothing inside can ever communicate with the outside universe.</p>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #D4AF37">
                         <msub><mi>R</mi><mi>s</mi></msub><mo>=</mo><mfrac><mrow><mn>2</mn><mi>G</mi><mi>M</mi></mrow><msup><mi>c</mi><mn>2</mn></msup></mfrac>
                     </math>
                 </div>
@@ -344,12 +377,12 @@ body {
         <div class="two-column">
             <div style="text-align: center;">
                 <div style="border-radius: 50%; overflow: hidden; width: 400px; height: 400px; border: 2px solid #D4AF37;">
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/7792170566540137293" alt="Spacetime curvature grid warped by mass diagram" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Spacetime_lattice_analogy.svg" alt="Spacetime curvature grid warped by mass (Earth) diagram" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
             <div>
                 <h3>The Fabric of Spacetime</h3>
-                <p>Einstein proposed that mass doesn't "pull" on other mass. Instead, mass **warps** the very fabric of space and time.</p>
+                <p>Einstein proposed that mass doesn't "pull" on other mass. Instead, mass <b>warps</b> the very fabric of space and time.</p>
                 <ul class="bullet-list" style="margin-top: 25px;">
                     <li><i class="fa-solid fa-circle-nodes"></i> <strong>Equivalence Principle:</strong> Acceleration and gravity are indistinguishable.</li>
                     <li><i class="fa-solid fa-bezier-curve"></i> <strong>Geodesics:</strong> Light and matter simply follow the straightest possible paths through curved space.</li>
@@ -396,13 +429,13 @@ body {
         <div class="two-column highlight-numbers-layout">
             <div>
                 <div class="number">&#x221E;</div>
-                <div class="number-label">Gravitational Time Dilation</div>
+                <div class="number-label" style="color:#D4AF37">Gravitational Time Dilation</div>
             </div>
             <div>
                 <h3>The Infinite Redshift</h3>
                 <p>As an object approaches the event horizon, an outside observer sees its clock slow down until it appears to freeze completely.</p>
                 <div id="formula-container">
-                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #D4AF37">
                         <mi>d</mi><mi>t</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>&#x3C4;</mi></mrow><msqrt><mrow><mn>1</mn><mo>-</mo><msub><mi>R</mi><mi>s</mi></msub><mo>/</mo><mi>r</mi></mrow></msqrt></mfrac>
                     </math>
                 </div>
@@ -423,6 +456,112 @@ body {
     </div>
 </div>
 
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">The Master Blueprint: EFE</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Geometry vs. Energy</h3>
+                <p>The <b>Einstein Field Equations (EFE)</b> describe gravity as the curvature of spacetime caused by mass and energy.</p>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #D4AF37">
+                        <msub><mi>G</mi><mrow><mi>&#x3BC;</mi><mi>&#x3BD;</mi></mrow></msub><mo>+</mo><mi>&#x39B;</mi><msub><mi>g</mi><mrow><mi>&#x3BC;</mi><mi>&#x3BD;</mi></mrow></msub><mo>=</mo><mfrac><mrow><mn>8</mn><mi>&#x3C0;</mi><mi>G</mi></mrow><msup><mi>c</mi><mn>4</mn></msup></mfrac><msub><mi>T</mi><mrow><mi>&#x3BC;</mi><mi>&#x3BD;</mi></mrow></msub>
+                    </math>
+                </div>
+                <ul class="bullet-list" style="font-size: 16px;">
+                    <li><i class="fa-solid fa-bezier-curve"></i> <strong>LHS:</strong> Spacetime Geometry (Curvature).</li>
+                    <li><i class="fa-solid fa-atom"></i> <strong>RHS:</strong> Energy-Momentum Tensor (Matter).</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Gravitation_space_source.svg" alt="Another illustration of spacetime curvature">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide16">
+    <h2 class="slide-title">Singularity Theorems</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F364330534%2Ffigure%2Ffig1%2FAS%3A11431281089935486%401665763430929%2FPenrose-diagram-1965-shows-the-collapse-of-matter-into-a-black-hole-on-the-trapped.ppm&f=1&nofb=1&ipt=c58ef5b2a32eac2afe88005c3e4ba831579a52c570a3dd44e08ab19ea40c38ab" alt="Roger Penrose trapped surface singularity diagram">
+            </div>
+            <div>
+                <h3>Penrose & Hawking</h3>
+                <p>In 1965, <b>Roger Penrose</b> proved that singularities are not just mathematical artifacts, but a robust and inevitable feature of General Relativity.</p>
+                <div class="tile" style="margin-top: 20px;">
+                    <p style="font-size: 16px; margin-top: -5px;"><strong>Key Contributions:</strong></p>
+                    <ul class="bullet-list" style="font-size: 15px; margin-top: 10px;">
+                        <li><i class="fa-solid fa-medal"></i> <strong>Singularity Theorems:</strong> Proved that once an event horizon forms, a singularity must exist.</li>
+                        <li><i class="fa-solid fa-chart-area"></i> <strong>Area Theorem:</strong> The surface area of a black hole's horizon never decreases.</li>
+                    </ul>
+                    <p style="font-size: 10px;"><i>Image Credit: Johan Jarnestad/The Royal Swedish of Sciences.</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide17">
+    <h2 class="slide-title">Quantum Evaporation</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Hawking Radiation</h3>
+                <p>Hawking showed that when quantum effects are considered, black holes are not truly "black"—they emit radiation and eventually evaporate.</p>
+                <div id="formula-container">
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="math" style="color: #D4AF37;">
+                        <mi>T</mi><mo>=</mo><mfrac><mrow><mi>&#x127;</mi><msup><mi>c</mi><mn>3</mn></msup></mrow><mrow><mn>8</mn><mi>&#x3C0;</mi><mi>G</mi><mi>M</mi><msub><mi>k</mi><mi>B</mi></msub></mrow></mfrac>
+                    </math>
+                </div>
+                <p style="font-size: 16px; opacity: 0.8;">Temperature is inversely proportional to mass. Smaller black holes are hotter and evaporate faster.</p>
+            </div>
+            <div class="tile">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <i class="fa-solid fa-wand-sparkles" style="color: #D4AF37; font-size: 40px;"></i>
+                </div>
+                <p style="font-size: 16px;"><strong>The Mechanism:</strong> Virtual particle pairs form near the horizon. One falls in, while the other escapes as radiation, carrying away a tiny fraction of the black hole's mass.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide18">
+    <h2 class="slide-title">The Virtual Mirror: EHT</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Montage_of_the_Event_Horizon_Telescope_observatories_%28night%29_%28eso2208-eht-mwg%29.jpg" alt="Event Horizon Telescope array ALMA Chile night sky">
+            </div>
+            <div>
+                <h3>Very Long Baseline Interferometry</h3>
+                <p>To photograph a black hole, we needed a telescope the size of the Earth. We built a virtual one using <b>VLBI</b>.</p>
+                <ul class="bullet-list" style="margin-top: 25px;">
+                    <li><i class="fa-solid fa-earth-americas"></i> <strong>Global Array:</strong> Linking radio dishes from Antarctica to Greenland.</li>
+                    <li><i class="fa-solid fa-clock"></i> <strong>Atomic Precision:</strong> Data is time-stamped with hydrogen maser clocks and combined via supercomputers.</li>
+                    <li><i class="fa-solid fa-microscope"></i> <strong>Resolution:</strong> Equivalent to reading a newspaper in New York from a cafe in Paris.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container full-bg-image" id="slide19" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)), url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg'); background-size: cover; background-position: center;">
+    <style>
+        #slide19::before {
+            display: none !important;
+        }
+    </style>
+    <div class="content-overlay">
+        <h2 style="font-size: 56px; color: #D4AF37;">Imaging the Unseeable</h2>
+        <p style="font-size: 24px; color: #FFF; max-width: 900px;">April 10, 2019: The first direct image of the black hole in the center of galaxy M87.</p>
+        <p style="font-size: 18px; color: #E0E0E0; margin-top: 15px; opacity: 0.9;">
+            The dark "shadow" is the event horizon's silhouette, surrounded by a ring of light from gas traveling at nearly the speed of light. This observation provided the first direct confirmation of Einstein's General Relativity in the strong-field regime.
+        </p>
+    </div>
+</div>
+
 <div class="slide-container bleed-image-layout" id="slide11">
     <div class="bleed-text-side">
         <h2 class="slide-title">Discussion: The Paradox</h2>
@@ -436,7 +575,7 @@ body {
         </div>
     </div>
     <div style="height: 720px; overflow: hidden;">
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/14113133568221057736" alt="Event Horizon Telescope image of M87 black hole polarized light ring">
+        <img class="bleed-image-side" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg" alt="Event Horizon Telescope image of M87 black hole polarized light ring">
     </div>
 </div>
 
@@ -452,7 +591,30 @@ body {
                 </tr>
                 <tr>
                     <td><strong>Constants ($G, c$):</strong></td>
-                    <td>$G = 6.67 \times 10^{-11}$, $c = 3 \times 10^8$</td>
+                    <td>$G = 6.67 \times 10^{-11}$ m$^3$ kg$^{-1}$ s$^{-2}$, $c = 3 \times 10^8$ m/s</td>
+                </tr>
+                <tr>
+                    <td><strong>Equation:</strong></td>
+                    <td>$R_s = (2 \times G \times M) / c^2$</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12res">
+    <h2 class="slide-title">Problem 1: Cosmic Compression</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <p style="margin-bottom: 20px;">Calculate the Schwarzschild Radius ($R_s$) of the Earth to determine how small it would need to be to become a black hole.</p>
+            <table>
+                <tr>
+                    <td><strong>Mass of Earth ($M$):</strong></td>
+                    <td>$5.97 \times 10^{24}$ kg</td>
+                </tr>
+                <tr>
+                    <td><strong>Constants ($G, c$):</strong></td>
+                    <td>$G = 6.67 \times 10^{-11}$ m$^3$ kg$^{-1}$ s$^{-2}$, $c = 3 \times 10^8$ m/s</td>
                 </tr>
                 <tr>
                     <td><strong>Equation:</strong></td>
@@ -486,9 +648,6 @@ body {
         <div style="width: 150px; height: 4px; background: #D4AF37; margin: 40px auto;"></div>
         <p style="font-size: 24px; color: #D4AF37; letter-spacing: 5px;">NEXT WEEK: THE COSMIC SYMPHONY</p>
         <p style="margin-top: 20px;">Multi-Messenger Astronomy: Listening to Gravitational Waves and Neutrino Ghosts.</p>
-        <div class="image-wrapper" style="height: 200px; margin-top: 40px; border: none;">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/17934434982576071112" alt="Accretion disk visualization" style="border-radius: 12px;">
-        </div>
     </div>
 </div>
 
