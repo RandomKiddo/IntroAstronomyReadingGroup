@@ -14,7 +14,7 @@ The meetings are designed and intended to be roughly 60 minutes in length (inclu
 
 The first six weeks are the main curriculum. The remaining are all additional specialized topics. 
 
->![NOTE]
+>[!NOTE]
 > Weeks 7 through 10 may still be in development.
 
 1. **Week 1:** Our Cosmic Neighborhood: The Grand Tour
