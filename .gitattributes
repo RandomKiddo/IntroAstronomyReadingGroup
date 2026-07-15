@@ -5,3 +5,4 @@ Content/Week[[:space:]]3/Week3_EnginesOfTheUniverse.pdf filter=lfs diff=lfs merg
 Content/Week[[:space:]]4/Week4_GalaxiesAndTheExpandingUniverse.pdf filter=lfs diff=lfs merge=lfs -text
 Content/Week[[:space:]]5/Week5_TheBigBangCosmology.pdf filter=lfs diff=lfs merge=lfs -text
 Content/Week[[:space:]]6/Week6_WhatTheHeckIsGoingOn.pdf filter=lfs diff=lfs merge=lfs -text
+Content/Additional[[:space:]]Weeks/Week[[:space:]]7/Week7_ThePowerOfTenOoM.pdf filter=lfs diff=lfs merge=lfs -text
