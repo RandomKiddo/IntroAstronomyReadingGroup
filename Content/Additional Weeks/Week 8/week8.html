@@ -8,6 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    
     <style>
 /* 1. THE SETUP: VERDANT HORIZON THEME */
 
@@ -225,28 +236,32 @@ body {
 }
 
 .bar .label {
-  flex: 0 0 250px;
+  flex: 0 0 260px;
   text-align: right;
   font-weight: 700;
+  color: #f8fafc;
 }
 
 .bar .bar-inner {
   background-color: #1e293b;
   flex-grow: 1;
-  height: 45px;
-  border-radius: 8px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .bar .bar-fill {
-  background: linear-gradient(90deg, #4ade80, #60a5fa);
   height: 100%;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 15px;
-  color: #080C0E;
+  background: linear-gradient(90deg, #10b981, #0ea5e9);
+  border-radius: 6px 0 0 6px;
+}
+
+.bar .value {
+  flex: 0 0 120px;
   font-weight: 700;
+  color: #10b981;
+  font-size: 20px;
+  text-align: left;
 }
 
 /* Formula Styling */
@@ -262,7 +277,30 @@ math {
     font-size: 28px;
     color: #f8fafc;
 }
-    </style>
+
+img {
+    color: white;
+}
+
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
+}
+
+</style>
+
 </head>
 <body>
 
@@ -284,9 +322,10 @@ math {
                 <div style="margin-top: 20px; padding: 20px; background: rgba(74, 222, 128, 0.1); border-radius: 8px;">
                     <p style="font-size: 18px;"><strong>The Signal:</strong> Tentative evidence of Dimethyl Sulfide (DMS) remains under debate—on Earth, this is only produced by life (phytoplankton).</p>
                 </div>
+                <p style="font-size: 10pt;"><i>Image Credit: NASA et al.</i></p>
             </div>
             <div>
-                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/3581068276596971373" alt="JWST transmission spectrum graph showing water and methane peaks for an exoplanet"></div>
+                <div class="image-wrapper"><img src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2023/09/STScI-01H9RF3TQE6XA9X01KXXJ351Z6.png?w=2000&h=1125&fit=crop&crop=faces%2Cfocalpoint" alt="K2-18b spectrum illustration from NASA"></div>
             </div>
         </div>
     </div>
@@ -304,7 +343,7 @@ math {
     <h2 class="slide-title">The Transit Method</h2>
     <div class="content-area">
         <div class="two-column">
-            <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/7161998598041365959" alt="Diagram of the exoplanet transit method showing a planet crossing a star and the light curve dip"></div>
+            <div class="image-wrapper"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Hot_Gas_Giant_Exoplanet_WASP-39_b_Transit_Light_Curve_%28NIRSpec%29_%282024-129%29.png" alt="Diagram of the exoplanet transit method showing a planet crossing a star and the light curve dip from NASA/Webb"></div>
             <div class="tile">
                 <h3>Light Curve Dips</h3>
                 <p>When a planet passes between us and its host star, it blocks a tiny fraction of the star's light. This produces a "u-shaped" dip in the light curve.</p>
@@ -326,7 +365,7 @@ math {
                     <li><i class="fa-solid fa-arrows-spin" style="color:#60a5fa;"></i> <strong>Orbit:</strong> Reveals orbital eccentricity and period.</li>
                 </ul>
             </div>
-            <div class="image-wrapper"><img src="https://placehold.co/600x400/080c0e/4ade80?text=Doppler+Shift+Diagram" alt="Diagram of stellar wobble and redshift/blueshift"></div>
+            <div class="image-wrapper"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Doppler_Shift_of_a_Star%E2%80%99s_Spectrum_%2801F8GFCAM7Q0EMKZ3QFAF9AQJ3%29.png" alt="Diagram of stellar wobble and redshift/blueshift"></div>
         </div>
     </div>
 </div>
@@ -360,22 +399,26 @@ math {
         <div class="chart-container">
             <div class="bar">
                 <div class="label">Neptune-like</div>
-                <div class="bar-inner"><div class="bar-fill" style="width: 35%;">1,920+</div></div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 38%;"></div></div>
+                <div class="value">1,920+</div>
             </div>
             <div class="bar">
                 <div class="label">Gas Giants</div>
-                <div class="bar-inner"><div class="bar-fill" style="width: 30%;">1,650+</div></div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 32%;"></div></div>
+                <div class="value">1,650+</div>
             </div>
             <div class="bar">
                 <div class="label">Super-Earths</div>
-                <div class="bar-inner"><div class="bar-fill" style="width: 28%;">1,540+</div></div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 30%;"></div></div>
+                <div class="value">1,540+</div>
             </div>
             <div class="bar">
                 <div class="label">Terrestrial (Earth-like)</div>
-                <div class="bar-inner"><div class="bar-fill" style="width: 4%;">200+</div></div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 5%;"></div></div>
+                <div class="value">200+</div>
             </div>
         </div>
-        <p style="margin-top: 30px; font-style: italic; text-align: center;">Data reflects known biases: Large planets close to stars are much easier to find than small worlds at Earth-like distances.</p>
+        <p style="margin-top: 40px; font-style: italic; text-align: center; color: #94a3b8;">Observational Bias Note: Our current technology heavily favors large planets in close orbits. Small, Earth-like worlds at 1 AU are significantly harder to detect.</p>
     </div>
 </div>
 
@@ -413,7 +456,23 @@ math {
             <div>
                 <p>A Jupiter-sized planet ($R_p \approx 70,000$ km) transits a Sun-like star ($R_s \approx 700,000$ km). Calculate the transit depth (fractional dip in brightness).</p>
                 <div id="formula-container">
-                    <math display="block">
+                    <math display="block" style="color:#4ade80">
+                        <mfrac><mrow><mi>&#x394;</mi><mi>F</mi></mrow><mi>F</mi></mfrac> <mo>=</mo> <msup><mfenced><mfrac><msub><mi>R</mi><mi>p</mi></msub><msub><mi>R</mi><mi>s</mi></msub></mfrac></mfenced><mn>2</mn></msup>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10sol">
+    <h2 class="slide-title">Problem 1: Transit Depth</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>A Jupiter-sized planet ($R_p \approx 70,000$ km) transits a Sun-like star ($R_s \approx 700,000$ km). Calculate the transit depth (fractional dip in brightness).</p>
+                <div id="formula-container">
+                    <math display="block" style="color: #4ade80">
                         <mfrac><mrow><mi>&#x394;</mi><mi>F</mi></mrow><mi>F</mi></mfrac> <mo>=</mo> <msup><mfenced><mfrac><msub><mi>R</mi><mi>p</mi></msub><msub><mi>R</mi><mi>s</mi></msub></mfrac></mfenced><mn>2</mn></msup>
                     </math>
                 </div>
@@ -433,7 +492,20 @@ math {
     <h2 class="slide-title">Problem 2: M-Dwarf Habitability</h2>
     <div class="content-area">
         <div class="two-column">
-            <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/12521643833599892200" alt="Habitable zone diagram comparing G-type stars like the Sun to M-type red dwarfs"></div>
+            <div class="image-wrapper"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Diagram_of_habitable_zone_rocky_exoplanets%2C_from_NASA_Exoplanet_Archive_and_Gaia_DR3_data.png" alt="Habitable zone diagram comparing G-type stars like the Sun to M-type red dwarfs"></div>
+            <div>
+                <h3>The M-Dwarf Dilemma</h3>
+                <p><strong>Question:</strong> Why is finding a planet in the habitable zone of a Red Dwarf (M-star) both easier and more problematic for life?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11sol">
+    <h2 class="slide-title">Problem 2: M-Dwarf Habitability</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Diagram_of_habitable_zone_rocky_exoplanets%2C_from_NASA_Exoplanet_Archive_and_Gaia_DR3_data.png" alt="Habitable zone diagram comparing G-type stars like the Sun to M-type red dwarfs"></div>
             <div>
                 <h3>The M-Dwarf Dilemma</h3>
                 <p><strong>Question:</strong> Why is finding a planet in the habitable zone of a Red Dwarf (M-star) both easier and more problematic for life?</p>
