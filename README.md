@@ -8,6 +8,18 @@ ___
 
 This is an introductory astronomy reading group hosted for [PHYSDepot.org](https://physdepot.org/) in Summer 2026. For more information on the reading group itself, see the [calendar](https://github.com/RandomKiddo/IntroAstronomyReadingGroup/blob/master/Content/Introductory%20Astronomy%20Reading%20Group%20Calendar.pdf).
 
+The meetings are designed and intended to be roughly 60 minutes in length (including group discussion, problems, etc.). The only lecture-style format is Week 3 on stars, since it is difficult to cram all of stellar astronomy into one week, so there is a lot more information at hand compared to other weeks. 
+
+*Weekly Breakdown*:
+
+1. **Week 1:** Our Cosmic Neighborhood: The Grand Tour
+2. **Week 2:** The Solar System
+3. **Week 3:** Stars: Engines of the Universe
+4. **Week 4:** Galaxies and the Expanding Universe
+5. **Week 5:** The Big Bang & Cosmology
+6. **Week 6:** *What the heck is going on?*
+7. **Additional Weeks TBA**
+
 ___
 
 ### This Repository
@@ -16,12 +28,6 @@ This repository hosts files related to the reading group. This is mainly the wee
 
 ___
 
-### Asynchronous Recordings
-
-:exclamation: Coming Soon :exclamation:
-
-___
-
 [Back to Top](#introductory-astronomy-reading-group)
 
-<sub>This page was last edited on 07.08.2026.</sub>
+<sub>This page was last edited on 07.14.2026.</sub>
