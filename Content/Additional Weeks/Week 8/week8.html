@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 8: Exoplanets & Astrobiology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP: VERDANT HORIZON THEME */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1e293b;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  background-color: #080C0E; /* Deep Space Black */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+}
+
+/* 1.1 DECORATIVE BACKGROUND */
+
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(74, 222, 128, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 40%);
+}
+
+.slide-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4ade80, #60a5fa);
+}
+
+.slide-container>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. CONSISTENT TYPOGRAPHY */
+
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #f8fafc;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .number-label,
+.slide-container th,
+.slide-container td {
+  color: #cbd5e1;
+  font-family: 'Inter', sans-serif;
+}
+
+.slide-container h1 {
+  font-size: 84px;
+  line-height: 1.1;
+  color: #4ade80; /* Bio-Green */
+}
+
+.slide-container .slide-title {
+  font-size: 44px;
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  color: #60a5fa; /* Atmospheric Blue */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.slide-container h3 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #4ade80;
+}
+
+.slide-container p,
+.slide-container li {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.slide-container .subtitle {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. LAYOUT DEFINITIONS */
+
+.two-column {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+}
+
+.image-wrapper {
+  border-radius: 12px;
+  height: 400px;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.image-wrapper img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.two-column .image-wrapper img {
+  object-fit: contain;
+  background: rgba(0,0,0,0.2);
+}
+
+.tile {
+  background-color: rgba(30, 41, 59, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+  padding: 30px;
+  text-align: left;
+}
+
+.tile .icon {
+  color: #4ade80;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.bullet-list {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.bullet-list li {
+  margin-bottom: 25px;
+  padding-left: 50px;
+  position: relative;
+}
+
+.bullet-list i {
+  color: #4ade80;
+  font-size: 28px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+}
+
+.full-bg-image {
+  background-position: center;
+  background-size: cover;
+}
+
+.full-bg-image .content-overlay {
+  background: rgba(8, 12, 14, 0.7);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Chart Styles */
+.chart-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bar .label {
+  flex: 0 0 250px;
+  text-align: right;
+  font-weight: 700;
+}
+
+.bar .bar-inner {
+  background-color: #1e293b;
+  flex-grow: 1;
+  height: 45px;
+  border-radius: 8px;
+}
+
+.bar .bar-fill {
+  background: linear-gradient(90deg, #4ade80, #60a5fa);
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  color: #080C0E;
+  font-weight: 700;
+}
+
+/* Formula Styling */
+#formula-container {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 30px;
+  border-radius: 12px;
+  border-left: 5px solid #4ade80;
+  margin: 20px 0;
+}
+
+math {
+    font-size: 28px;
+    color: #f8fafc;
+}
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1">
+    <div class="content-area">
+        <p class="subtitle" style="letter-spacing: 6px; color: #60a5fa;">VOYAGER SERIES // WEEK 08</p>
+        <h1>Exoplanets &<br>Astrobiology</h1>
+        <p class="subtitle" style="max-width: 800px; text-align: center;">Mapping the Galactic Archipelago and the Search for Pale Blue Dots.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">In the News: K2-18b Mystery</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Biosignature Detection?</h3>
+                <p>In mid-2026, JWST confirmed a strong detection of methane and carbon dioxide in the atmosphere of the "Hycean" world K2-18b.</p>
+                <div style="margin-top: 20px; padding: 20px; background: rgba(74, 222, 128, 0.1); border-radius: 8px;">
+                    <p style="font-size: 18px;"><strong>The Signal:</strong> Tentative evidence of Dimethyl Sulfide (DMS) remains under debate—on Earth, this is only produced by life (phytoplankton).</p>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/3581068276596971373" alt="JWST transmission spectrum graph showing water and methane peaks for an exoplanet"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <div class="content-area">
+        <div style="width: 100px; height: 4px; background: #4ade80; margin-bottom: 30px;"></div>
+        <h2 style="font-size: 64px;">Hunting for Worlds</h2>
+        <p class="subtitle">Reviewing Chapter 21: Detection Methods</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">The Transit Method</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/7161998598041365959" alt="Diagram of the exoplanet transit method showing a planet crossing a star and the light curve dip"></div>
+            <div class="tile">
+                <h3>Light Curve Dips</h3>
+                <p>When a planet passes between us and its host star, it blocks a tiny fraction of the star's light. This produces a "u-shaped" dip in the light curve.</p>
+                <p style="margin-top: 15px;"><strong>What we learn:</strong> The radius of the planet and its orbital period. It is currently our most prolific discovery technique.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Radial Velocity (Doppler)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Stellar Wobble</h3>
+                <p>As a planet orbits, its gravity tugs the star back and forth. This motion causes the star's light to shift toward blue (moving toward us) and red (moving away).</p>
+                <ul style="margin-top: 20px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><i class="fa-solid fa-weight-hanging" style="color:#60a5fa;"></i> <strong>Mass:</strong> Tells us the minimum mass ($m \sin i$) of the planet.</li>
+                    <li><i class="fa-solid fa-arrows-spin" style="color:#60a5fa;"></i> <strong>Orbit:</strong> Reveals orbital eccentricity and period.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper"><img src="https://placehold.co/600x400/080c0e/4ade80?text=Doppler+Shift+Diagram" alt="Diagram of stellar wobble and redshift/blueshift"></div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">The Habitable Zone</h2>
+    <div class="content-area">
+        <div style="display: flex; gap: 30px; width: 100%;">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-droplet"></i></div>
+                <h3>Liquid Water</h3>
+                <p>The "Goldilocks Zone" where the temperature is just right for liquid water to exist on the surface. Not too hot, not too cold.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-sun"></i></div>
+                <h3>Star Type Matters</h3>
+                <p>Hotter stars (Type O/B) have zones far away. Cooler M-dwarfs have zones extremely close to the star, often leading to tidal locking.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-shield-virus"></i></div>
+                <h3>Atmosphere</h3>
+                <p>Distance isn't everything. Greenhouse gases (CO2) can keep a planet warm beyond the traditional zone, or boil it (Venus).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Demographics of Discovery</h2>
+    <div class="content-area">
+        <div class="chart-container">
+            <div class="bar">
+                <div class="label">Neptune-like</div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 35%;">1,920+</div></div>
+            </div>
+            <div class="bar">
+                <div class="label">Gas Giants</div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 30%;">1,650+</div></div>
+            </div>
+            <div class="bar">
+                <div class="label">Super-Earths</div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 28%;">1,540+</div></div>
+            </div>
+            <div class="bar">
+                <div class="label">Terrestrial (Earth-like)</div>
+                <div class="bar-inner"><div class="bar-fill" style="width: 4%;">200+</div></div>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-style: italic; text-align: center;">Data reflects known biases: Large planets close to stars are much easier to find than small worlds at Earth-like distances.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Searching for Biosignatures</h2>
+    <div class="content-area">
+        <div class="bullet-list">
+            <ul>
+                <li><i class="fa-solid fa-flask"></i> <strong>Chemical Disequilibrium:</strong> Detecting gases that shouldn't coexist (like Oxygen and Methane) suggests a process (life) is constantly replenishing them.</li>
+                <li><i class="fa-solid fa-leaf"></i> <strong>The Red Edge:</strong> Plants on Earth reflect infrared light strongly. A "red edge" in a planet's spectrum could indicate widespread photosynthesis.</li>
+                <li><i class="fa-solid fa-cloud"></i> <strong>Transmission Spectroscopy:</strong> Analyzing starlight passing through a planet's atmosphere to identify molecular signatures (H2O, CO2, CH4).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Thought Provoking Questions</h2>
+    <div class="content-area">
+        <div style="display: flex; flex-direction: column; gap: 30px; width: 100%;">
+            <div class="tile" style="border-left: 5px solid #4ade80;">
+                <p><strong>1. The Rare Earth Hypothesis:</strong> If the conditions for life are so common (billions of habitable planets), why haven't we heard from anyone? Is the "Great Filter" ahead of us or behind us?</p>
+            </div>
+            <div class="tile" style="border-left: 5px solid #60a5fa;">
+                <p><strong>2. Anthropocentrism:</strong> We search for water and carbon-based life because that's what we know. Could we be missing life that exists in liquid methane or uses silicon instead of carbon?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Problem 1: Transit Depth</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>A Jupiter-sized planet ($R_p \approx 70,000$ km) transits a Sun-like star ($R_s \approx 700,000$ km). Calculate the transit depth (fractional dip in brightness).</p>
+                <div id="formula-container">
+                    <math display="block">
+                        <mfrac><mrow><mi>&#x394;</mi><mi>F</mi></mrow><mi>F</mi></mfrac> <mo>=</mo> <msup><mfenced><mfrac><msub><mi>R</mi><mi>p</mi></msub><msub><mi>R</mi><mi>s</mi></msub></mfrac></mfenced><mn>2</mn></msup>
+                    </math>
+                </div>
+            </div>
+            <div class="tile">
+                <h3>Solution:</h3>
+                <p>Ratio of radii: $70,000 / 700,000 = 0.1$</p>
+                <p>Dip = $(0.1)^2 = 0.01$</p>
+                <p style="margin-top: 15px; color: #4ade80; font-weight: 700;">Result: 1% drop in brightness.</p>
+                <p style="font-size: 16px; margin-top: 10px;">(Note: For Earth, the dip is only 0.01%, requiring extreme precision!)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Problem 2: M-Dwarf Habitability</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/12521643833599892200" alt="Habitable zone diagram comparing G-type stars like the Sun to M-type red dwarfs"></div>
+            <div>
+                <h3>The M-Dwarf Dilemma</h3>
+                <p><strong>Question:</strong> Why is finding a planet in the habitable zone of a Red Dwarf (M-star) both easier and more problematic for life?</p>
+                <ul style="margin-top: 15px; font-size: 16px;">
+                    <li><strong>Pros:</strong> Transit depth is larger (smaller star); orbital period is shorter (easier to detect).</li>
+                    <li><strong>Cons:</strong> High stellar flare activity; tidal locking (one side always faces the star).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container full-bg-image" id="slide12" style="background-image: linear-gradient(rgba(8, 12, 14, 0.8), rgba(8, 12, 14, 0.8)), url('http://googleusercontent.com/image_collection/image_retrieval/11454903288100496536');">
+    <div class="content-overlay">
+        <p class="mono-tag" style="color: #60a5fa; letter-spacing: 4px;">UP NEXT // WEEK 09</p>
+        <h2 style="font-size: 60px; color: #f8fafc;">Black Holes</h2>
+        <p style="font-size: 24px; margin-top: 20px; color: #cbd5e1;">The Edge of Spacetime and the Physics of Singularities.</p>
+        <div style="width: 80px; height: 4px; background: #4ade80; margin: 30px auto;"></div>
+        <p style="font-family: 'Outfit'; font-size: 18px;">Readings: Review Einstein's General Relativity concepts.</p>
+    </div>
+</div>
+
+</body>
+</html>
+
