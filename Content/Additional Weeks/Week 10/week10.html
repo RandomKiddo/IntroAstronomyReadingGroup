@@ -8,6 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
     <style>
 /* 1. THE SETUP: NEON PULSE THEME */
 
@@ -99,6 +110,7 @@ body {
   line-height: 0.9;
   background: linear-gradient(to right, #00D2FF, #BF40BF);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -203,6 +215,7 @@ body {
 .table-container td {
   padding: 15px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: white;
 }
 
 #formula-container {
@@ -215,6 +228,27 @@ body {
 math {
   font-size: 24px;
   color: #FFFFFF;
+}
+
+img {
+    color: white;
+}
+
+@media print {
+    body {
+        /* Forces browsers to render background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .slide-container::before {
+        display: none !important;
+        background: none !important;
+    }
 }
 
     </style>
@@ -247,7 +281,7 @@ math {
                 </div>
             </div>
             <div class="image-wrapper">
-                <img src="http://googleusercontent.com/image_collection/image_retrieval/1392652431718873013" alt="IceCube neutrino observatory detectors deep in Antarctic ice blue light">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IceCube_Neutrino_Observatory_in_2023_02.jpg" alt="IceCube neutrino observatory in Antarctica">
             </div>
         </div>
     </div>
@@ -392,7 +426,26 @@ math {
 </div>
 
 <div class="slide-container" id="slide10">
-    <h2 class="slide-title">Quantitative Problem 1</h2>
+    <h2 class="slide-title">Quantitative Problem</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Signal Synchronicity</h3>
+                <p>A Kilonova is detected in a galaxy 130 million light-years away (~$10^{24}$ meters). If the Gravitational Wave and the first Gamma-Ray photon arrived within 2 seconds of each other...</p>
+                <div id="formula-container" style="margin-top: 20px;">
+                    <p style="font-size: 16px;">Calculate the maximum possible difference in their speeds ($\Delta v$) as a fraction of $c$.</p>
+                </div>
+            </div>
+            <div class="tile" style="border-left-color: #00D2FF;">
+                <h3>Solution:</h3>
+                <p style="font-size: 16px;"><i>Hidden!</i></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10sol">
+    <h2 class="slide-title">Quantitative Problem</h2>
     <div class="content-area">
         <div class="two-column">
             <div>
@@ -414,7 +467,7 @@ math {
 </div>
 
 <div class="slide-container" id="slide11">
-    <h2 class="slide-title">Qualitative Problem 2</h2>
+    <h2 class="slide-title">Qualitative Problem</h2>
     <div class="content-area">
         <div class="tile" style="width: 100%;">
             <h3>Detection Geometries</h3>
