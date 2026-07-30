@@ -12,10 +12,7 @@ The meetings are designed and intended to be roughly 60 minutes in length (inclu
 
 *Weekly Breakdown*:
 
-The first six weeks are the main curriculum. The remaining are all additional specialized topics. 
-
->[!NOTE]
-> Weeks 7 through 10 may still be in development.
+The first six weeks are the main curriculum. The remaining are all additional specialized topics. More specialized topics may be added in the future for those who wish to rework this curriculum for their own groups. PRs are open for creation of these additional weeks as well.
 
 1. **Week 1:** Our Cosmic Neighborhood: The Grand Tour
 2. **Week 2:** The Solar System
@@ -32,10 +29,13 @@ ___
 
 ### This Repository
 
-This repository hosts files related to the reading group. This is mainly the weekly lecture files in HTML and PDF formats. The PDF files are hosted through Github's Large File Storage (LFS), because they are massive in space. As such, we strongly recommend downloading the HTML files, as they are lightweight. They will work in your browser (confirmed for Firefox and Chrome, but should work with others too). Additionally, they do not need any other downloads, as images are linked to Wikimedia Commons directly and the style sheets have been conveniently baked into the HTML files or are hosted on an outside server (like MathJax, for example).
+This repository hosts files related to the reading group. This is mainly the weekly lecture files in HTML and PDF formats. 
+
+> [!IMPORTANT]
+> The PDF files are hosted through Github's Large File Storage (LFS), because they are massive in space. As such, we strongly recommend downloading the HTML files, as they are lightweight. They will work in your browser (confirmed for Firefox and Chrome, but should work with others too). Additionally, they do not need any other downloads, as images are linked to Wikimedia Commons directly (or cited accordingly on the web) and the style sheets have been conveniently baked into the HTML files or are hosted on an outside server (like MathJax, for example).
 
 ___
 
 [Back to Top](#introductory-astronomy-reading-group)
 
-<sub>This page was last edited on 07.14.2026.</sub>
+<sub>This page was last edited on 07.30.2026.</sub>
